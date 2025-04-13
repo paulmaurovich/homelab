@@ -1,0 +1,30 @@
+repositories:
+  - name: argo 
+    url: https://argoproj.github.io/argo-helm
+
+releases:
+  - name: argo-cd
+    namespace: argocd
+    createNamespace: true
+    chart: argo/argo-cd
+    version: 7.8.24
+    values:
+      # HA mode with autoscaling
+      - redis-ha:
+          enabled: true
+
+      - controller:
+          replicas: 1
+
+      - server:
+          autoscaling:
+            enabled: true
+            minReplicas: 2
+
+      - repoServer:
+          autoscaling:
+            enabled: true
+            minReplicas: 2
+
+      - applicationSet:
+          replicas: 2
