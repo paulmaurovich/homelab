@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-agent-1
+  labels:
+    node-role.kubernetes.io/worker: "true"
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-agent-2
+  labels:
+    node-role.kubernetes.io/worker: "true"
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-agent-3
+  labels:
+    node-role.kubernetes.io/worker: "true"
+    node-role.kubernetes.io/igpu: "true"
+

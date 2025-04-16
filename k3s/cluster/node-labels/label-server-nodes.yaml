@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-server-1
+spec:
+  taints:
+  - key: node-role.kubernetes.io/master
+    effect: NoSchedule
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-server-2
+spec:
+  taints:
+  - key: node-role.kubernetes.io/master
+    effect: NoSchedule
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-server-3
+spec:
+  taints:
+  - key: node-role.kubernetes.io/master
+    effect: NoSchedule
