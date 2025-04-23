@@ -6,8 +6,8 @@ metadata:
     node-role.kubernetes.io/postgres: ""
 spec:
   taints:
-  - key: "node-role.kubernetes.io/postgres"
-    value: "true"
+  - key: "workload"
+    value: "postgres"
     effect: "NoSchedule"
 ---
 apiVersion: v1
@@ -18,8 +18,8 @@ metadata:
     node-role.kubernetes.io/postgres: ""
 spec:
   taints:
-  - key: "node-role.kubernetes.io/postgres"
-    value: "true"
+  - key: "workload"
+    value: "postgres"
     effect: "NoSchedule"
 ---
 apiVersion: v1
@@ -30,6 +30,6 @@ metadata:
     node-role.kubernetes.io/postgres: ""
 spec:
   taints:
-  - key: "node-role.kubernetes.io/postgres"
-    value: "true"
+  - key: "workload"
+    value: "postgres"
     effect: "NoSchedule"
