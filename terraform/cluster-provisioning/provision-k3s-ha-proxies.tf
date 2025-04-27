@@ -1,11 +1,11 @@
-resource "proxmox_vm_qemu" "k3s_postgres_agents" {
+resource "proxmox_vm_qemu" "k3s_ha_proxies" {
     # cloud-init template
-    cicustom = "user=local:snippets/init-postgres-agents.yaml"
+    cicustom = "user=local:snippets/init-ha-proxies.yaml"
     count = 3
     # general
     target_node = "zeus"
-    vmid = 120 + count.index
-    name = "k3s-postgres-agent-${count.index + 1}"
+    vmid = 130 + count.index
+    name = "k3s-ha-proxy-${count.index + 1}"
     pool = "containers"
     onboot = true
     agent = 1
@@ -26,7 +26,7 @@ resource "proxmox_vm_qemu" "k3s_postgres_agents" {
         type = "disk"
         storage = "local-lvm"
         format = "raw"
-        size = "64G"
+        size = "16G"
 
         cache = "none"
         discard = true
@@ -34,11 +34,11 @@ resource "proxmox_vm_qemu" "k3s_postgres_agents" {
     }
     # cpu
     sockets = 1
-    cores = 2
+    cores = 1
     cpu_type = "x86-64-v2-AES"
     # memory
-    memory = 4096
-    balloon = 512
+    memory = 4096 
+    balloon = 512 
     # network
     network {
         id = 0
@@ -52,6 +52,6 @@ resource "proxmox_vm_qemu" "k3s_postgres_agents" {
         type = "std"
     }
     # cloudinit
-    ipconfig0 = "gw=${data.sops_file.network-secrets.data["network.gateway"]},ip=${data.sops_file.network-secrets.data["network.prefix"]}.${90 + count.index}/${data.sops_file.network-secrets.data["network.cidr"]}"
+    ipconfig0 = "gw=${data.sops_file.network-secrets.data["network.gateway"]},ip=${data.sops_file.network-secrets.data["network.prefix"]}.${20 + count.index}/${data.sops_file.network-secrets.data["network.cidr"]}"
     nameserver = "${data.sops_file.network-secrets.data["network.nameserver"]}"
 }

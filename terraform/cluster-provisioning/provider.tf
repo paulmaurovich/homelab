@@ -2,6 +2,10 @@ data "sops_file" "provider-secrets" {
   source_file = "provider-secrets.enc.yaml"
 }
 
+data "sops_file" "network-secrets" {
+  source_file = "network-secrets.enc.yaml"
+}
+
 terraform {
   required_providers {
     proxmox = {
