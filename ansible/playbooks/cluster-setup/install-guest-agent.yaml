@@ -1,0 +1,20 @@
+---
+- name: Install Proxmox Guest Agent
+  hosts:
+    - k3s_cluster
+    - load_balancers
+  become: yes
+
+  tasks:
+    - name: Install proxmox-ve-guest agent package
+      apt:
+        name: qemu-guest-agent
+        state: present
+        update_cache: yes
+
+    - name: Ensure qemu-guest-agent is enabled and started
+      systemd:
+        name: qemu-guest-agent
+        enabled: yes
+        state: started
+
