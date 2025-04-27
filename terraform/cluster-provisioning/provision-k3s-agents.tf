@@ -5,7 +5,7 @@ resource "proxmox_vm_qemu" "k3s_agents" {
     # general
     target_node = "zeus"
     vmid = 110 + count.index
-    name = "k3s-server-${count.index + 1}"
+    name = "k3s-agent-${count.index + 1}"
     pool = "containers"
     onboot = true
     agent = 1
