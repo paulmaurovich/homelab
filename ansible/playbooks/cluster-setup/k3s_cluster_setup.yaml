@@ -1,0 +1,123 @@
+---
+- name: Deploy K3s Cluster
+  hosts: k3s_cluster
+  become: true
+  
+  vars:
+    fresh_install: true 
+    k3s_version: "v1.31.5+k3s1"
+    k3s_first_server: "{{ groups['k3s_servers'][0] }}"
+  
+  tasks:
+    - name: Uninstall k3s on servers
+      ansible.builtin.shell: /usr/local/bin/k3s-uninstall.sh
+      when:
+        - fresh_install | bool
+        - inventory_hostname in groups['k3s_servers']
+
+    - name: Uninstall k3s on agents
+      ansible.builtin.shell: /usr/local/bin/k3s-agent-uninstall.sh
+      when:
+        - fresh_install | bool
+        - inventory_hostname in groups['k3s_agents'] or inventory_hostname in groups['k3s_postgres_agents']
+
+    - name: Check if K3s is already installed
+      shell: systemctl is-active k3s || systemctl is-active k3s-agent
+      register: k3s_check
+      changed_when: false
+      failed_when: false
+      
+    - name: Display K3s installation status
+      debug:
+        msg: "K3s is {% if k3s_check.rc == 0 %}already installed{% else %}not installed{% endif %} on {{ inventory_hostname }}"
+      
+    - name: Install K3s as first server node with cluster-init
+      shell: |
+        curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION={{ k3s_version }} K3S_TOKEN={{ K3S_TOKEN }} sh -s - server \
+          --cluster-init \
+          --tls-san={{ tls_san_ip }}
+      when: 
+        - inventory_hostname == k3s_first_server
+        - k3s_check.rc != 0
+      register: k3s_first_server_install
+      
+    - name: Display first server installation status
+      debug:
+        msg: "{% if k3s_first_server_install is changed %}Installed{% else %}Skipped installation of{% endif %} K3s as first server node on {{ inventory_hostname }}"
+      when: inventory_hostname == k3s_first_server
+      
+    - name: Wait for first server to be ready
+      wait_for:
+        host: "{{ k3s_first_server }}"
+        port: 6443
+        delay: 10
+        timeout: 300
+      when: k3s_first_server_install is changed
+      delegate_to: localhost
+      register: first_server_ready
+      
+    - name: Display first server readiness status
+      debug:
+        msg: "First server {{ k3s_first_server }} is now ready and accepting connections on port 6443"
+      when: k3s_first_server_install is changed and first_server_ready is defined
+      
+    - name: Wait for k3s.yaml on first server
+      wait_for:
+        path: /etc/rancher/k3s/k3s.yaml
+        delay: 5
+        timeout: 300
+      when: inventory_hostname == k3s_first_server and k3s_first_server_install is changed
+      register: k3s_yaml_ready
+      
+    - name: Install K3s on additional server nodes
+      shell: |
+        curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION={{ k3s_version }} K3S_TOKEN={{ K3S_TOKEN }} sh -s - server \
+          --server {{ k3s_server_url }} \
+          --tls-san={{ tls_san_ip }}
+      when: 
+        - inventory_hostname in groups['k3s_servers']
+        - inventory_hostname != k3s_first_server
+        - k3s_check.rc != 0
+      register: additional_server_install
+        
+    - name: Display additional server installation status
+      debug:
+        msg: "{% if additional_server_install is changed %}Installed{% else %}Skipped installation of{% endif %} K3s as additional server node on {{ inventory_hostname }}"
+      when: 
+        - inventory_hostname in groups['k3s_servers']
+        - inventory_hostname != k3s_first_server
+        
+    - name: Install K3s on agent nodes
+      shell: |
+        curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION={{ k3s_version }} K3S_TOKEN={{ K3S_TOKEN }} sh -s - agent \
+          --server {{ k3s_server_url }}
+      when: 
+        - (inventory_hostname in groups['k3s_agents'] or inventory_hostname in groups['k3s_postgres_agents'])
+        - k3s_check.rc != 0
+      register: agent_install
+        
+    - name: Display agent installation status
+      debug:
+        msg: "{% if agent_install is changed %}Installed{% else %}Skipped installation of{% endif %} K3s as agent node on {{ inventory_hostname }}"
+      when: inventory_hostname in groups['k3s_agents'] or inventory_hostname in groups['k3s_postgres_agents']
+      
+    - name: Verify K3s installation
+      shell: "{{ k3s_check_command }}"
+      register: k3s_verify
+      until: k3s_verify.rc == 0
+      retries: 5
+      delay: 10
+      changed_when: false
+      
+    - name: Summarize deployment
+      debug:
+        msg:
+          - "K3s Cluster Deployment Summary:"
+          - "First server: {{ k3s_first_server }}"
+          - "Server nodes: {{ groups['k3s_servers'] | join(', ') }}"
+          - "Agent nodes: {{ groups['k3s_agents'] | join(', ') }}"
+          - "Postgres agent nodes: {{ groups['k3s_postgres_agents'] | join(', ') }}"
+          - "K3s version: {{ k3s_version }}"
+          - "API endpoint: {{ k3s_server_url }}"
+          - "TLS SAN IP: {{ tls_san_ip }}"
+      when: inventory_hostname == k3s_first_server
