@@ -37,8 +37,8 @@ resource "proxmox_vm_qemu" "k3s_servers" {
     cores = 2
     cpu_type = "x86-64-v2-AES"
     # memory
-    memory = 2048
-    balloon = 256
+    memory = 4096
+    balloon = 512
     # network
     network {
         id = 0
