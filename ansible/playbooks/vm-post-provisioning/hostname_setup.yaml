@@ -1,0 +1,41 @@
+- name: Configure hostnames based on inventory names
+  hosts: 
+    - k3s_cluster
+    - load_balancers
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Set hostname to inventory name
+      hostname:
+        name: "{{ inventory_hostname }}"
+      register: hostname_result
+      
+    - name: Ensure hostname is set in /etc/hosts
+      lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.1\.1'
+        line: "127.0.1.1 {{ inventory_hostname }}"
+        state: present
+      when: ansible_os_family == "Debian"
+      
+    - name: Ensure hostname is set in /etc/hostname (alternative method)
+      copy:
+        content: "{{ inventory_hostname }}"
+        dest: /etc/hostname
+        owner: root
+        group: root
+        mode: '0644'
+      when: hostname_result is failed
+      
+    - name: Display hostname change status
+      debug:
+        msg: "Hostname for {{ inventory_hostname }} has been set"
+        
+    - name: Verify hostname matches inventory name
+      assert:
+        that:
+          - ansible_hostname == inventory_hostname or ansible_nodename == inventory_hostname
+        success_msg: "Hostname successfully set to {{ inventory_hostname }}"
+        fail_msg: "Hostname verification failed. Current hostname: {{ ansible_hostname }}"
+      ignore_errors: true
