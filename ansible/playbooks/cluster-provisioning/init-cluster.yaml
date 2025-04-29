@@ -1,0 +1,72 @@
+---
+- name: Initialize new cluster
+  hosts: k3s_main_servers
+  become: true
+  
+  tasks:
+    - name: Install community.sops collection on host
+      ansible.builtin.command: ansible-galaxy collection install community.sops
+      delegate_to: localhost
+      run_once: true
+      changed_when: false
+    
+    - name: Load encrypted variables
+      community.sops.load_vars:
+        file: secrets/k3s-cluster-secrets.enc.yaml
+    
+    - name: Install sops for decryption if not present
+      ansible.builtin.package:
+        name: sops
+        state: present
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
+
+    - name: Check if k3s binary exists
+      ansible.builtin.stat:
+        path: /usr/local/bin/k3s
+      register: k3s_binary
+
+    - name: Check if k3s service is running
+      ansible.builtin.service_facts:
+      register: services_state
+
+    - name: Fail if k3s is already installed
+      ansible.builtin.fail:
+        msg: "K3s is already installed on this node. "
+      when: k3s_binary.stat.exists or 'k3s' in services_state.ansible_facts.services
+
+    - name: Install k3s server with embedded HA
+      ansible.builtin.shell: |
+        curl -sfL https://get.k3s.io | \
+        INSTALL_K3S_VERSION="{{ vars['k3s-version'] }}" \
+        K3S_TOKEN="{{ vars['token'] }}" sh -s - server \
+        --cluster-init \
+        --tls-san="{{ vars['tls-san-ip'] }}"
+      args:
+        executable: /bin/bash
+        creates: /usr/local/bin/k3s
+      environment:
+        INSTALL_K3S_VERSION: "{{ vars['k3s-version'] }}"
+      register: k3s_install
+      
+    - name: Wait for k3s to be ready
+      ansible.builtin.pause:
+        seconds: 30
+      when: k3s_install.changed
+
+    - name: Check if k3s is running
+      ansible.builtin.command: systemctl is-active k3s
+      register: k3s_status
+      changed_when: false
+      failed_when: k3s_status.rc != 0
+
+    - name: Verify kubectl works with the cluster
+      ansible.builtin.command: kubectl get nodes
+      register: kubectl_check
+      changed_when: false
+      failed_when: kubectl_check.rc != 0
+
+    - name: Show cluster status
+      ansible.builtin.debug:
+        msg: "Cluster successfully initialized \n {{ kubectl_check.stdout_lines }}"
+      when: kubectl_check is defined
+
