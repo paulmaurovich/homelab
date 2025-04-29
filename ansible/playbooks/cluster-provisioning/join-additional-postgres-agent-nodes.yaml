@@ -1,0 +1,84 @@
+---
+- name: Join additional postgres agent nodes to k3s cluster
+  hosts: k3s_postgres_agents
+  become: true
+  
+  tasks:
+    - name: Install community.sops collection on host
+      ansible.builtin.command: ansible-galaxy collection install community.sops
+      delegate_to: localhost
+      run_once: true
+      changed_when: false
+
+    - name: Load encrypted variables
+      community.sops.load_vars:
+        file: "{{ playbook_dir }}/secrets/k3s-cluster-secrets.enc.yaml"
+
+    - name: Install sops for decryption if not present
+      ansible.builtin.package:
+        name: sops
+        state: present
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
+
+    - name: Check if k3s binary exists
+      ansible.builtin.stat:
+        path: /usr/local/bin/k3s
+      register: k3s_binary
+
+    - name: Check if k3s service is running
+      ansible.builtin.service_facts:
+      register: services_state
+
+    - name: Fail if k3s is already installed
+      ansible.builtin.fail:
+        msg: "K3s is already installed on this node. Aborting."
+      when: k3s_binary.stat.exists or 'k3s' in services_state.ansible_facts.services
+
+    - name: Install k3s additional postgres agent nodes
+      ansible.builtin.shell: |
+        curl -sfL https://get.k3s.io | K3S_TOKEN={{ vars['token']}} sh -s - agent \
+        --server {{ vars['server-url'] }}
+      args:
+        executable: /bin/bash
+        creates: /usr/local/bin/k3s
+      register: k3s_install
+      
+    - name: Wait for k3s to be ready
+      ansible.builtin.pause:
+        seconds: 30
+      when: k3s_install.changed
+
+    - name: Check if k3s is running
+      ansible.builtin.command: systemctl is-active k3s-agent
+      register: k3s_status
+      changed_when: false
+      failed_when: k3s_status.rc != 0
+
+    - name: Wait for node to register with cluster
+      ansible.builtin.shell: k3s kubectl get nodes | grep "{{ inventory_hostname }}"
+      register: node_registered
+      until: node_registered.rc == 0
+      retries: 12
+      delay: 10
+      changed_when: false
+      failed_when: false
+
+    - name: Show node join status
+      ansible.builtin.debug:
+        msg: "K3s postgres agent node successfully joined the cluster"
+      when: node_registered.rc == 0
+
+    - name: Fail if node did not join cluster
+      ansible.builtin.fail:
+        msg: "K3s postgres agent node failed to join the cluster within the timeout period"
+      when: node_registered.rc != 0
+
+    - name: Show kubectl get nodes output
+      ansible.builtin.command: kubectl get nodes -o wide
+      register: kubectl_nodes
+      changed_when: false
+      failed_when: kubectl_nodes.rc != 0
+
+    - name: Display kubectl get nodes output
+      ansible.builtin.debug:
+        msg: "{{ kubectl_nodes.stdout_lines }}"
