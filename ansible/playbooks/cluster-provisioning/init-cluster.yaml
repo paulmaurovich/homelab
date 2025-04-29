@@ -44,8 +44,6 @@
       args:
         executable: /bin/bash
         creates: /usr/local/bin/k3s
-      environment:
-        INSTALL_K3S_VERSION: "{{ vars['k3s-version'] }}"
       register: k3s_install
       
     - name: Wait for k3s to be ready
