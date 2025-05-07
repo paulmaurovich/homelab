@@ -1,0 +1,89 @@
+---
+- name: Setup keepalived on HAProxy nodes
+  hosts: k3s_ha_proxies
+  become: true
+  
+  tasks:
+    - name: Install community.sops collection on host
+      ansible.builtin.command: ansible-galaxy collection install community.sops
+      delegate_to: localhost
+      run_once: true
+      changed_when: false
+
+    - name: Load encrypted variables
+      community.sops.load_vars:
+        file: secrets/keepalived-secrets.enc.yaml
+
+    - name: Install sops for decryption if not present
+      ansible.builtin.package:
+        name: sops
+        state: present
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
+
+    - name: Install Keepalived and dependencies
+      apt:
+        name:
+          - keepalived
+          - libipset13
+        state: present
+        update_cache: yes
+
+    - name: Create keepalived configuration for master
+      ansible.builtin.template:
+        src: config/keepalived_master.conf.j2
+        dest: /etc/keepalived/keepalived.conf
+        owner: root
+        group: root
+        mode: '0644'
+      when: inventory_hostname == groups['k3s_ha_proxies'][0]
+      notify: Restart keepalived
+
+    - name: Create keepalived configuration for backup1
+      ansible.builtin.template:
+        src: config/keepalived_backup1.conf.j2
+        dest: /etc/keepalived/keepalived.conf
+        owner: root
+        group: root
+        mode: '0644'
+      when: inventory_hostname == groups['k3s_ha_proxies'][1]
+      notify: Restart keepalived
+
+    - name: Create keepalived configuration for backup2
+      ansible.builtin.template:
+        src: config/keepalived_backup2.conf.j2
+        dest: /etc/keepalived/keepalived.conf
+        owner: root
+        group: root
+        mode: '0644'
+      when: inventory_hostname == groups['k3s_ha_proxies'][2]
+      notify: Restart keepalived
+
+    - name: Enable and start keepalived
+      ansible.builtin.service:
+        name: keepalived
+        state: started
+        enabled: true
+
+    - name: Verify keepalived is running
+      ansible.builtin.command: systemctl status keepalived
+      register: keepalived_status
+      changed_when: false
+      failed_when: "'active (running)' not in keepalived_status.stdout"
+
+    - name: Check virtual IP on master
+      ansible.builtin.shell: ip addr show {{ vars['keepalived_interface'] }} | grep {{ vars['keepalived_virtual_ip'] | regex_replace('/.*', '') }}
+      register: vip_check
+      changed_when: false
+      failed_when: false
+      when: inventory_hostname == groups['k3s_ha_proxies'][0]
+
+    - name: Display status of virtual IP
+      ansible.builtin.debug:
+        msg: "Virtual IP {{ vars['keepalived_virtual_ip'] }} {% if vip_check.rc == 0 %}is{% else %}is not{% endif %} assigned to master node"
+      when: inventory_hostname == groups['k3s_ha_proxies'][0]
+
+  handlers:
+    - name: Restart keepalived
+      ansible.builtin.service:
+        name: keepalived
+        state: restarted

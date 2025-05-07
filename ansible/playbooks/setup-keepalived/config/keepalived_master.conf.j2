@@ -1,0 +1,20 @@
+vrrp_instance HA_1 {
+    state MASTER
+    interface {{ vars['keepalived_interface'] }}
+    virtual_router_id {{ vars['keepalived_virtual_router_id'] }}
+    priority 150
+    advert_int 1
+    unicast_src_ip {{ vars['keepalived_master_ip'] }}
+    unicast_peer {
+        {{ vars['keepalived_backup1_ip'] }}
+        {{ vars['keepalived_backup2_ip'] }}
+    }
+    authentication {
+        auth_type PASS
+        auth_pass {{ vars['keepalived_pass'] }}
+    }
+    virtual_ipaddress {
+        {{ vars['keepalived_virtual_ip'] }}
+    }
+}
+
