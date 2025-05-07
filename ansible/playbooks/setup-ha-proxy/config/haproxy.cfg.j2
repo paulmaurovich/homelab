@@ -1,0 +1,128 @@
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
+    daemon
+
+    # Default SSL material locations
+    ca-base /etc/ssl/certs
+    crt-base /etc/ssl/private
+
+    # Default ciphers to use on SSL-enabled listening sockets
+    ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
+    ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
+
+# API Server >>>
+frontend k3s_api_frontend
+    bind *:{{ vars['haproxy_api_port'] }}
+    mode tcp
+    option tcplog
+    default_backend k3s_api_backend
+
+backend k3s_api_backend
+    mode tcp
+    option tcp-check
+    balance roundrobin
+    default-server inter 2000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
+    {% for server in vars['k3s_server_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_api_port'] }} check
+    {% endfor %}
+# API Server <<<
+
+# Agents HTTP >>>
+frontend k3s_agents_http_frontend
+    bind *:{{ vars['haproxy_http_port'] }}
+    mode http
+    option httplog
+    default_backend k3s_agents_http_backend
+
+backend k3s_agents_http_backend
+    mode http
+    balance roundrobin
+    option httpchk GET /healthz
+    http-check expect status 200
+    default-server inter 5000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
+    {% for server in vars['k3s_agent_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_http_port'] }} check
+    {% endfor %}
+    {% for server in vars['k3s_postgres_agent_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_http_port'] }} check
+    {% endfor %}
+# Agents HTTP <<<
+
+# Agents HTTPS >>>
+frontend k3s_agents_https_frontend
+    bind *:{{ vars['haproxy_https_port'] }}
+    mode tcp
+    option tcplog
+    default_backend k3s_agents_https_backend
+
+backend k3s_agents_https_backend
+    mode tcp
+    balance roundrobin
+    option tcp-check
+    default-server inter 5000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
+    {% for server in vars['k3s_agent_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_https_port'] }} check ssl verify none
+    {% endfor %}
+    {% for server in vars['k3s_postgres_agent_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_https_port'] }} check ssl verify none
+    {% endfor %}
+# Agents HTTPS <<<
+
+# Agents + Postgres kubelet >>>
+frontend k3s_agents_kubelet_frontend
+    bind *:{{ vars['haproxy_kubelet_port'] }}
+    mode tcp
+    option tcplog
+    default_backend k3s_agents_kubelet_backend
+
+backend k3s_agents_kubelet_backend
+    mode tcp
+    balance roundrobin
+    option tcp-check
+    {% for server in vars['k3s_agent_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_kubelet_port'] }} check
+    {% endfor %}
+    {% for server in vars['k3s_postgres_agent_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_kubelet_port'] }} check
+    {% endfor %}
+# Agents + Postgres kubelet <<<
+
+# Postgres Agents >>>
+frontend postgres_frontend
+    bind *:{{ vars['haproxy_postgres_port'] }}
+    mode tcp
+    option tcplog
+    default_backend postgres_backend
+
+backend postgres_backend
+    mode tcp
+    balance first
+    option tcp-check
+    tcp-check connect
+    tcp-check send-binary 00000008000000030000000000
+    tcp-check expect binary 520000000400
+    default-server inter 2000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 100 maxqueue 128 weight 100
+    {% for server in vars['k3s_postgres_agent_nodes'] %}
+    server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_https_port'] }} check
+    {% endfor %}
+# Postgres Agents <<<

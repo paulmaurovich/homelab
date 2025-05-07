@@ -1,0 +1,67 @@
+---
+- name: Install and configure HAProxy on LB nodes
+  hosts: k3s_ha_proxies
+  become: true
+
+  tasks:
+    - name: Install community.sops collection on host
+      ansible.builtin.command: ansible-galaxy collection install community.sops
+      delegate_to: localhost
+      run_once: true
+      changed_when: false
+
+    - name: Load encrypted variables
+      community.sops.load_vars:
+        file: secrets/ha-proxy-secrets.enc.yaml
+
+    - name: Install sops for decryption if not present
+      ansible.builtin.package:
+        name: sops
+        state: present
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
+
+    - name: Check if HAProxy is installed
+      command: haproxy -v
+      register: haproxy_installed
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Install HAProxy
+      package:
+        name: haproxy
+        state: present
+      register: haproxy_install
+      when: haproxy_installed.rc != 0
+      
+    - name: Deploy HAProxy configuration
+      template:
+        src: config/haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+        owner: root
+        group: root
+        mode: '0644'
+      
+    - name: Enable and start HAProxy service
+      systemd:
+        name: haproxy
+        state: restarted
+        enabled: yes
+      
+    - name: Verify HAProxy is running
+      command: systemctl status haproxy
+      register: haproxy_status
+      changed_when: false
+      
+    - name: Display HAProxy status
+      debug:
+        msg: "{{ haproxy_status.stdout_lines }}"
+        
+    - name: Check HAProxy socket
+      command: ss -tlnp | grep haproxy
+      register: haproxy_socket
+      changed_when: false
+      failed_when: false
+      
+    - name: Display HAProxy listening ports
+      debug:
+        msg: "{{ haproxy_socket.stdout_lines }}"
