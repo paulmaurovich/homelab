@@ -32,7 +32,7 @@
         state: present
       register: haproxy_install
       when: haproxy_installed.rc != 0
-      
+
     - name: Deploy HAProxy configuration
       template:
         src: config/haproxy.cfg.j2
@@ -40,28 +40,18 @@
         owner: root
         group: root
         mode: '0644'
-      
+
     - name: Enable and start HAProxy service
       systemd:
         name: haproxy
         state: restarted
         enabled: yes
-      
+
     - name: Verify HAProxy is running
       command: systemctl status haproxy
       register: haproxy_status
       changed_when: false
-      
+
     - name: Display HAProxy status
       debug:
         msg: "{{ haproxy_status.stdout_lines }}"
-        
-    - name: Check HAProxy socket
-      command: ss -tlnp | grep haproxy
-      register: haproxy_socket
-      changed_when: false
-      failed_when: false
-      
-    - name: Display HAProxy listening ports
-      debug:
-        msg: "{{ haproxy_socket.stdout_lines }}"

@@ -13,8 +13,8 @@ global
     # Default ciphers to use on SSL-enabled listening sockets
     ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
     ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
-
 defaults
+
     log     global
     mode    http
     option  httplog
@@ -42,9 +42,9 @@ backend k3s_api_backend
     option tcp-check
     balance roundrobin
     default-server inter 2000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
-    {% for server in vars['k3s_server_nodes'] %}
+{% for server in vars['k3s_server_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_api_port'] }} check
-    {% endfor %}
+{% endfor %}
 # API Server <<<
 
 # Agents HTTP >>>
@@ -57,15 +57,13 @@ frontend k3s_agents_http_frontend
 backend k3s_agents_http_backend
     mode http
     balance roundrobin
-    option httpchk GET /healthz
-    http-check expect status 200
     default-server inter 5000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
-    {% for server in vars['k3s_agent_nodes'] %}
+{% for server in vars['k3s_agent_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_http_port'] }} check
-    {% endfor %}
-    {% for server in vars['k3s_postgres_agent_nodes'] %}
+{% endfor %}
+{% for server in vars['k3s_postgres_agent_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_http_port'] }} check
-    {% endfor %}
+{% endfor %}
 # Agents HTTP <<<
 
 # Agents HTTPS >>>
@@ -80,12 +78,12 @@ backend k3s_agents_https_backend
     balance roundrobin
     option tcp-check
     default-server inter 5000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
-    {% for server in vars['k3s_agent_nodes'] %}
+{% for server in vars['k3s_agent_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_https_port'] }} check ssl verify none
-    {% endfor %}
-    {% for server in vars['k3s_postgres_agent_nodes'] %}
+{% endfor %}
+{% for server in vars['k3s_postgres_agent_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_https_port'] }} check ssl verify none
-    {% endfor %}
+{% endfor %}
 # Agents HTTPS <<<
 
 # Agents + Postgres kubelet >>>
@@ -98,13 +96,12 @@ frontend k3s_agents_kubelet_frontend
 backend k3s_agents_kubelet_backend
     mode tcp
     balance roundrobin
-    option tcp-check
-    {% for server in vars['k3s_agent_nodes'] %}
+{% for server in vars['k3s_agent_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_kubelet_port'] }} check
-    {% endfor %}
-    {% for server in vars['k3s_postgres_agent_nodes'] %}
+{% endfor %}
+{% for server in vars['k3s_postgres_agent_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_kubelet_port'] }} check
-    {% endfor %}
+{% endfor %}
 # Agents + Postgres kubelet <<<
 
 # Postgres Agents >>>
@@ -117,12 +114,8 @@ frontend postgres_frontend
 backend postgres_backend
     mode tcp
     balance first
-    option tcp-check
-    tcp-check connect
-    tcp-check send-binary 00000008000000030000000000
-    tcp-check expect binary 520000000400
     default-server inter 2000 downinter 5s rise 2 fall 2 slowstart 60s maxconn 100 maxqueue 128 weight 100
-    {% for server in vars['k3s_postgres_agent_nodes'] %}
+{% for server in vars['k3s_postgres_agent_nodes'] %}
     server {{ server.name }} {{ server.ip }}:{{ vars['haproxy_https_port'] }} check
-    {% endfor %}
+{% endfor %}
 # Postgres Agents <<<
