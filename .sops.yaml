@@ -1,5 +1,6 @@
 creation_rules:
   - path_regex: .*\.k8s.enc\.yaml
+    # Encrypt 'data' and 'stringData' fields; not enrypting secret's metadata
     encrypted_regex: ^(data|stringData)$
     age: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
   - path_regex: .*\.enc\.yaml

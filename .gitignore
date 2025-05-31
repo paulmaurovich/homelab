@@ -2,4 +2,3 @@
 *.tfvars
 *.tfstate*
 k3s.yaml
-secret.yaml
