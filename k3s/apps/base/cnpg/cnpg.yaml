@@ -1,0 +1,24 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cn-postgresql-cluster
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+  enableSuperuserAccess: true
+
+  storage:
+    storageClass: default
+    size: 20Gi
+
+  affinity:
+    enablePodAntiAffinity: true
+    topologyKey: kubernetes.io/hostname
+    podAntiAffinityType: required
+    nodeSelector:
+      node-role.kubernetes.io/postgres: ""
+    tolerations:
+      - key: node-role.kubernetes.io/postgres
+        operator: Exists
+        effect: NoSchedule
