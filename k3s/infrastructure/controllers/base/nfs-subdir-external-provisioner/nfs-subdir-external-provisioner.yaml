@@ -31,7 +31,7 @@ spec:
   releaseName: nfs-subdir-external-provisioner
   values:
     - nfs:
-        server: "192.168.178.30"
+        server: "192.168.0.30"
         path: "/mnt/pool1/containers"
     - storageClass:
         name: nfs-client
