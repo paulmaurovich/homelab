@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nfs-subdir-external-provisioner
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: nfs-subdir-external-provisioner
+  namespace: nfs-subdir-external-provisioner
+spec:
+  interval: 5m
+  url: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nfs-provisioner
+  namespace: nfs-subdir-external-provisioner
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
+      version: 4.0.18
+      sourceRef:
+        kind: HelmRepository
+        name: nfs-subdir-external-provisioner
+  releaseName: nfs-subdir-external-provisioner
+  values:
+    - nfs:
+        server: "192.168.178.30"
+        path: "/mnt/pool1/containers"
+    - storageClass:
+        name: nfs-client
+        defaultClass: true
+        reclaimPolicy: Retain
+        archiveOnDelete: false
+    - rbac:
+        create: true
+    - podSecurityPolicy:
+        enabled: false
+    - resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi
