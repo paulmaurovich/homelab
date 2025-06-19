@@ -28,6 +28,5 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cnpg
+        namespace: cnpg-system
   releaseName: cnpg
----
-
