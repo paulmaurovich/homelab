@@ -1,0 +1,36 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: openspeedtest
+  namespace: openspeedtest
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`openspeedtest.staging.maurovi.ch`)
+      services:
+        - name: openspeedtest
+          port: http
+  tls:
+    secretName: cloudflare-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: it-tools
+  namespace: it-tools
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`it-tools.staging.maurovi.ch`)
+      services:
+        - name: it-tools
+          port: http
+  tls:
+    secretName: cloudflare-certificate
+---
+
