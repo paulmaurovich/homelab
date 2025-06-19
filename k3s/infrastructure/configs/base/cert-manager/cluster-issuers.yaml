@@ -5,30 +5,16 @@ metadata:
   name: letsencrypt
 spec:
   acme:
-    email: "" # TODO Kustomization patch
-    # The server is replaced in /clusters/production/infrastructure.yaml
+    email: "05.linings-minke@icloud.com"
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-cloudflare
     solvers:
       - dns01:
           cloudflare:
-            email: "" # TODO Kustomization patch
+            email: "05.linings-minke@icloud.com"
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: api-token
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: cloudflare-certificate
-spec:
-  secretName: cloudflare-certificate
-  issuerRef:
-    name: letsencrypt
-    kind: ClusterIssuer
-  dnsNames:
-    - "*.tbd.com" # TODO Kustomization patch
-
 ---
 
