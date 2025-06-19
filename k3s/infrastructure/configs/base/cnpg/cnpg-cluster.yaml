@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cnpg
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cn-postgresql-cluster
+  namespace: cnpg
+spec:
+  instances: 3
+  storage:
+    storageClass: local-path
+    size: 1Gi
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.4
+  enableSuperuserAccess: true
+  affinity:
+    nodeSelector:
+      node-role.kubernetes.io/postgres: ""
