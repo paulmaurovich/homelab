@@ -30,22 +30,22 @@ spec:
         name: nfs-subdir-external-provisioner
   releaseName: nfs-subdir-external-provisioner
   values:
-    - nfs:
-        server: "192.168.0.30"
-        path: "/mnt/pool1/containers"
-    - storageClass:
-        name: nfs-client
-        defaultClass: true
-        reclaimPolicy: Retain
-        archiveOnDelete: false
-    - rbac:
-        create: true
-    - podSecurityPolicy:
-        enabled: false
-    - resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
-        limits:
-          cpu: 200m
-          memory: 256Mi
+    nfs:
+      server: "192.168.0.30"
+      path: "/mnt/pool1/containers"
+    storageClass:
+      name: nfs-client
+      defaultClass: true
+      reclaimPolicy: Retain
+      archiveOnDelete: false
+    rbac:
+      create: true
+    podSecurityPolicy:
+      enabled: false
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
