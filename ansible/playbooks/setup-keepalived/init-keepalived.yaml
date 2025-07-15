@@ -4,21 +4,13 @@
   become: true
 
   tasks:
-    - name: Install SOPS on remote hosts
-      ansible.builtin.include_role:
-        name: community.sops.install
-      vars:
-        sops_version: 3.10.2
+    - name: Install SOPS
+      ansible.builtin.import_tasks:
+        file: ../install-sops-on-remote.yaml
 
     - name: Load encrypted variables
       community.sops.load_vars:
         file: secrets/keepalived-secrets.enc.yaml
-
-    - name: Install sops for decryption if not present
-      ansible.builtin.package:
-        name: sops
-        state: present
-      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
 
     - name: Install Keepalived and dependencies
       apt:
