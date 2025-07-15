@@ -4,11 +4,11 @@
   become: true
 
   tasks:
-    - name: Install community.sops collection on host
-      ansible.builtin.command: ansible-galaxy collection install community.sops
-      delegate_to: localhost
-      run_once: true
-      changed_when: false
+    - name: Install SOPS on remote hosts
+      ansible.builtin.include_role:
+        name: community.sops.install
+      vars:
+        sops_version: 3.10.2
 
     - name: Load encrypted variables
       community.sops.load_vars:
