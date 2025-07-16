@@ -5,21 +5,13 @@
   become: true
 
   tasks:
-    - name: Install community.sops collection on host
-      ansible.builtin.command: ansible-galaxy collection install community.sops
-      delegate_to: localhost
-      run_once: true
-      changed_when: false
+    - name: Install SOPS
+      ansible.builtin.import_tasks:
+        file: ../install-sops-on-remote.yaml
 
     - name: Load encrypted variables
       community.sops.load_vars:
         file: "{{ playbook_dir }}/secrets/k3s-cluster-secrets.enc.yaml"
-
-    - name: Install sops for decryption if not present
-      ansible.builtin.package:
-        name: sops
-        state: present
-      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
 
     - name: Check if k3s binary exists
       ansible.builtin.stat:
