@@ -1,5 +1,5 @@
 - name: Configure hostnames based on inventory names
-  hosts: 
+  hosts:
     - k3s_cluster
     - load_balancers
   become: true
@@ -10,7 +10,7 @@
       hostname:
         name: "{{ inventory_hostname }}"
       register: hostname_result
-      
+
     - name: Ensure hostname is set in /etc/hosts
       lineinfile:
         path: /etc/hosts
@@ -18,7 +18,7 @@
         line: "127.0.1.1 {{ inventory_hostname }}"
         state: present
       when: ansible_os_family == "Debian"
-      
+
     - name: Ensure hostname is set in /etc/hostname (alternative method)
       copy:
         content: "{{ inventory_hostname }}"
@@ -27,11 +27,11 @@
         group: root
         mode: '0644'
       when: hostname_result is failed
-      
+
     - name: Display hostname change status
       debug:
         msg: "Hostname for {{ inventory_hostname }} has been set"
-        
+
     - name: Verify hostname matches inventory name
       assert:
         that:
