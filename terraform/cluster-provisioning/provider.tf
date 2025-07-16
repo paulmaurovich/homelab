@@ -26,4 +26,3 @@ provider "proxmox" {
     pm_api_token_id = data.sops_file.provider-secrets.data["proxmox.api_token_id"]
     pm_api_token_secret = data.sops_file.provider-secrets.data["proxmox.api_token_secret"]
 }
-
