@@ -22,7 +22,7 @@ resource "proxmox_vm_qemu" "k3s_ha_proxies" {
         storage = "local-lvm"
     }
     disk {
-        slot = "scsi0"         
+        slot = "scsi0"
         type = "disk"
         storage = "local-lvm"
         format = "raw"
@@ -33,12 +33,14 @@ resource "proxmox_vm_qemu" "k3s_ha_proxies" {
         emulatessd = true
     }
     # cpu
-    sockets = 1
-    cores = 1
-    cpu_type = "x86-64-v2-AES"
+    cpu {
+        sockets = 1
+        cores = 1
+        type = "x86-64-v2-AES"
+    }
     # memory
-    memory = 4096 
-    balloon = 512 
+    memory = 4096
+    balloon = 512
     # network
     network {
         id = 0
