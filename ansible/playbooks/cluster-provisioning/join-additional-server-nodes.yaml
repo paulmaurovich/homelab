@@ -2,23 +2,15 @@
 - name: Join additional server nodes to k3s cluster
   hosts: k3s_add_server_nodes
   become: true
-  
+
   tasks:
-    - name: Install community.sops collection on host
-      ansible.builtin.command: ansible-galaxy collection install community.sops
-      delegate_to: localhost
-      run_once: true
-      changed_when: false
+    - name: Install SOPS
+      ansible.builtin.import_tasks:
+        file: ../install-sops-on-remote.yaml
 
     - name: Load encrypted variables
       community.sops.load_vars:
         file: "{{ playbook_dir }}/secrets/k3s-cluster-secrets.enc.yaml"
-
-    - name: Install sops for decryption if not present
-      ansible.builtin.package:
-        name: sops
-        state: present
-      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
 
     - name: Check if k3s binary exists
       ansible.builtin.stat:
@@ -29,9 +21,12 @@
       ansible.builtin.service_facts:
       register: services_state
 
-    - name: Fail if k3s is already installed
-      ansible.builtin.fail:
-        msg: "K3s is already installed on this node. Aborting."
+    - name: Uninstall k3s if installed
+      ansible.builtin.shell: |
+        /usr/local/bin/k3s-uninstall.sh
+      args:
+        executable: /bin/bash
+      register: k3s_uninstall
       when: k3s_binary.stat.exists or 'k3s' in services_state.ansible_facts.services
 
     - name: Install k3s additional server node
@@ -45,7 +40,7 @@
         executable: /bin/bash
         creates: /usr/local/bin/k3s
       register: k3s_install
-      
+
     - name: Wait for k3s to be ready
       ansible.builtin.pause:
         seconds: 45
