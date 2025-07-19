@@ -10,4 +10,4 @@ spec:
     name: letsencrypt
     kind: ClusterIssuer
   dnsNames:
-    - "*..maurovi.ch"
+    - "*.maurovi.ch"
