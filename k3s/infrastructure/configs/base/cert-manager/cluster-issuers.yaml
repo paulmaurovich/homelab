@@ -6,7 +6,7 @@ metadata:
 spec:
   acme:
     email: "05.linings-minke@icloud.com"
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-cloudflare
     solvers:
@@ -16,5 +16,3 @@ spec:
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: api-token
----
-

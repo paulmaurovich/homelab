@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./k3s/infrastructure/controllers/staging
+  path: ./k3s/infrastructure/controllers/prod
   prune: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -28,5 +28,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./k3s/infrastructure/configs/staging
+  path: ./k3s/infrastructure/configs/prod
   prune: true

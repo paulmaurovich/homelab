@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`openspeedtest.staging.maurovi.ch`)
+      match: Host(`speedtest-prod.maurovi.ch`)
       services:
         - name: openspeedtest
           port: http
@@ -26,11 +26,9 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`it-tools.staging.maurovi.ch`)
+      match: Host(`ittools-prod.maurovi.ch`)
       services:
         - name: it-tools
           port: http
   tls:
     secretName: cloudflare-certificate
----
-

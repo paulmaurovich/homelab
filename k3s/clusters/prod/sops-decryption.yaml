@@ -9,7 +9,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./k3s/clusters/staging/secrets
+  path: ./k3s/clusters/prod/secrets
   prune: true
   wait: true
   timeout: 5m0s
