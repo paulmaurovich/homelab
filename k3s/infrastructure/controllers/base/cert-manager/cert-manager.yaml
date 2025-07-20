@@ -23,17 +23,16 @@ spec:
   chart:
     spec:
       chart: cert-manager
-      version: "1.17.x"
+      version: "1.15.x"
       sourceRef:
         kind: HelmRepository
         name: cert-manager
         namespace: cert-manager
       interval: 12h
   values:
-    - crds:
-        enabled: true
-    - webhook:
-        timeoutSeconds: 4
-    - extraArgs:
-        - --dns01-recursive-nameservers-only
-        - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
+    installCRDs: true
+    webhook:
+      timeoutSeconds: 4
+    extraArgs:
+      - --dns01-recursive-nameservers-only
+      - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
