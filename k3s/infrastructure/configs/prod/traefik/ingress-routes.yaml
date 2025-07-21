@@ -17,6 +17,7 @@ spec:
   tls:
     secretName: cloudflare-certificate
     options:
+      name: openspeedtest
       namespace: openspeedtest
 ---
 apiVersion: traefik.io/v1alpha1
@@ -37,4 +38,5 @@ spec:
   tls:
     secretName: cloudflare-certificate
     options:
+      name: cloudflare-certificate
       namespace: default
