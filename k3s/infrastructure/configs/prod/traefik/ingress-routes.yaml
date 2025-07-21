@@ -13,6 +13,7 @@ spec:
       services:
         - name: openspeedtest
           port: http
+          namespace: openspeedtest
   tls:
     secretName: cloudflare-certificate
 ---
@@ -30,5 +31,6 @@ spec:
       services:
         - name: it-tools
           port: http
+          namespace: it-tools
   tls:
     secretName: cloudflare-certificate
