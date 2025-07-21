@@ -16,8 +16,8 @@ spec:
           namespace: openspeedtest
   tls:
     secretName: cloudflare-certificate
-  options:
-    namespace: openspeedtest
+    options:
+      namespace: openspeedtest
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
