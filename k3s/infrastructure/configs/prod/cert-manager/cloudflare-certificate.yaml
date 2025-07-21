@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: cloudflare-certificate
-  namespace: cert-manager
+  namespace: default
 spec:
   secretName: cloudflare-certificate
   issuerRef:
