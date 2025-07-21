@@ -36,5 +36,5 @@ spec:
           namespace: it-tools
   tls:
     secretName: cloudflare-certificate
-  options:
-    namespace: default
+    options:
+      namespace: default
