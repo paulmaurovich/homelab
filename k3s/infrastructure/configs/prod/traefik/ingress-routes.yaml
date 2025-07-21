@@ -3,7 +3,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: openspeedtest
-  namespace: default
+  namespace: openspeedtest
 spec:
   entryPoints:
     - websecure
@@ -16,12 +16,14 @@ spec:
           namespace: openspeedtest
   tls:
     secretName: cloudflare-certificate
+  options:
+    namespace: openspeedtest
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: it-tools
-  namespace: default
+  namespace: it-tools
 spec:
   entryPoints:
     - websecure
@@ -34,3 +36,5 @@ spec:
           namespace: it-tools
   tls:
     secretName: cloudflare-certificate
+  options:
+    namespace: it-tools
