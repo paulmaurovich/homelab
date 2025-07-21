@@ -24,7 +24,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: it-tools
-  namespace: it-tools
+  namespace: default
 spec:
   entryPoints:
     - websecure
