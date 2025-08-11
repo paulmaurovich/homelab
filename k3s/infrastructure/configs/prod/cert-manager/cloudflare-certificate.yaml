@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: cloudflare-certificate
-  namespace: default
+  namespace: openspeedtest
 spec:
   secretName: cloudflare-certificate
   issuerRef:
