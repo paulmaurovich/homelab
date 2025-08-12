@@ -1,3 +1,4 @@
 resources:
-  - it-tools
-  - openspeedtest
+  - ./openspeedtest
+  - ./it-tools
+  - ./miniflux
