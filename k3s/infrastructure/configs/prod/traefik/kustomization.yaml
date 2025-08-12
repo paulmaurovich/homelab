@@ -1,2 +1,3 @@
 resources:
   - ./ingress-routes.yaml
+  - ./tls-store.yaml
