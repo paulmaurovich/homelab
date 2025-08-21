@@ -1,0 +1,2 @@
+resources:
+  - ./label-postgres-nodes.yaml
