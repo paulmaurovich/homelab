@@ -1,4 +1,3 @@
 resources:
   - ./cert-manager
-  - ./cnpg
   - ./node-labels
