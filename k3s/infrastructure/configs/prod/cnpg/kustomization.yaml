@@ -1,0 +1,4 @@
+resources:
+  - ./cnpg-cluster.yaml
+  - ./scheduled-backup.yaml
+  - ./object-store.yaml

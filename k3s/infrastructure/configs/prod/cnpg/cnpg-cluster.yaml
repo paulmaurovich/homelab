@@ -4,8 +4,6 @@ kind: Cluster
 metadata:
   name: cn-postgresql-cluster
   namespace: default
-  #annotations:
-  #  cnpg.io/skipEmptyWalArchiveCheck: "enabled"
 spec:
   instances: 3
   monitoring:
@@ -26,3 +24,8 @@ spec:
       - key: node-role.kubernetes.io/postgres
         operator: Exists
         effect: NoSchedule
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: cn-barman-cloud-cloudflare-object-store

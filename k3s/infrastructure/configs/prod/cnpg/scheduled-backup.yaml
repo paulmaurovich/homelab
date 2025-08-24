@@ -1,0 +1,15 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: backup
+  namespace: default
+spec:
+  schedule: "0 0 0 * * *" # At midnight every day
+  backupOwnerReference: self
+  cluster:
+    name: cn-postgresql-cluster
+  immediate: true # remove afterwards
+  method: plugin
+  pluginConfiguration:
+    name: barman-cloud.cloudnative-pg.io

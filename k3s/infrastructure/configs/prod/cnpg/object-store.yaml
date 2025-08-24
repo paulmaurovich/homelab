@@ -1,0 +1,21 @@
+---
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: cn-barman-cloud-cloudflare-object-store
+  namespace: default
+spec:
+  configuration:
+    destinationPath: s3://homelab-backups-pg
+    endpointURL:
+      name: cloudflare-r2-credentials
+      key: ENDPOINT_URL
+    s3Credentials:
+      accessKeyId:
+        name: cloudflare-r2-credentials
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: cloudflare-r2-credentials
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip
