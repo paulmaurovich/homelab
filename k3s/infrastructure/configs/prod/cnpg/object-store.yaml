@@ -3,7 +3,7 @@ apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
   name: cn-barman-cloud-cloudflare-object-store
-  namespace: default
+  namespace: cnpg-system
 spec:
   configuration:
     destinationPath: s3://homelab-backups-pg
