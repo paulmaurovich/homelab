@@ -9,13 +9,13 @@ spec:
     destinationPath: s3://homelab-backups-pg
     endpointURL:
       name: cloudflare-r2-credentials
-      key: ENDPOINT_URL
+      key: endpoint-url
     s3Credentials:
       accessKeyId:
         name: cloudflare-r2-credentials
-        key: ACCESS_KEY_ID
+        key: access-key-id
       secretAccessKey:
         name: cloudflare-r2-credentials
-        key: ACCESS_SECRET_KEY
+        key: access-secret-key
     wal:
       compression: gzip
