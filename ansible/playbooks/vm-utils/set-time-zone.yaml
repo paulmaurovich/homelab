@@ -1,0 +1,35 @@
+---
+- name: Set time zone
+  hosts: k3s_cluster
+  become: true
+  gather_facts: false
+
+  vars:
+    time_zone: "Europe/Vienna"
+
+  tasks:
+    - name: Validate requested timezone exists
+      ansible.builtin.command: timedatectl list-timezones
+      register: tz_list
+      changed_when: false
+      failed_when: time_zone not in tz_list.stdout_lines
+
+    - name: Set system time zone
+      ansible.builtin.command: "timedatectl set-timezone {{ time_zone }}"
+      register: set_tz
+      changed_when: set_tz.rc == 0
+
+    - name: Verify timezone changed
+      ansible.builtin.command: timedatectl show -p Timezone --value
+      register: verify_tz
+      changed_when: false
+      failed_when: verify_tz.stdout != time_zone
+
+    - name: Reload systemd to apply timezone-dependent units (if needed)
+      ansible.builtin.systemd:
+        daemon_reload: true
+      when: set_tz is changed
+
+    - name: Print current timezone
+      ansible.builtin.debug:
+        msg: "Current timezone on {{ inventory_hostname }} is {{ verify_tz.stdout }}"
