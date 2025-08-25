@@ -9,7 +9,7 @@ spec:
   cluster:
     name: cn-postgresql-cluster
   backupOwnerReference: self
-  immediate: true
+  #immediate: true
   method: plugin
   pluginConfiguration:
     name: barman-cloud.cloudnative-pg.io
