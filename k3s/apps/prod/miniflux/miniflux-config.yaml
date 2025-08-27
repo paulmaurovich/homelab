@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: miniflux-config-prod
+  namespace: miniflux
+  labels:
+    app: miniflux
+data:
+  RUN_MIGRATIONS: "1"
+  CREATE_ADMIN: "1"
