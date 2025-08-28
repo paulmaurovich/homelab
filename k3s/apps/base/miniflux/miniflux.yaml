@@ -23,7 +23,7 @@ spec:
           image: miniflux/miniflux:2.2.11
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: 8080
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
