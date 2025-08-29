@@ -9,3 +9,4 @@ metadata:
 data:
   RUN_MIGRATIONS: "1"
   CREATE_ADMIN: "1"
+  LOG_LEVEL: "debug"
