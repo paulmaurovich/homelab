@@ -1,3 +1,5 @@
 resources:
   - ./miniflux-config.yaml
   - ./database.yaml
+  - ./miniflux-secrets-prod.k8s.enc.yaml
+  - ./miniflux-db-auth.k8s.enc.yaml

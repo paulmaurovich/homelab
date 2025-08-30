@@ -2,3 +2,4 @@ resources:
   - ./cnpg-cluster.yaml
   - ./scheduled-backup.yaml
   - ./object-store.yaml
+  - ./cloudflare-r2-credentials.k8s.enc.yaml

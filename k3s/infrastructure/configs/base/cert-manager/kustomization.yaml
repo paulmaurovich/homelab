@@ -1,2 +1,3 @@
 resources:
   - ./cluster-issuers.yaml
+  - ./cloudflare-api-token.k8s.enc.yaml

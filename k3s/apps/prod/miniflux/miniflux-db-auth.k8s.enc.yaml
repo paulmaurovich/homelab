@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+  name: miniflux-db-auth
+  namespace: cnpg-system
+data:
+  username: ENC[AES256_GCM,data:ChhcLgijqxbMWJGQ,iv:KiM+WSAcfNIs57BQX6mAYw6dVbbKTaT+EA6OrDjW0Zo=,tag:K5ZZArcCIOL0J8pOJNKUyA==,type:str]
+  password: ENC[AES256_GCM,data:LMXHp1vbuldntNU1w0V8iemTK4C1o2BSGnn/pDewy73lAgOnzhYzYXzBUh0JsKO5ikzdH3CN8/kjbbiyBBqvmKGwq5Y=,iv:sKSskf/eHWmhSbDtI9wPsqzNTa6llzoMVB1JmOHVqGw=,tag:Pfdx/Ozquv15f47t5zmccQ==,type:str]
+sops:
+  age:
+    - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5L1pCT3M2K0dWUEJuaVEr
+        ZDY0WmhHckJBNklUTkZhZmljdXE5OVRhcW5VCkQrU1d2dzhtMEVoS0VlZEorTWRE
+        RzByVWZ6UkxENlFoUlhNR3ZKUXpPeTQKLS0tIE1jTElKVUpVbUcvNWh6dU5OYzhS
+        RmxUQzNzVk4yM0xVeDNWQ2Y1dEl2cWcKFg6sN8PpmKUsT3KRO6UgUsg5hEsRy96d
+        pPL+1XlON5Clh/0AuTADilIYgQknf2IaX/ZFt75cfEOoL/v8HD6/yQ==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-08-30T15:40:45Z"
+  mac: ENC[AES256_GCM,data:VAznirYNsjjCGbgXBLX/TRIhQzPje6wF541MbKW9JFGY7S+zJM0f92CkDu6ninVsPy5ywLF0BspC3mrzQvUjXOjbPPjmlGsgqhCnTpRlRN5kVZiuv1FsYNTHtHT1CyDCC7DKnsq5m8A8azy7a7LKF4Eo4n2FqLJCA9ctHeX5SCw=,iv:+A7xy/oZVhrh2v8b9dOlRamlX4PQK7xB/0gYcf1MRdw=,tag:B7Da1yejKde1WYb5I1nCUg==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  version: 3.10.2
