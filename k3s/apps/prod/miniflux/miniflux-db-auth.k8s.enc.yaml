@@ -2,23 +2,23 @@ apiVersion: v1
 kind: Secret
 type: kubernetes.io/basic-auth
 metadata:
-  name: miniflux-db-auth
-  namespace: cnpg-system
+    name: miniflux-db-auth
+    namespace: cnpg-system
 stringData:
-  username: ENC[AES256_GCM,data:pvHUsXqE7Uw=,iv:vSQhcEB7nJB6cXxTieI4vAxopQ+OZKEG0U8FS9lpoS8=,tag:1a2R1PnayPPN99S6cyI81g==,type:str]
-  password: ENC[AES256_GCM,data:Ker2e9VUpm1tiS5ZGFtyyAInVT6ltMdL2SrmYmI5RleANTSFM1ehwpvoOpy5M0LxU8E=,iv:VtgMJaQ2YgOXpFpDr10vrSWbW+V7ZxMvk/Sm8Rabpok=,tag:09XeXauxQSvUI460AytCUA==,type:str]
+    username: ENC[AES256_GCM,data:pvHUsXqE7Uw=,iv:vSQhcEB7nJB6cXxTieI4vAxopQ+OZKEG0U8FS9lpoS8=,tag:1a2R1PnayPPN99S6cyI81g==,type:str]
+    password: ENC[AES256_GCM,data:Ker2e9VUpm1tiS5ZGFtyyAInVT6ltMdL2SrmYmI5RleANTSFM1ehwpvoOpy5M0LxU8E=,iv:VtgMJaQ2YgOXpFpDr10vrSWbW+V7ZxMvk/Sm8Rabpok=,tag:09XeXauxQSvUI460AytCUA==,type:str]
 sops:
-  age:
-    - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
-      enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWT0x4dTFsaGNsMzdYUTFl
-        VFIwTWIrdzYyOGU5Ny9DcWxLNUxiRURMWmtZCi9NRmFiOVIweWFQczFBRzB6NTBj
-        YW5YU0g0RENFTVBaQnpEZGJlR1pmUncKLS0tIE4wMDlDdVgzOXJKcXRtcThHMU8y
-        cUVXZE5GWTcrMUNvTEpPc2t2NGhPdEEKMP5EAwnCfL51QG8nRPRhc/2Tamibz3jB
-        Jz6rJEtobmVtNq1qqgPhTJpvOvWHByb484+I2GtCoUoi5zSs/6M3xQ==
-        -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-08-30T16:04:55Z"
-  mac: ENC[AES256_GCM,data:JV0iDk94GKZbCW2NdMGoyn2WI1s2RNha3laoAmSwvvP543qeKbc4r6W7SNb4dP2HDyAGBddRuHoder1nEEgAVJruKMRobJ/ijaB9NcVFwYXWwxOMMBhqqwJQm6sBHxHD17J1Gm0loWJjEUB0F+UB5PfUQTLWuCA+01mtV6QD6qo=,iv:bHEVB+l+tKKY/lHCBxYnkrnIUeIvi3HjnjYkCoEyznA=,tag:BcKXKmLw1uuiqDrVZKSn8Q==,type:str]
-  encrypted_regex: ^(data|stringData)$
-  version: 3.10.2
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWT0x4dTFsaGNsMzdYUTFl
+            VFIwTWIrdzYyOGU5Ny9DcWxLNUxiRURMWmtZCi9NRmFiOVIweWFQczFBRzB6NTBj
+            YW5YU0g0RENFTVBaQnpEZGJlR1pmUncKLS0tIE4wMDlDdVgzOXJKcXRtcThHMU8y
+            cUVXZE5GWTcrMUNvTEpPc2t2NGhPdEEKMP5EAwnCfL51QG8nRPRhc/2Tamibz3jB
+            Jz6rJEtobmVtNq1qqgPhTJpvOvWHByb484+I2GtCoUoi5zSs/6M3xQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-30T16:09:16Z"
+    mac: ENC[AES256_GCM,data:snMnVhNy6tsHHY7j8B0C4oNh7NG9AgCICvlcB7nWJgohAGcC6spcwkdhijzX23OqyAbOZ8w9oj0lzYw7V9DN0OYUxeiV38eVqQBODb+lnidHl9vCrCwzuv7WzEvDoI80NdNfbsrzqgnKLmI4/lnBG8firqS7oNZFX6fUOG3rFBc=,iv:QrA+W3Uq4wj6+ZuigXbZ/bTFNRY2jXLdD4okoVEkjuU=,tag:phi1ZrkXP1AExy7pKDZwqA==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
