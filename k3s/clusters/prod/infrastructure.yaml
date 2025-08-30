@@ -15,6 +15,10 @@ spec:
     name: flux-system
   path: ./k3s/infrastructure/controllers/prod
   prune: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -32,3 +36,7 @@ spec:
     name: flux-system
   path: ./k3s/infrastructure/configs/prod
   prune: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
