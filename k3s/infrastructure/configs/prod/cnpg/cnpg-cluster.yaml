@@ -29,3 +29,13 @@ spec:
       isWALArchiver: true
       parameters:
         barmanObjectName: cn-barman-cloud-cloudflare-object-store
+  managed:
+    roles:
+      - name: app
+        createdb: true
+        login: true
+      - name: miniflux
+        createdb: true
+        login: true
+        passwordSecret:
+          name: miniflux-db-auth
