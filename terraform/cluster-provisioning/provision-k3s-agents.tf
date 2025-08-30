@@ -40,7 +40,6 @@ resource "proxmox_vm_qemu" "k3s_agents" {
     }
     # memory
     memory = 12288
-    balloon = 2048
     # network
     network {
         id = 0

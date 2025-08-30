@@ -40,7 +40,6 @@ resource "proxmox_vm_qemu" "k3s_postgres_agents" {
     }
     # memory
     memory = 4096
-    balloon = 512
     # network
     network {
         id = 0
