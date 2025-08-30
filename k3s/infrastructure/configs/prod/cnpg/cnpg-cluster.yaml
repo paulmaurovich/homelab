@@ -37,5 +37,6 @@ spec:
       - name: miniflux
         createdb: true
         login: true
+        superuser: true
         passwordSecret:
           name: miniflux-db-auth
