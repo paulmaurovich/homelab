@@ -14,6 +14,6 @@ data:
   USERMAP_UID: 0
   USERMAP_GID: 0
   PAPERLESS_CONSUMER_POLLING: 60
-  PAPERLESS_OCR_USER_ARGS: { "invalidate_digital_signatures": true }
+  PAPERLESS_OCR_USER_ARGS: '{ "invalidate_digital_signatures": true }'
   PAPERLESS_CONSUMPTION_DIR: /mnt/nextcloud/Documents/consume
   PAPERLESS_MEDIA_ROOT: /mnt/nextcloud/Documents/media
