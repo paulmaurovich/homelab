@@ -43,3 +43,18 @@ spec:
       services:
         - name: miniflux
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: paperless-ngx
+  namespace: paperless-ngx
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`paperlessngx-prod.maurovi.ch`)
+      services:
+        - name: paperless-ngx
+          port: http

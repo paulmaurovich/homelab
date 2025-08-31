@@ -40,3 +40,9 @@ spec:
         superuser: true
         passwordSecret:
           name: miniflux-db-auth
+      - name: paperless-ngx
+        createdb: true
+        login: true
+        superuser: true
+        passwordSecret:
+          name: paperless-ngx-db-auth

@@ -2,3 +2,4 @@ resources:
   - ./openspeedtest
   - ./it-tools
   - ./miniflux
+  - ./paperless-ngx
