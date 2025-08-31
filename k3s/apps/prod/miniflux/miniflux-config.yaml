@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: miniflux-config-prod
+  name: miniflux-config
   namespace: miniflux
   labels:
     app: miniflux

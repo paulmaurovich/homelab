@@ -27,9 +27,9 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: miniflux-config-prod
+                name: miniflux-config
             - secretRef:
-                name: miniflux-secrets-prod
+                name: miniflux-secrets
 ---
 apiVersion: v1
 kind: Service
