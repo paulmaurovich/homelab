@@ -2,25 +2,25 @@ apiVersion: v1
 kind: Secret
 type: kubernetes.io/basic-auth
 metadata:
-  name: paperless-ngx-db-auth
-  namespace: cnpg-system
-  labels:
-    cnpg.io/reload: "true"
+    name: paperless-ngx-db-auth
+    namespace: cnpg-system
+    labels:
+        cnpg.io/reload: "true"
 stringData:
-  username: ENC[AES256_GCM,data:S5IlbZCOy9QhlUcPbw==,iv:rRxfKjtIRQBj7n7q0mYbng2NcCBak6WBLrO/DY1pQW8=,tag:uwmZHXc6rd/7us0+e1QfVg==,type:str]
-  password: ENC[AES256_GCM,data:CaC+WxdNfYqii8ohpZzarpkZTPZfItuzlh2FWkWKv8wKIeXsMUsR14u7Hi3s72bUPTQ=,iv:RG0x5mT91lFu2hYBlGJCL7I4IwSWkmm3oaW879te5UY=,tag:3gWnGAg0u3bFAeOMqfLUPg==,type:str]
+    username: ENC[AES256_GCM,data:dWTBaU8edi65nL1h,iv:VYjl8BVno9XPzv0B/NgOj43v+uAJQ3s2nWnLAMYwTmk=,tag:N+6GxGN1yxrN8ZZamp0Ohg==,type:str]
+    password: ENC[AES256_GCM,data:CaC+WxdNfYqii8ohpZzarpkZTPZfItuzlh2FWkWKv8wKIeXsMUsR14u7Hi3s72bUPTQ=,iv:RG0x5mT91lFu2hYBlGJCL7I4IwSWkmm3oaW879te5UY=,tag:3gWnGAg0u3bFAeOMqfLUPg==,type:str]
 sops:
-  age:
-    - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
-      enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5Q2tJM2lMOVpja3NTMEpC
-        UG9sa3pmTWRMMzFLY3ZXSzlJSjh6ZDJIN1NvCkp2Z0k2V1AwTVpzLzkwYURuTVdw
-        WGpSa1BhRW5uQUVLcEIzeUlOSjl6YTgKLS0tIDZBUXBiWU9SS1l4cDBFV3lsNHY4
-        TkRhQml6OFhLYm5pN1AzVlhOQU0rVFkKsLCb9KVpT86G7PXsGJKi7un5IYG/QxlB
-        0XPpLHOg+el4+87sV6pR2Fy4gv1rQMODABrcZEXsL7oveeXh1iZgfA==
-        -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-08-31T11:43:09Z"
-  mac: ENC[AES256_GCM,data:jR391UK0dUUXv99Qv/x0jq7mzyD1goFkjBFgm+O3dCsUyKfbAAu7evcgeCh2BAz6w/2Oir0ojoV3uUAyAjmYPHxN/dkseB4+bZuPyGRs50VXHhuHrir33naJFDNEN6tTs+8P+0coVt9lhdexoGE1MwhRN1VrdjZm0BEB7dgkUxY=,iv:R6uesW+FtNNTaahKg5lJv1QSJTcJx6NK3Goo5qpJ/y8=,tag:DevKppYBEAN5Fg/Lr/Vamg==,type:str]
-  encrypted_regex: ^(data|stringData)$
-  version: 3.10.2
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5Q2tJM2lMOVpja3NTMEpC
+            UG9sa3pmTWRMMzFLY3ZXSzlJSjh6ZDJIN1NvCkp2Z0k2V1AwTVpzLzkwYURuTVdw
+            WGpSa1BhRW5uQUVLcEIzeUlOSjl6YTgKLS0tIDZBUXBiWU9SS1l4cDBFV3lsNHY4
+            TkRhQml6OFhLYm5pN1AzVlhOQU0rVFkKsLCb9KVpT86G7PXsGJKi7un5IYG/QxlB
+            0XPpLHOg+el4+87sV6pR2Fy4gv1rQMODABrcZEXsL7oveeXh1iZgfA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-09-01T19:23:32Z"
+    mac: ENC[AES256_GCM,data:y1V1quNtTWiVNkOf04oEVmCjuw9PZXD3XzDOZlPcGIPiNAhDk0KlVn4gyXaJhCl1z4+L1N3/MrosDlB12RCbY3Ch+W7FcBifbcvd3X01VggGuZt4jWVxCnuF5hK1k/UcZWi4QwKqOACGJcSMNNmuDlZtihuyBxCIcUlko31DeXo=,iv:zzYXJgGcd9pvfTrAb8BoEROmF1fwsGJFfxF/bSFxsuU=,tag:ACv/H5NTVbwhM1Ehz2TQnw==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
