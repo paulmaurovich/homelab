@@ -43,6 +43,5 @@ spec:
       - name: paperlessngx
         createdb: true
         login: true
-        superuser: true
         passwordSecret:
           name: paperless-ngx-db-auth
