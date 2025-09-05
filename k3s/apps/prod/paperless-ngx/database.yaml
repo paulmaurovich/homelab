@@ -4,7 +4,7 @@ metadata:
   name: paperless-ngx-database
   namespace: cnpg-system
 spec:
-  name: paperless-ngx
-  owner: paperless-ngx
+  name: paperlessngx
+  owner: paperlessngx
   cluster:
     name: cn-postgresql-cluster
