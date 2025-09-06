@@ -32,7 +32,7 @@ spec:
                 name: paperless-ngx-secrets
           volumeMounts:
             - name: paparless-ngx-documents
-              mountPath: /mnt/nextcloud/Documents
+              mountPath: /mnt/paperless-documents
       volumes:
         - name: paparless-ngx-documents
           persistentVolumeClaim:

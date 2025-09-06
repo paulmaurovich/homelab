@@ -13,7 +13,7 @@ spec:
   storageClassName: ""
   nfs:
     server: 192.168.0.30
-    path: /mnt/pool0/documents/nextcloud/Documents
+    path: /mnt/pool0/documents/nextcloud/paperless-documents
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
