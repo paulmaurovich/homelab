@@ -30,6 +30,13 @@ spec:
                 name: paperless-ngx-config
             - secretRef:
                 name: paperless-ngx-secrets
+          volumeMounts:
+            - name: paparless-ngx-documents
+              mountPath: /mnt/nextcloud/Documents
+      volumes:
+        - name: paparless-ngx-documents
+          persistentVolumeClaim:
+            claimName: paperless-ngx-nfs-pvc
 ---
 apiVersion: v1
 kind: Service
