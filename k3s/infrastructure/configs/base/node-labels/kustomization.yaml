@@ -1,3 +1,4 @@
 resources:
   - ./label-postgres-nodes.yaml
   - ./label-gpu-node.yaml
+  - ./label-server-nodes.yaml
