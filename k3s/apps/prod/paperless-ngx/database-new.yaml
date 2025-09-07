@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: paperless-ngx-database-new
+  namespace: cnpg-system
+spec:
+  name: paperless-ngx
+  owner: paperlessngx
+  cluster:
+    name: cn-postgresql-cluster
