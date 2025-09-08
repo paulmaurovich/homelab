@@ -16,5 +16,9 @@ spec:
       secretAccessKey:
         name: cloudflare-r2-credentials
         key: access-secret-key
+    data:
+      compression: gzip
+      encryption: AES256
     wal:
       compression: gzip
+      encryption: AES256
