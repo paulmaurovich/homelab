@@ -1,0 +1,3 @@
+resources:
+  - ./cloudflared.yaml
+  - ./cf-tunnel-token.k8s.enc.yaml
