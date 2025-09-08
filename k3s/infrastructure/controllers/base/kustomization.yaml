@@ -3,3 +3,4 @@ resources:
   - ./cnpg
   - ./nfs-subdir-external-provisioner
   - ./redis
+  - ./cloudflared
