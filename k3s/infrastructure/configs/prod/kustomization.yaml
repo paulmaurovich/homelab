@@ -4,3 +4,4 @@ resources:
   - ./traefik
   - ./cnpg
   - ./redis
+  - ./cloudflared
