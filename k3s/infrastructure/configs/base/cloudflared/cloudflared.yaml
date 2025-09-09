@@ -22,21 +22,16 @@ spec:
                 secretKeyRef:
                   name: cf-tunnel-token
                   key: token
-          command:
-            - cloudflared
+          args:
             - tunnel
-            - --config
-            - /etc/cloudflared/config/config.yaml
+            - --config=/etc/cloudflared/config/config.yml
             - --no-autoupdate
-            - --loglevel
-            - debug
-            - --metrics
-            - 0.0.0.0:2000
+            - --metrics=0.0.0.0:3333
             - run
           livenessProbe:
             httpGet:
               path: /ready
-              port: 2000
+              port: 3333
             failureThreshold: 1
             initialDelaySeconds: 10
             periodSeconds: 10
@@ -49,5 +44,5 @@ spec:
           configMap:
             name: cloudflared-config
             items:
-              - key: config.yaml
-                path: config.yaml
+              - key: config.yml
+                path: config.yml
