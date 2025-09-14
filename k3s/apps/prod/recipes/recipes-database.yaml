@@ -3,7 +3,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Database
 metadata:
   name: recipes
-  namespace: cnpg-cluster
+  namespace: cnpg-system
 spec:
   name: recipes
   owner: recipes
