@@ -18,7 +18,7 @@ spec:
           image: ghcr.io/tandoorrecipes/recipes:2.2.0
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
           imagePullPolicy: IfNotPresent
           envFrom:
             - secretRef:
@@ -50,5 +50,5 @@ spec:
     app: recipes
   ports:
     - port: 8080
-      targetPort: 8080
+      targetPort: 80
       name: http
