@@ -20,6 +20,10 @@ spec:
             - name: http
               containerPort: 8080
           imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: recipes-secrets
+
           volumeMounts:
             - mountPath: /opt/recipes/staticfiles
               name: recipes-staticfiles
