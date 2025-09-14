@@ -3,3 +3,4 @@ resources:
   - ./it-tools
   - ./miniflux
   - ./paperless-ngx
+  - ./recipes
