@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: recipes
+  name: recipes-mediafiles-nfs-pv
+spec:
+  capacity:
+    storage: 100M
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/recipes/mediafiles
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: recipes
+  name: recipes-mediafiles
+spec:
+  volumeName: recipes-mediafiles-nfs-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100M
+  storageClassName: ""

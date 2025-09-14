@@ -58,3 +58,18 @@ spec:
       services:
         - name: paperless-ngx
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: recipes
+  namespace: recipes
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`recipes-prod.maurovi.ch`)
+      services:
+        - name: recipes
+          port: http

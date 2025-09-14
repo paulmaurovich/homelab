@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipes
+  namespace: recipes
+spec:
+  selector:
+    matchLabels:
+      app: recipes
+  template:
+    metadata:
+      labels:
+        app: recipes
+    spec:
+      containers:
+        - name: recipes
+          image: ghcr.io/tandoorrecipes/recipes:2.2.0
+          ports:
+            - name: http
+              containerPort: 8080
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /opt/recipes/staticfiles
+              name: recipes-staticfiles
+            - mountPath: /opt/recipes/mediafiles
+              name: recipes-mediafiles
+      volumes:
+        - name: recipes-staticfiles
+          persistentVolumeClaim:
+            claimName: recipes-staticfiles
+        - name: recipes-mediafiles
+          persistentVolumeClaim:
+            claimName: recipes-mediafiles
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recipes
+  namespace: recipes
+  labels:
+    app: recipes
+spec:
+  type: ClusterIP
+  selector:
+    app: recipes
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
