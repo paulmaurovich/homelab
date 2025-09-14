@@ -3,7 +3,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Database
 metadata:
   namespace: cnpg-system
-  name: paperless-ngx-database-new
+  name: paperless-ngx-database
 spec:
   name: paperless-ngx
   owner: paperlessngx
