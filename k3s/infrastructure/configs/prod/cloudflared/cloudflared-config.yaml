@@ -7,11 +7,13 @@ metadata:
 data:
   config.yml: |
     tunnel: d0f2ab60-cd2d-4d4d-9227-ed8915f36980
-    credentials-file: /root/.cloudflared/d0f2ab60-cd2d-4d4d-9227-ed8915f36980.json
+    credentials-file: /etc/cloudflared/creds/credentials.json
 
     ingress:
-    - hostname: paperlessngx-prod.maurovich.ch
+    - hostname: paperlessngx-prod.maurovi.ch
       service: http://paperless-ngx.paperless-ngx.svc.cluster.local:30000
-    - hostname: miniflux-prod.maurovich.ch
+    - hostname: miniflux-prod.maurovi.ch
       service: http://miniflux.miniflux.svc.cluster.local:30000
+    - hostname: test.maurovi.ch
+      service: http://paperless-ngx.paperless-ngx.svc.cluster.local:30000
     - service: http_status:404
