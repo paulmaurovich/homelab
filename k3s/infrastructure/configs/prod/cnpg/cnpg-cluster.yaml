@@ -45,3 +45,8 @@ spec:
         login: true
         passwordSecret:
           name: paperless-ngx-db-auth
+      - name: recipes
+        createdb: true
+        login: true
+        passwordSecret:
+          name: recipes-db-auth

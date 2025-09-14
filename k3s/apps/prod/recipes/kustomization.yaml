@@ -1,0 +1,3 @@
+resources:
+  - ./recipes-database.yaml
+  - ./recipes-db-auth.k8s.enc.yaml

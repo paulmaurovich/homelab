@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+  name: recipes-db-auth
+  namespace: cnpg-system
+  labels:
+    cnpg.io/reload: "true"
+stringData:
+  username: ENC[AES256_GCM,data:N4KfN3brGA==,iv:HhHJPMRlZ5QJdJCH4L2fJrf5/gGcK/nqkQTpXktU5lA=,tag:AFRwESSVNaO6rEkejGoXpg==,type:str]
+  password: ENC[AES256_GCM,data:iAZnMhvfVf6WK1jwnkgz5BmkOzywHHx/mOfwQ2FJ3lDY8IomHr1GcmmI1/UADxW91Dg=,iv:aGrRwYBZoiR/lle//w+kje88YVa/P0pH0aL9FLBxT+s=,tag:u9wfUATBh7UHzFZwO0fZUA==,type:str]
+sops:
+  age:
+    - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLc3poQ25GaGc5V3V6SDBs
+        c2t1RjMyZXFhODJoN2o4RkxDWlo3ODJUdUZBCnhlY1FWeVV6ZFFSRjV5R29PR3pi
+        eXNzaHlyVmhtUWVCem90YWJYY0pEbk0KLS0tIE85Q0ZQVlUvNVFNVHZ4b1BReUNZ
+        M3N4MjdsK0JsYXlRazVQYlhpSDh4Yk0KlTLNj5q3lf7ypNRk/FWQSESJcRqwO74V
+        GqCMoDcGZoOn6mXkOGqyDeQ8hvoo4eRiMJ7AbtNmeQk4mYZukJXnLQ==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-09-14T11:19:32Z"
+  mac: ENC[AES256_GCM,data:WsFiin45RJpUzt3KTB5hE3fNcaNrUyVElWW5hI/2V+0NDucTWC74SAJvlMlT/VwJmURkPRVNgIWp5mKvdXj8woVwIOL2vqdzcRMiEd04bqVqxw5TmeLynQUZk/mazd8Bn3lFJY3nwjDkk0cULw0YflGjvD+SLhXXQZb46NKfswY=,iv:eJz9BHT/L9a+CksQxHLT+X1xrlL/IcgEGJQCPQLaI/s=,tag:o9SAj/B2PUOId3s19JzJVQ==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  version: 3.10.2

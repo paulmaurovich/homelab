@@ -1,0 +1,11 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: recipes
+  namespace: cnpg-cluster
+spec:
+  name: recipes
+  owner: recipes
+  cluster:
+    name: cn-postgresql-cluster
