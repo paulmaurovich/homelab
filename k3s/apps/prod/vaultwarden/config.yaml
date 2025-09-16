@@ -5,7 +5,7 @@ metadata:
   name: vaultwarden-config
   namespace: vaultwarden
 data:
-  DOMAIN: vaultwarden-prod.maurovi.ch
+  DOMAIN: https://vaultwarden-prod.maurovi.ch
   SIGNUPS_ALLOWED: "false"
   INVITATIONS_ALLOW: "false"
   SENDS_ALLOWED: "false"
