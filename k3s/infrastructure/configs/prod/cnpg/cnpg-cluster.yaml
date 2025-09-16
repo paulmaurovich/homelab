@@ -50,3 +50,8 @@ spec:
         login: true
         passwordSecret:
           name: recipes-db-auth
+      - name: vaultwarden
+        createdb: true
+        login: true
+        passwordSecret:
+          name: vaultwarden-db-auth

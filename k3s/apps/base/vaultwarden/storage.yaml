@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: vaultwarden-data
+  namespace: vaultwarden
+spec:
+  capacity:
+    storage: 300M
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/vaultwarden
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: vaultwarden
+  name: vaultwarden-data
+spec:
+  volumeName: vaultwarden-data
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 300M
+  storageClassName: ""
