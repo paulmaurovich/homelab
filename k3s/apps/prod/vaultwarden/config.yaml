@@ -6,6 +6,6 @@ metadata:
   namespace: vaultwarden
 data:
   DOMAIN: vaultwarden-prod.maurovi.ch
-  SIGNUPS_ALLOWED: false
-  INVITATIONS_ALLOW: false
-  SENDS_ALLOWED: false
+  SIGNUPS_ALLOWED: "false"
+  INVITATIONS_ALLOW: "false"
+  SENDS_ALLOWED: "false"
