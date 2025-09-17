@@ -46,6 +46,7 @@ spec:
     app: openspeedtest
   ports:
     - port: 80
+      targetPort: 3000
       name: http
 ---
 apiVersion: v1
