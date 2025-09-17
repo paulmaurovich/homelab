@@ -51,4 +51,5 @@ spec:
     app: paperless-ngx
   ports:
     - port: 80
+      targetPort: 8000
       name: http
