@@ -39,6 +39,5 @@ spec:
   selector:
     app: it-tools
   ports:
-    - port: 30000
-      targetPort: 80
+    - port: 80
       name: http
