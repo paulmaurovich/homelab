@@ -31,6 +31,10 @@ spec:
         namespace: redis
   timeout: 10m
   values:
+    image:
+      tag: 8.2.1
+      pullPolicy: IfNotPresent
+      debug: false
     architecture: replication
     auth:
       existingSecret: redis-auth
