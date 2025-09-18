@@ -32,7 +32,7 @@ spec:
   values:
     nfs:
       server: "192.168.0.30"
-      path: "/mnt/pool1/containers"
+      path: "/mnt/pool1/containers/provisioned"
     storageClass:
       name: nfs-client
       defaultClass: true
