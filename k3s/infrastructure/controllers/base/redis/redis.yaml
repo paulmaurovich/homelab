@@ -32,7 +32,7 @@ spec:
   timeout: 10m
   values:
     image:
-      tag: 8.2.1
+      tag: 8.2.1-debian-12-r0
       pullPolicy: IfNotPresent
       debug: false
     architecture: replication
