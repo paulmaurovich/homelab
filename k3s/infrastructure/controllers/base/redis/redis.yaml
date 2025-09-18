@@ -30,12 +30,6 @@ spec:
         namespace: redis
   timeout: 10m
   values:
-    image:
-      registry: docker.io
-      repository: bitnami/redis
-      tag: 8.2.1-debian-12-r0
-      pullPolicy: Always
-      debug: false
     architecture: replication
     auth:
       existingSecret: redis-auth
