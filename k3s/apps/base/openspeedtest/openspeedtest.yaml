@@ -25,13 +25,6 @@ spec:
             - name: http
               containerPort: 3000
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /mnt/nfs
-              name: openspeedtest-volume
-      volumes:
-        - name: openspeedtest-volume
-          persistentVolumeClaim:
-            claimName: openspeedtest-pvc
 ---
 apiVersion: v1
 kind: Service
@@ -48,16 +41,3 @@ spec:
     - port: 80
       targetPort: 3000
       name: http
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  namespace: openspeedtest
-  name: openspeedtest-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: nfs-client
