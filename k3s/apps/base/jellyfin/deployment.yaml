@@ -36,6 +36,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: jellyfin-config
+          volumeMounts:
             - name: jellyfin-data
               mountPath: /config
             - name: jellyfin-cache
