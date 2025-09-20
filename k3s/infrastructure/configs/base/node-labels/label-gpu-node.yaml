@@ -4,4 +4,4 @@ kind: Node
 metadata:
   name: k3s-agent-3
   labels:
-    intel.feature.node.kubernetes.io/gpu: true
+    intel.feature.node.kubernetes.io/gpu: "true"
