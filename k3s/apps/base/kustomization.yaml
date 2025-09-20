@@ -5,3 +5,4 @@ resources:
   - ./paperless-ngx
   - ./recipes
   - ./vaultwarden
+  - ./jellyfin

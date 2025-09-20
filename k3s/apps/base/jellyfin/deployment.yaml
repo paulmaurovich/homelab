@@ -1,0 +1,54 @@
+---
+# TODO
+# add igpu
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  #replicas: 1 TODO maybe it is possible that pods share the iGPU
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: intel.feature.node.kubernetes.io/gpu
+                    operator: In
+                    values: ["true"]
+      containers:
+        - name: jellyfin
+          image: ghcr.io/jellyfin/jellyfin:10.10.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8098
+          envFrom:
+            - configMapRef:
+                name: jellyfin-config
+            - name: jellyfin-data
+              mountPath: /config
+            - name: jellyfin-cache
+              mountPath: /cache
+            - name: jellyfin-media
+              mountPath: /media
+      volumes:
+        - name: jellyfin-data
+          persistentVolumeClaim:
+            claimName: jellyfin-data
+        - name: jellyfin-cache
+          persistentVolumeClaim:
+            claimName: jellyfin-cache
+        - name: jellyfin-media
+          persistentVolumeClaim:
+            claimName: jellyfin-media
