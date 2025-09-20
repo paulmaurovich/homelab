@@ -2,3 +2,4 @@ resources:
   - ./storage-data.yaml
   - ./storage-cache.yaml
   - ./storage-media.yaml
+  - ./config.yaml
