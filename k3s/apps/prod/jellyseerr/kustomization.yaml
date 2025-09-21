@@ -3,3 +3,4 @@ resources:
   - ./db-secrets.k8s.enc.yaml
   - ./storage-data.yaml
   - ./database.yaml
+  - ./database-auth.k8s.enc.yaml

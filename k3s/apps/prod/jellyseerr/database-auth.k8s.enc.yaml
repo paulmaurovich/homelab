@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+    name: jellyseerr-db-auth
+    namespace: cnpg-system
+    labels:
+        cnpg.io/reload: "true"
+stringData:
+    username: ENC[AES256_GCM,data:c3Tb25LH7sBieA==,iv:7ivbOQZowfjZr7ODCY49yHPmqmtkDU0noDSiAqAB1pU=,tag:kVgskHKrL5wvuSWuWwOPBw==,type:str]
+    password: ENC[AES256_GCM,data:H9dSWgUsKq6F8rXf1d1m8jpktpkry+cVIxDb3N6jJtgQgk9HbyMag2zQKJQ4zLNgcp0=,iv:SxN7BY8XX50X0cmSVbLxbPKfDHI78JpOMs24yftFfBc=,tag:NF5eOhAC1OKZkuUkm4iPKA==,type:str]
+sops:
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5WEl5OFdsSmd5YmlldkYy
+            TFNBWTYyekIxVGFmY2psTzUzR21YemxIblJFCmRFWi91WE1LZGdIcHRhYzU4SzRM
+            NXhDZFYxTHRwdlpoUG1qdUtuM1Y2Rk0KLS0tIHhNWXVZMWJoYW5haVpJYTJHclJU
+            eE5KRkl2WVZTRVg5ZGZWMHZpWnVvREEKppHM6pn6tqfnWG67SQUBd911jef3s0At
+            T8OlbUDCCDBCGC4oUKhbsxnjHx96iSbaIa53NeBM8zB/+NV35MOqdQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-09-21T18:51:49Z"
+    mac: ENC[AES256_GCM,data:3Dae8poOeIuiseiu4sL0XFWZ9LyR7LdWtRk773VWr6doZhEMcvPd6qnKBS75+wzn9weHc2myLd29adiZvrBZS9ZfWtIAOzdv12JWn/uuGdIh3+w+wyKLAmIWTGgqxHiOSdKtSdOK9hgU6IrySH8aMQ3PR5efhv3dm5UlUeyq8Mw=,iv:5uDvPAdMgmHz8XDQujw8baHHUF0K/lt4FTr1/zxp9V4=,tag:R6HBUEzIhUWA3qF3ddim1A==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
