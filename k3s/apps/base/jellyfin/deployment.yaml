@@ -42,7 +42,7 @@ spec:
             - name: jellyfin-cache
               mountPath: /cache
             - name: jellyfin-media
-              mountPath: /media
+              mountPath: /mnt/media
       volumes:
         - name: jellyfin-data
           persistentVolumeClaim:
