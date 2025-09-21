@@ -7,5 +7,5 @@ metadata:
 data:
   TZ: Europe/Vienna
   PUID: "3005"
-  PGID: "3005"
+  PGID: "5000"
   UMASK: "002"
