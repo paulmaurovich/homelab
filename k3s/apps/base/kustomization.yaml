@@ -6,3 +6,4 @@ resources:
   - ./recipes
   - ./vaultwarden
   - ./jellyfin
+  - ./jellyseerr

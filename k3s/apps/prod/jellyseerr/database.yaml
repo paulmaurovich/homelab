@@ -1,0 +1,11 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: jellyseerr-database
+  namespace: cnpg-system
+spec:
+  name: jellyseerr
+  owner: jellyseerr
+  cluster:
+    name: cn-postgresql-cluster
