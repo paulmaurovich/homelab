@@ -6,6 +6,6 @@ metadata:
   namespace: jellyfin
 data:
   TZ: Europe/Vienna
-  PUID: "4001"
-  PGID: "4001"
+  PUID: "3005"
+  PGID: "3005"
   UMASK: "002"
