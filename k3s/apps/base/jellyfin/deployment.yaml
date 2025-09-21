@@ -28,6 +28,10 @@ spec:
                     values: ["true"]
       containers:
         - name: jellyfin
+          securityContext:
+          runAsNonRoot: true
+          runAsUser: 3005
+          runAsGroup: 5000
           image: ghcr.io/jellyfin/jellyfin:10.10.7
           imagePullPolicy: IfNotPresent
           ports:
