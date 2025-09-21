@@ -102,5 +102,5 @@ spec:
       # TODO Change to 'jellyfin' as soon as the migration is done
       match: Host(`jellyfin2-prod.maurovi.ch`)
       services:
-        - name: vaultwarden
+        - name: jellyfin
           port: http
