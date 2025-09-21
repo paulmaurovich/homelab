@@ -88,3 +88,19 @@ spec:
       services:
         - name: vaultwarden
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      # TODO Change to 'jellyfin' as soon as the migration is done
+      match: Host(`jellyfin2-prod.maurovi.ch`)
+      services:
+        - name: vaultwarden
+          port: http
