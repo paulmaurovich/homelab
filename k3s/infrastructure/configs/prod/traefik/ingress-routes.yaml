@@ -135,3 +135,18 @@ spec:
       services:
         - name: radarr
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sonarr
+  namespace: sonarr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`sonarr-prod.maurovi.ch`)
+      services:
+        - name: sonarr
+          port: http

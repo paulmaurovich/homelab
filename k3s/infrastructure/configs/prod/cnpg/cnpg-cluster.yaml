@@ -65,3 +65,8 @@ spec:
         login: true
         passwordSecret:
           name: radarr-db-auth
+      - name: sonarr
+        createdb: true
+        login: true
+        passwordSecret:
+          name: sonarr-db-auth

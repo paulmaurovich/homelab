@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  namespace: sonarr
+spec:
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      containers:
+        - name: sonarr
+          image: ghcr.io/linuxserver/sonarr:4.0.15.2941-ls292
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8989
+          envFrom:
+            - configMapRef:
+                name: sonarr-config
+            - secretRef:
+                name: sonarr-db-secrets
+          volumeMounts:
+            - name: sonarr-data
+              mountPath: /config
+            - name: sonarr-tvshows
+              mountPath: /tvshows
+            - name: sonarr-downloads
+              mountPath: /downloads
+      volumes:
+        - name: sonarr-data
+          persistentVolumeClaim:
+            claimName: sonarr-data
+        - name: sonarr-tvshows
+          persistentVolumeClaim:
+            claimName: sonarr-tvshows
+        - name: sonarr-downloads
+          persistentVolumeClaim:
+            claimName: sonarr-downloads

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+    name: sonarr-db-auth
+    namespace: cnpg-system
+    labels:
+        cnpg.io/reload: "true"
+stringData:
+    username: ENC[AES256_GCM,data:zzdpYIdG,iv:SSgfe9WUnxWHS1GZNFJ7izX7t0MuI1xmijCdxL7SmIo=,tag:TTD70cAV+mr2DfUkn6PrXg==,type:str]
+    password: ENC[AES256_GCM,data:Pjy3wp6eCARfNff/XfxPEckdtsqbER+RFLb+UG3euT5AW6IsZQLyRazwminLpAOWks4=,iv:ucghFhDMERrGNJzKpCAvhvivmSSJDeLBGXlDyBmma3U=,tag:2IZkG0GaVkaRyOeHvm6T+w==,type:str]
+sops:
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmejNJR1hVK25VbnpVS3pl
+            aDJ0WW5yT0IyM3JKdmtYT3I3b0ZEQ1VkdmprCktQMW1lK2c3UkEyTndQa3NHZnQ4
+            UUxJRU5UNjJhcC9GdXhHZzhvdzE1akkKLS0tIGxFc3dUajF5VDdjS0wxSkZVSzQ0
+            REloY0RhLzRCZUZCMEFMbDVkYzBpR28KJ1sxNd4Kue4CJ+hGEeisvn3mDwQNbUcs
+            K39gYDk1wHakhko8/JY9TRGES2ynXFQ3K+PBlfmfiZguOZBLXTe5tw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-09-23T14:54:59Z"
+    mac: ENC[AES256_GCM,data:tt4/Z3D4LUKTNS7Ct4BZgLICfaUFQ8SVbG5fhUOKRjUzq3ED1SRqYHIUJJeog1l0mlVQSQGOaWF239tAQOCC2Mt6MC0eZEaU4z6JWuJIrK+lS85stTdsvE22bFGii36eY3sD0W2C/z3mqbHMPGAYO8b2MnbWy72NnnufNG4T0yY=,iv:G5xvrt2iqEz1kxtnX2tI/qx7WNNhJTE3g1EBxgC36Xo=,tag:HXWsmRYHXoJymSmx4RM3TA==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
