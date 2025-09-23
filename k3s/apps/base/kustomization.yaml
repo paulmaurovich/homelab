@@ -8,3 +8,4 @@ resources:
   - ./jellyfin
   - ./jellyseerr
   - ./radarr
+  - ./sonarr
