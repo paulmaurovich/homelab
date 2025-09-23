@@ -30,8 +30,8 @@ spec:
               mountPath: /config
             - name: radarr-movies
               mountPath: /movies
-            - name: radarr-movies
-              mountPath: /movies
+            - name: radarr-downloads
+              mountPath: /downloads
       volumes:
         - name: radarr-data
           persistentVolumeClaim:
