@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+    name: prowlarr-db-auth
+    namespace: cnpg-system
+    labels:
+        cnpg.io/reload: "true"
+stringData:
+    username: ENC[AES256_GCM,data:oL0tzwb4D+I=,iv:mllEtD4fZNVmD4rRkNAuC+jkfMvESKtm5UZL39aMkyE=,tag:t+EKRYI0fHBeDgWgn5FNbg==,type:str]
+    password: ENC[AES256_GCM,data:0az+IwvhYUlTc6CoAy0myZUHoWO9ukRPT7O5y5ddSlbv9Fr8Xifk1KtQ3rsR71nvLyA=,iv:BKAk6+5OoltPy5kixowGwMIjkGSGLqx4t7r3bGPqORg=,tag:xciGNzjxEZYXQ2ns0BJqdg==,type:str]
+sops:
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBnS0RXb1hzU05jRjVEUndq
+            UEZFcVlVVUZkdmo3WWtxWUFERXBELzFtWnpBClZuKytZNmNPUmlaYWJGSzM1Yk85
+            N0NLNE1YNzh3NUhLZzZQbEpNYm01KzgKLS0tIEtVYVZZYkdZS3NrbHhLT1FuMGcr
+            WXBEQ29GczNtZGJVa2lVOWdDeUQ1OVEKALrF19MtiQw3JcTmLa/h+27S7PaFMpYa
+            d+n9AOhbxT7a7SZHaCsEPKiGqJUghXLlXqOyGQlX531ggsSEL/xYhw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-09-23T15:21:04Z"
+    mac: ENC[AES256_GCM,data:9bDajQ7mn3zPMI19jeYDZNek7Cpv/e53dw47sVLpwnfsgdLgVzZmtyAXwRa/NYFpA8tsGlrykCQyBwBqsH2woAwCy+2FDUAx3xVaa7TYvBPHCyYdemqmmjEyM0yufsCXdYD9jYhEdhJpDnoANkVyrU29biB9E70fVBjnjmqpxr0=,iv:ZgUxZb1VLSflcrMJGZq92f77T6VHEc7gTiqNSp2og18=,tag:XioVnqIHzrvEr5bn0xhNIQ==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2

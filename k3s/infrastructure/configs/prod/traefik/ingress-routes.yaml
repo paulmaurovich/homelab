@@ -150,3 +150,18 @@ spec:
       services:
         - name: sonarr
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prowlarr
+  namespace: prowlarr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`prowlarr-prod.maurovi.ch`)
+      services:
+        - name: prowlarr
+          port: http

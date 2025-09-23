@@ -70,3 +70,8 @@ spec:
         login: true
         passwordSecret:
           name: sonarr-db-auth
+      - name: prowlarr
+        createdb: true
+        login: true
+        passwordSecret:
+          name: prowlarr-db-auth

@@ -8,3 +8,4 @@ resources:
   - ./jellyseerr
   - ./radarr
   - ./sonarr
+  - ./prowlarr

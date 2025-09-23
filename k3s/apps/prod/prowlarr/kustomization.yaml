@@ -1,0 +1,7 @@
+resources:
+  - ./database.yaml
+  - ./database-log.yaml
+  - ./database-auth.k8s.enc.yaml
+  - ./db-secrets.k8s.enc.yaml
+  - ./config.yaml
+  - ./storage-data.yaml
