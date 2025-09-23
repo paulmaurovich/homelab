@@ -2,7 +2,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Database
 metadata:
-  name: radarr
+  name: radarr-log
   namespace: cnpg-system
 spec:
   name: radarr-log
