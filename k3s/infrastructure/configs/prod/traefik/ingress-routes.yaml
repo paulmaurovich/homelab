@@ -120,3 +120,18 @@ spec:
       services:
         - name: jellyseerr
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr
+  namespace: radarr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`radarr-prod.maurovi.ch`)
+      services:
+        - name: radarr
+          port: http

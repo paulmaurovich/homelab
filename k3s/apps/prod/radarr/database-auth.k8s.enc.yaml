@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+  name: radarr-db-auth
+  namespace: cnpg-system
+  labels:
+    cnpg.io/reload: "true"
+stringData:
+  username: ENC[AES256_GCM,data:Nr0EgPbN,iv:VQgxU3QBVjXbjG1hZFtrnkneDWMI/MKfIjex9NmrZVU=,tag:/dcKyzIxKo6MCihgX6LSvw==,type:str]
+  password: ENC[AES256_GCM,data:8MZ0Gi1VQmtrElqs0TbCduoO+batznKbkiTg6WRYJGP85XrGD+6liY73AQn01xdVSUA=,iv:dit/zliSu3g+qGnlcyVAdirr5+g190su34jd9Ji9SCs=,tag:p4Ptju+BqZpydp1CZxmPNw==,type:str]
+sops:
+  age:
+    - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5bHF6T0d6azNRR2lGOVFY
+        MnFCcjBUd3BmWEtHTjNsaklQLytSRXBBNTB3CklZa1BaU0ZVaFhBUlhOUm42bWJk
+        cXpnLzVyS3FWM05sMEU3SVMvbXJJa3MKLS0tIEhmcVVLc3NyR21RTFRsN2VzWHgy
+        dTlsbkhSNW5tdkhuZGl2MWpJcytZUTgK6EQN9k5rz/aSMK+tWGlmwV0AGy0xJvp+
+        s8PppAMikE7B0aZ4xt5J6lUmPIc4dBKNytys60aCtLj+1WVkbvdFwQ==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-09-23T11:14:23Z"
+  mac: ENC[AES256_GCM,data:nJbeJxNVB2Nusku03M6TirbBP6StS7fEi/H8E++88ipaZQ8t1CrguwtpBcaqa9bXA1QWUt5dOC7uGyrgbu/ThvWYIfwdfo1noCoNri0iFzJlySPot4bnQ2ypk/qJak6Hqcb8d+0RgvLc7SwYoiJO4oMONOhzo/YNpf3BSsPzSCs=,iv:cc6yS/VfTstfvlz8fXBPpjycRhW+ryR6S9G9Eo9mJB8=,tag:jyAyuxSElMXtQQuRpoiniw==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  version: 3.10.2
