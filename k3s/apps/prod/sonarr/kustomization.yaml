@@ -5,5 +5,5 @@ resources:
   - ./db-secrets.k8s.enc.yaml
   - ./config.yaml
   - ./storage-data.yaml
-  - ./storage-movies.yaml
+  - ./storage-tvshows.yaml
   - ./storage-downloads.yaml
