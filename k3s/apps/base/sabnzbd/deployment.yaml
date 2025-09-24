@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sabnzbd
+  namespace: sabnzbd
+spec:
+  selector:
+    matchLabels:
+      app: sabnzbd
+  template:
+    metadata:
+      labels:
+        app: sabnzbd
+    spec:
+      containers:
+        - name: sabnzbd
+          image: ghcr.io/linuxserver/sabnzbd:4.5.3-ls230
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: sabnzbd-config
+          volumeMounts:
+            - name: sabnzbd-data
+              mountPath: /config
+            - name: sabnzbd-downloads
+              mountPath: /downloads
+            - name: sabnzbd-incomplete-downloads
+              mountPath: /incomplete-downloads
+      volumes:
+        - name: sabnzbd-data
+          persistentVolumeClaim:
+            claimName: sabnzbd-data
+        - name: sabnzbd-downloads
+          persistentVolumeClaim:
+            claimName: sabnzbd-downloads
+        - name: sabnzbd-incomplete-downloads
+          persistentVolumeClaim:
+            claimName: sabnzbd-incomplete-downloads

@@ -165,3 +165,18 @@ spec:
       services:
         - name: prowlarr
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sabnzbd
+  namespace: sabnzbd
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`sabnzbd-prod.maurovi.ch`)
+      services:
+        - name: sabnzbd
+          port: http

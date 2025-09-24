@@ -1,0 +1,5 @@
+resources:
+  - ./config.yaml
+  - ./storage-data.yaml
+  - ./storage-movies.yaml
+  - ./storage-downloads.yaml

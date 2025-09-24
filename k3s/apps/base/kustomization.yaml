@@ -10,3 +10,4 @@ resources:
   - ./radarr
   - ./sonarr
   - ./prowlarr
+  - ./sabnzbd

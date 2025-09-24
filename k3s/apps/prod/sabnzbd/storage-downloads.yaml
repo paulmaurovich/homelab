@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sabnzbd-downloads
+  namespace: sabnzbd
+spec:
+  capacity:
+    storage: 300G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/media-downloads
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sabnzbd-downloads
+  namespace: sabnzbd
+spec:
+  volumeName: sabnzbd-downloads
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 300G
+  storageClassName: ""
