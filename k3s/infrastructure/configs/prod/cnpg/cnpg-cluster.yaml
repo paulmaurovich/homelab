@@ -10,7 +10,7 @@ spec:
     enablePodMonitor: true
   storage:
     storageClass: local-path
-    size: 1Gi
+    size: 10Gi
   imageName: ghcr.io/cloudnative-pg/postgresql:17.5
   enableSuperuserAccess: true
   primaryUpdateStrategy: unsupervised
