@@ -4,3 +4,4 @@ resources:
   - ./nfs-subdir-external-provisioner
   - ./redis
   - ./cloudflared
+  - ./portainer
