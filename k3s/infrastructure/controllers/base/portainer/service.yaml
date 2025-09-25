@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portainer
+  namespace: portainer
+  labels:
+    io.portainer.kubernetes.application.stack: portainer
+    app.kubernetes.io/name: portainer
+    app.kubernetes.io/instance: portainer
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: portainer
+    app.kubernetes.io/instance: portainer
+  ports:
+    - port: 9000
+      name: http
+      targetPort: 9000

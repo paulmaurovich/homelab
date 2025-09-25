@@ -1,2 +1,6 @@
 resources:
-  - ./helmrelease.yaml
+  - ./namespace.yaml
+  - ./service.yaml
+  - ./cluster-role-binding.yaml
+  - ./deployment.yaml
+  - ./service-account.yaml
