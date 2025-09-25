@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+  name: gotify-db-auth
+  namespace: cnpg-system
+  labels:
+    cnpg.io/reload: "true"
+stringData:
+  username: ENC[AES256_GCM,data:aLQQPxv5,iv:CRH3dOq9QCPOtAutbw2Mj08Pik7nBG4nTlOT0L12tdw=,tag:og40BB4gbSaXPXyNTLJEoQ==,type:str]
+  password: ENC[AES256_GCM,data:iR0Q5pznD4ieFtVESjU2DH1iVmwtsbvYSPE8kYz8Mjjed4wlXJlofERr3pFBlIl15AQ=,iv:ijiiil1mleELtUOAYVNsRfsVDHxt7q6xM1B8mAFABAU=,tag:3NvhtVZdNGaKfysXf3OVyw==,type:str]
+sops:
+  age:
+    - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2bDRJRHFCaFR5L3l4ZE1I
+        aW5yRENCdnpJcFdtNVA4ZlFaK255RVhoaVZjCkdiLzErZUJ3cFByYzVDelpJWFhH
+        MHpWdktpRUFZL25nRWE4RjVvSjVCUXcKLS0tIDMvcGJtZGNnb1F5N1hVamlha2FY
+        NlRUbFpURXBMVzFRci9rdlNJSVVnV1kKm5TiyETXXeb8EQYEV9CJMcxmter+2RHu
+        S/ldN5vsCbzPXz55hzB8uo3rs26ctJgFQzZP7x6u6dd2L87aknmcPw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-09-25T14:23:12Z"
+  mac: ENC[AES256_GCM,data:YCSzL8KrX9Ugtn3Ku3oUsdtM+l3S5rI5WiIfCj8mXNQMGXVbzZ+/U6okKfEChWsMhP8OSLAdHvjoO5ZUepRusAyuNomKpbDYQkmH9P5SV8GC5X9jn9ggEPAygHKEzgPlRt9TpOfMugePgEJN90Re3rt4jG/at6BwRz2vdj7qSaw=,iv:hQkxstgyWEbwSr1sGsyE75DpZGHP0f9pvzKL1fThQU4=,tag:AXY79oJOo7lmNxzQzJ3T6w==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  version: 3.10.2
