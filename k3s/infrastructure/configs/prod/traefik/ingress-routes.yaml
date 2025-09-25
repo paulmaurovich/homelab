@@ -180,3 +180,18 @@ spec:
       services:
         - name: sabnzbd
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: gotify
+  namespace: gotify
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`gotify-prod.maurovi.ch`)
+      services:
+        - name: gotify
+          port: http

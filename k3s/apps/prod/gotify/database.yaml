@@ -1,0 +1,11 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: gotify
+  namespace: cnpg-system
+spec:
+  name: gotify
+  owner: gotify
+  cluster:
+    name: cn-postgresql-cluster

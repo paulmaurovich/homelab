@@ -10,3 +10,4 @@ resources:
   - ./sonarr
   - ./prowlarr
   - ./sabnzbd
+  - ./gotify

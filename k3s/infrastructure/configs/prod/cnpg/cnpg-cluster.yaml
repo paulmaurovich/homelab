@@ -75,3 +75,8 @@ spec:
         login: true
         passwordSecret:
           name: prowlarr-db-auth
+      - name: gotify
+        createdb: true
+        login: true
+        passwordSecret:
+          name: gotify-db-auth

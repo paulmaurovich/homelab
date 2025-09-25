@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: basic-auth
+    namespace: gotify
+type: Opaque
+stringData:
+    GOTIFY_DEFAULTUSER_NAME: ENC[AES256_GCM,data:KoGGeuQg+3NvwkGLJg==,iv:PDU6SXxn3dOiPGlSyKeqOLYbenMuy+unZR2Fj2y7+Ag=,tag:H0WY4+KwA0uLUaSm8TByAw==,type:str]
+    GOTIFY_DEFAULTUSER_PASS: ENC[AES256_GCM,data:rLFdeP/lmLs+7D75/gH+jH3I/54ZdfpRhcK3VFrQpeD5fYz5TcvyIc77ePTucUIqM8o=,iv:Vld/W7zqUKocLau294MImBIdDVLQi/2uNAQiXbdFDt8=,tag:/jdIMuVXs1fsNk7Ivz37hg==,type:str]
+sops:
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAydndUNHpraGc4Wk1MQmlp
+            THNzUG94RXBwc2t6ZjFUb1NqV1U2TEhkTGpnCm9MYnNEMFZGRW50ZW5TV3dVc3Iz
+            Y1Faend0akdWQkloWVh0TWs5dXAvR00KLS0tIHNMbjZOby85ZWFReEp2TGtJM0Ex
+            aU93ZE1EQVUvZUZIbXIveTVvYUEvN2MKsw+OMXk43IddRdGtVDXyyL/cZSG/M+xW
+            9M6kqsuEimbp601VO2Z4E7Qke2I3IP5oF71qFNTtw8DFM9uAS87P8g==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-09-25T13:22:29Z"
+    mac: ENC[AES256_GCM,data:B26MHBQqt4z/X6HZhVUf46PdTRTylbmgHgyTkqwJB0CztVj/vC4F4UopvbuWXiHTnoB6Bo/boqNuxjEOccwEu7WDY+vCCGq3XMedUXuNEqiBk2SmccZpj8QbPS2+6+Db2vgW7W3VykW3J4bWN+zZgB4VDG5BZcwnHcMN+U0Iruw=,iv:FGQxStsCdCoyCDZ1QAF+RXmWS1bd+GBZIZPZGKX8XyM=,tag:KI3efPSMTKI/UbP6V0Oetg==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
