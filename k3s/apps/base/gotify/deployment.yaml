@@ -22,9 +22,9 @@ spec:
               containerPort: 80
           envFrom:
             - configMapRef:
-                name: gotify-config
+                name: config
             - secretRef:
-                name: gotify-db-secrets
+                name: db-secrets
           volumeMounts:
             - name: gotify-data
               mountPath: /app/data
