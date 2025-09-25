@@ -25,6 +25,8 @@ spec:
                 name: config
             - secretRef:
                 name: db-secrets
+            - secretRef:
+                name: basic-auth
           volumeMounts:
             - name: gotify-data
               mountPath: /app/data
