@@ -14,6 +14,6 @@ spec:
     app.kubernetes.io/name: portainer
     app.kubernetes.io/instance: portainer
   ports:
-    - port: 9000
+    - port: 80
       name: http
       targetPort: 9000
