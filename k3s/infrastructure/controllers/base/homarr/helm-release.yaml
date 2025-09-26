@@ -30,4 +30,4 @@ spec:
         accessMode: "ReadWriteMany"
         size: "1G"
         mountPath: "/appdata"
-        volumeClaimName: "homarr-data"
+        volumeClaimName: "homarr-database"
