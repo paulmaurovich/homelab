@@ -5,7 +5,7 @@ metadata:
   name: cn-postgresql-cluster
   namespace: cnpg-system
 spec:
-  instances: 3
+  instances: 6
   monitoring:
     enablePodMonitor: true
   storage:
