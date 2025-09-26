@@ -5,3 +5,4 @@ resources:
   - ./redis
   - ./cloudflared
   - ./portainer
+  - ./homarr

@@ -210,3 +210,18 @@ spec:
       services:
         - name: portainer
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homarr
+  namespace: homarr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`homarr-prod.maurovi.ch`)
+      services:
+        - name: homarr
+          port: http

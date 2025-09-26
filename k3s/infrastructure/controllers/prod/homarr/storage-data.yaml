@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: homarr-data
+  namespace: homarr
+spec:
+  capacity:
+    storage: 1G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/homarr
