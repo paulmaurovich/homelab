@@ -9,6 +9,12 @@ spec:
   monitoring:
     enablePodMonitor: true
   storage:
+    # Relyingon PostgreSQL's native replication mechanism across instances
+    # and scheduled backups to external S3 bucket.
+    # If a major fail occurs, the db can be initialized from the backup.
+    # Therefore, 'local-path' and not e.g. nfs with replicated RAID drives
+    # and because of speed and less overhead.
+    # Following cnpg best practice.
     storageClass: local-path
     size: 10Gi
   imageName: ghcr.io/cloudnative-pg/postgresql:17.5
