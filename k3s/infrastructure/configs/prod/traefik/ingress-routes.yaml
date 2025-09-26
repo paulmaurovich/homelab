@@ -224,4 +224,4 @@ spec:
       match: Host(`homarr-prod.maurovi.ch`)
       services:
         - name: homarr
-          port: http
+          port: app
