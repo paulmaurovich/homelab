@@ -1,2 +1,3 @@
 resources:
   - ./storage-data.yaml
+  - ./db-secret.k8s.enc.yaml
