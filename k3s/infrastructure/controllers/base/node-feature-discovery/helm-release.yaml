@@ -15,10 +15,3 @@ spec:
         kind: HelmRepository
         name: node-feature-discovery
         namespace: node-feature-discovery
-  values:
-    image:
-      tag: v0.17.4
-      pullPolicy: IfNotPresent
-    worker:
-      nodeSelector:
-        intel.feature.node.kubernetes.io/gpu: "true"
