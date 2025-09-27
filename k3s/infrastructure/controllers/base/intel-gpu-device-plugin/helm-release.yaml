@@ -9,7 +9,7 @@ spec:
   timeout: 5m
   chart:
     spec:
-      chart: intel-gpu-device-plugin
+      chart: intel-device-plugins-gpu
       version: 0.34.0
       sourceRef:
         kind: HelmRepository
