@@ -6,3 +6,4 @@ resources:
   - ./cloudflared
   - ./portainer
   - ./homarr
+  - ./intel-device-plugin-operator

@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: intel-device-plugins-operator
+  namespace: intel-devices
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: intel-device-plugins-operator
+      version: 0.34.1-helm.0
+      sourceRef:
+        kind: HelmRepository
+        name: intel
+        namespace: intel-devices
+  values:
+    manager:
+      image:
+        tag: 0.34.0
