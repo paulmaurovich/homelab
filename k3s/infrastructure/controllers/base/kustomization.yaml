@@ -7,3 +7,4 @@ resources:
   - ./portainer
   - ./homarr
   - ./intel-device-plugin-operator
+  - ./intel-gpu-device-plugin
