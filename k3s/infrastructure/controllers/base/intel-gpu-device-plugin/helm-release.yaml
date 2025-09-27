@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: gpu-device-plugin
+  name: intel-gpu-device-plugin
   namespace: intel-devices
 spec:
   interval: 10m
   timeout: 5m
   chart:
     spec:
-      chart: gpu-device-plugin
+      chart: intel-gpu-device-plugin
       version: 0.34.0
       sourceRef:
         kind: HelmRepository
