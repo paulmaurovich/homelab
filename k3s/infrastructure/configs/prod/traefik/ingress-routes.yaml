@@ -115,8 +115,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      # TODO Change to 'jellyseerr' as soon as the migration is done
-      match: Host(`jellyseerr2-prod.maurovi.ch`)
+      match: Host(`jellyseerr-prod.maurovi.ch`)
       services:
         - name: jellyseerr
           port: http
