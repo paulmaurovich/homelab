@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portainer
+  namespace: portainer
+spec:
+  selector:
+    matchLabels:
+      app: portainer
+  template:
+    metadata:
+      labels:
+        app: portainer
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/postgres
+                    operator: Exists
+      containers:
+        - name: portainer
+          image: dpage/pgadmin4:9.8.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+          envFrom:
+            - secretRef:
+                name: pgadmin-secrets
+          volumeMounts:
+            - name: portainer-data
+              mountPath: /var/lib/pgadmin
+      volumes:
+        - name: portainer-data
+          persistentVolumeClaim:
+            claimName: portainer-data

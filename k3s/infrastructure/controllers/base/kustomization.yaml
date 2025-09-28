@@ -9,3 +9,4 @@ resources:
   - ./intel-device-plugin-operator
   - ./intel-gpu-device-plugin
   - ./node-feature-discovery
+  - ./pgadmin

@@ -223,3 +223,18 @@ spec:
       services:
         - name: homarr
           port: app
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pgadmin
+  namespace: pgadmin
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`pgadmin-prod.maurovi.ch`)
+      services:
+        - name: pgadmin
+          port: app

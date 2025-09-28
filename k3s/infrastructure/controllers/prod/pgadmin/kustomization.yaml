@@ -1,0 +1,3 @@
+resources:
+  - ./storage-data.yaml
+  - ./secrets.k8s.enc.yaml
