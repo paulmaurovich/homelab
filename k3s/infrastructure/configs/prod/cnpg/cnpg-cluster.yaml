@@ -5,11 +5,11 @@ metadata:
   name: cn-postgresql-cluster
   namespace: cnpg-system
 spec:
-  instances: 6
+  instances: 3
   monitoring:
     enablePodMonitor: true
   storage:
-    # Relyingon PostgreSQL's native replication mechanism across instances
+    # Relying on PostgreSQL's native replication mechanism across instances
     # and scheduled backups to external S3 bucket.
     # If a major fail occurs, the db can be initialized from the backup.
     # Therefore, 'local-path' and not e.g. nfs with replicated RAID drives
