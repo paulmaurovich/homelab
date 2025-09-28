@@ -237,4 +237,4 @@ spec:
       match: Host(`pgadmin-prod.maurovi.ch`)
       services:
         - name: pgadmin
-          port: app
+          port: http
