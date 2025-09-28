@@ -19,7 +19,8 @@ spec:
             nodeSelectorTerms:
               - matchExpressions:
                   - key: node-role.kubernetes.io/postgres
-                    operator: Exists
+                    operator: In
+                    values: [""]
       containers:
         - name: pgadmin
           image: dpage/pgadmin4:9.8.0
