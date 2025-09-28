@@ -13,14 +13,6 @@ spec:
       labels:
         app: pgadmin
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: node-role.kubernetes.io/postgres
-                    operator: In
-                    values: [""]
       containers:
         - name: pgadmin
           image: dpage/pgadmin4:9.8.0
