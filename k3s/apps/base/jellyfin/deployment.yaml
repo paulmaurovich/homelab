@@ -1,13 +1,11 @@
 ---
-# TODO
-# add igpu
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jellyfin
   namespace: jellyfin
 spec:
-  #replicas: 1 TODO maybe it is possible that pods share the iGPU
+  replicas: 1
   strategy:
     type: Recreate
   selector:
