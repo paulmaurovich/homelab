@@ -99,8 +99,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      # TODO Change to 'jellyfin' as soon as the migration is done
-      match: Host(`jellyfin2-prod.maurovi.ch`)
+      match: Host(`jellyfin-prod.maurovi.ch`)
       services:
         - name: jellyfin
           port: http
