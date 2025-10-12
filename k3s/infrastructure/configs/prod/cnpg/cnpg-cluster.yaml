@@ -16,7 +16,7 @@ spec:
     # and because of speed and less overhead.
     # Following cnpg best practice.
     storageClass: local-path
-    size: 10Gi
+    size: 1Gi
   imageName: ghcr.io/cloudnative-pg/postgresql:17.5
   enableSuperuserAccess: true
   primaryUpdateStrategy: unsupervised
