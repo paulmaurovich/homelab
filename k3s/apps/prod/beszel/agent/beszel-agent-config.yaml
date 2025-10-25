@@ -6,4 +6,4 @@ metadata:
   namespace: beszel
 data:
   HUB_URL: beszel-hub.beszel-hub.svc.cluster.local
-  LISTEN: 45876
+  LISTEN: "45876"
