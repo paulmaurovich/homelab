@@ -257,7 +257,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: beszel
+  name: beszel-hub
   namespace: beszel
 spec:
   entryPoints:
@@ -266,5 +266,5 @@ spec:
     - kind: Rule
       match: Host(`beszel-prod.maurovi.ch`)
       services:
-        - name: beszel
+        - name: beszel-hub
           port: http
