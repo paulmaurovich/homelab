@@ -22,7 +22,7 @@ spec:
               containerPort: 8000
           volumeMounts:
             - name: apprise-data
-              mountPath: /app/data
+              mountPath: /config
       volumes:
         - name: apprise-data
           persistentVolumeClaim:
