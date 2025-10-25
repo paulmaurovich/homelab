@@ -5,5 +5,5 @@ metadata:
   name: beszel-agent-config
   namespace: beszel
 data:
-  HUB_URL: beszel-hub.beszel-hub.svc.cluster.local
+  HUB_URL: beszel-hub.beszel.svc.cluster.local
   LISTEN: "45876"
