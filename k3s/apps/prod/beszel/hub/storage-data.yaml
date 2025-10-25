@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: beszel-data
+  name: beszel-hub-data
   namespace: beszel
 spec:
   capacity:
@@ -18,10 +18,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: beszel-data
+  name: beszel-hub-data
   namespace: beszel
 spec:
-  volumeName: beszel-data
+  volumeName: beszel-hub-data
   accessModes:
     - ReadWriteMany
   resources:
