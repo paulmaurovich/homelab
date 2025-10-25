@@ -5,5 +5,5 @@ metadata:
   name: beszel-agent-config
   namespace: beszel
 data:
-  HUB_URL: http://beszel-hub.beszel.svc.cluster.local
+  HUB_URL: https://beszel-prod.maurovi.ch
   LISTEN: "45876"
