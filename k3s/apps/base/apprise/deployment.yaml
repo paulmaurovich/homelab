@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apprise
+  namespace: apprise
+spec:
+  selector:
+    matchLabels:
+      app: apprise
+  template:
+    metadata:
+      labels:
+        app: apprise
+    spec:
+      containers:
+        - name: apprise
+          image: ghcr.io/caronc/apprise:v1.9.5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: config
+          volumeMounts:
+            - name: apprise-data
+              mountPath: /app/data
+      volumes:
+        - name: apprise-data
+          persistentVolumeClaim:
+            claimName: apprise-data

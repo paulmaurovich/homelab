@@ -238,3 +238,18 @@ spec:
       services:
         - name: pgadmin
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: apprise
+  namespace: apprise
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`apprise-prod.maurovi.ch`)
+      services:
+        - name: apprise
+          port: http
