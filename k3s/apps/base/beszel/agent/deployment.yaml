@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: beszel-agent
+  namespace: beszel
+spec:
+  selector:
+    matchLabels:
+      app: beszel-agent
+  template:
+    metadata:
+      labels:
+        app: beszel-agent
+    spec:
+      hostNetwork: true
+      containers:
+        - name: beszel-agent
+          image: ghcr.io/henrygd/beszel/beszel-agent:0.14.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 45876
+              hostPort: 45876
+          env:
+            - name: LISTEN
+              value: "45876"
+            - name: KEY
+              value: "YOUR-KEY-HERE"
+      restartPolicy: Always
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+          operator: Exists
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 100%
+    type: RollingUpdate

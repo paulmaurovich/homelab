@@ -1,0 +1,3 @@
+resources:
+  - ./beszel-agent-secrets.k8s.enc.yaml
+  - ./beszel-agent-config.yaml
