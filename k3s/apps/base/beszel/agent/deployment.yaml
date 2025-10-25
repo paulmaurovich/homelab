@@ -21,11 +21,11 @@ spec:
           ports:
             - containerPort: 45876
               hostPort: 45876
-          env:
-            - name: LISTEN
-              value: "45876"
-            - name: KEY
-              value: "YOUR-KEY-HERE"
+          envFrom:
+            - configMapRef:
+                name: beszel-agent-config
+            - secretRef:
+                name: beszel-agent-secrets
       restartPolicy: Always
       tolerations:
         - effect: NoSchedule
