@@ -13,3 +13,4 @@ resources:
   - ./sabnzbd
   - ./gotify
   - ./apprise
+  - ./beszel

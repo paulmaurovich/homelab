@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beszel
+  namespace: beszel
+spec:
+  selector:
+    matchLabels:
+      app: beszel
+  template:
+    metadata:
+      labels:
+        app: beszel
+    spec:
+      containers:
+        - name: beszel
+          image: ghcr.io/henrygd/beszel/beszel:0.14.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8090
+          volumeMounts:
+            - name: beszel-data
+              mountPath: /beszel_data
+      volumes:
+        - name: beszel-data
+          persistentVolumeClaim:
+            claimName: beszel-data

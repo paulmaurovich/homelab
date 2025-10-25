@@ -253,3 +253,18 @@ spec:
       services:
         - name: apprise
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: beszel
+  namespace: beszel
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`beszel-prod.maurovi.ch`)
+      services:
+        - name: beszel
+          port: http
