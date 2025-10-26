@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: croc
+  namespace: croc
+spec:
+  selector:
+    matchLabels:
+      app: croc
+  template:
+    metadata:
+      labels:
+        app: croc
+    spec:
+      containers:
+        - name: croc
+          image: schollz/croc:10.2.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            # main port proxy forwards too
+            - name: http
+              containerPort: 9009
+              protocol: TCP
+            - containerPort: 9010
+              protocol: TCP
+            - containerPort: 9011
+              protocol: TCP
+            - containerPort: 9012
+              protocol: TCP
+            - containerPort: 9013
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: croc-secrets

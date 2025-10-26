@@ -268,3 +268,18 @@ spec:
       services:
         - name: beszel-hub
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: croc
+  namespace: croc
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`croc-prod.maurovi.ch`)
+      services:
+        - name: croc
+          port: http

@@ -1,0 +1,2 @@
+resources:
+  - ./croc-secrets.k8s.enc.yaml

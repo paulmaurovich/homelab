@@ -13,3 +13,4 @@ resources:
   - ./gotify
   - ./apprise
   - ./beszel
+  - ./croc
