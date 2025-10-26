@@ -9,31 +9,32 @@
     "docker-compose",
     "helm-values",
     "kubernetes",
-    "regex",
+    "custom.regex",
     "flux"
   ],
   "kubernetes": {
-    "fileMatch": [
-      "(^|/)k3s/.*\\.ya?ml$",
-      "(^|/)k3s/.*\\.yaml$",
-      "(^|/)k3s/.*\\.yml$",
-      "(^|/)ansible/.*\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)k3s/.*\\.ya?ml$/",
+      "/(^|/)k3s/.*\\.yaml$/",
+      "/(^|/)k3s/.*\\.yml$/",
+      "/(^|/)ansible/.*\\.ya?ml$/"
     ]
   },
   "flux": {
-    "fileMatch": [
-      "(^|/)k3s/.*\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)k3s/.*\\.ya?ml$/"
     ]
   },
   "helm-values": {
-    "fileMatch": [
-      "(^|/)k3s/.*\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)k3s/.*\\.ya?ml$/"
     ]
   },
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": [
-        "(^|/)k3s/.*\\.ya?ml$"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)k3s/.*\\.ya?ml$/"
       ],
       "matchStrings": [
         "image:\\s*(?<depName>[a-z0-9\\-_.:/]+)\\:(?<currentValue>[a-zA-Z0-9._\\-+]+)\\b"
@@ -54,7 +55,7 @@
       "automerge": true,
       "automergeType": "branch",
       "platformAutomerge": true,
-      "stabilityDays": 1
+      "minimumReleaseAge": "1 day"
     },
     {
       "matchDatasources": [
