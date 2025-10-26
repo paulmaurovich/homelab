@@ -47,38 +47,6 @@
       "matchDatasources": [
         "docker"
       ],
-      "allowedVersions": "^[0-9]+(\\.[0-9]+){0,3}([._-]ls[0-9]+)?$",
-      "ignoreUnstable": true,
-      "excludeReleaseNotes": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "excludePackagePatterns": [],
-      "ignoreVersions": [
-        "(?i)(?:^|[._-])(alpha|beta|rc|snapshot|pre|preview|canary|next|nightly)(?:[._-]\\d+)?$",
-        "(?i)\\b(dev|edge|testing|unstable)\\b",
-        "^latest$",
-        "^master$",
-        "^main$"
-      ]
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchPackagePatterns": [
-        "(?i)linuxserver/.*",
-        "(?i)ghcr\\.io/linuxserver/.*"
-      ],
-      "allowedVersions": "^[0-9]+(\\.[0-9]+){0,3}([._-]ls[0-9]+)?$",
-      "ignoreUnstable": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
       "groupName": "container image patches",
       "matchUpdateTypes": [
         "patch"
