@@ -79,8 +79,6 @@
       ]
     }
   ],
-  "prHourlyLimit": 6,
-  "prConcurrentLimit": 10,
   "rangeStrategy": "replace",
   "separateMultipleMajor": true,
   "dependencyDashboard": true,
