@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: beszel-hub-config
+  namespace: beszel
+data:
+  APP_URL: https://beszel-prod.maurovi.ch

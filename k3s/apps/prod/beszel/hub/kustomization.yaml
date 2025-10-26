@@ -1,3 +1,4 @@
 resources:
   - ./storage-data.yaml
   - ./beszel-hub-secrets.k8s.enc.yaml
+  - ./beszel-hub-config.yaml

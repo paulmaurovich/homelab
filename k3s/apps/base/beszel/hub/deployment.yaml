@@ -23,6 +23,8 @@ spec:
           envFrom:
             - secretRef:
                 name: beszel-hub-secrets
+            - configMapRef:
+                name: beszel-hub-config
           volumeMounts:
             - name: beszel-hub-data
               mountPath: /beszel_data
