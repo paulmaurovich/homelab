@@ -9,5 +9,6 @@ spec:
   selector:
     app: jellyseerr
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 5055
