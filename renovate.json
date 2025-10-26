@@ -47,29 +47,33 @@
       "matchDatasources": [
         "docker"
       ],
+      "allowedVersions": "^[0-9]+(\\.[0-9]+){0,3}([._-]ls[0-9]+)?$",
       "ignoreUnstable": true,
-      "allowedVersions": "^(?:(?!alpha|beta|rc|snapshot|pre|preview|canary|next|nightly|dev|edge|testing|unstable)[^\\s]+)$"
+      "excludeReleaseNotes": true
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "excludePackagePatterns": [],
+      "ignoreVersions": [
+        "(?i)(?:^|[._-])(alpha|beta|rc|snapshot|pre|preview|canary|next|nightly)(?:[._-]\\d+)?$",
+        "(?i)\\b(dev|edge|testing|unstable)\\b",
+        "^latest$",
+        "^master$",
+        "^main$"
+      ]
     },
     {
       "matchDatasources": [
         "docker"
       ],
       "matchPackagePatterns": [
-        "(?i)^ghcr\\.io/linuxserver/.*",
-        "(?i)^linuxserver/.*"
+        "(?i)linuxserver/.*",
+        "(?i)ghcr\\.io/linuxserver/.*"
       ],
       "allowedVersions": "^[0-9]+(\\.[0-9]+){0,3}([._-]ls[0-9]+)?$",
       "ignoreUnstable": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "ignoreVersions": [
-        "(?i)(?:^|[._-])(alpha|beta|rc|snapshot|pre|preview|canary|next|nightly)(?:[._-]\\d+)?$",
-        "(?i)\\b(dev|edge|testing|unstable)\\b",
-        "^(latest|master|main)$"
-      ]
     },
     {
       "matchDatasources": [
