@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: miniflux
-          image: miniflux/miniflux:2.2.11
+          image: miniflux/miniflux:2.2.14
           ports:
             - name: http
               containerPort: 8080
