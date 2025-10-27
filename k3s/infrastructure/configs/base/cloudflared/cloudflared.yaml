@@ -15,7 +15,7 @@ spec:
         pod: cloudflared
     spec:
       containers:
-        - image: cloudflare/cloudflared:2025.8.1
+        - image: cloudflare/cloudflared:2025.10.0
           name: cloudflared
           env:
             - name: TUNNEL_TOKEN
