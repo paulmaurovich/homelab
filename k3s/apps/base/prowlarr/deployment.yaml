@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: prowlarr
-          image: ghcr.io/linuxserver/prowlarr:2.0.5.5160-ls126
+          image: ghcr.io/linuxserver/prowlarr:2.2.0-nightly
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
