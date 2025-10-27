@@ -1,90 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    "helpers:pinGitHubActionDigests"
+    "config:recommended"
   ],
   "enabledManagers": [
-    "dockerfile",
-    "docker-compose",
-    "helm-values",
     "kubernetes",
-    "custom.regex",
     "flux"
   ],
   "kubernetes": {
     "managerFilePatterns": [
       "/(^|/)k3s/.*\\.ya?ml$/",
-      "/(^|/)k3s/.*\\.yaml$/",
-      "/(^|/)k3s/.*\\.yml$/",
-      "/(^|/)ansible/.*\\.ya?ml$/"
+      "/(^|/)k3s/.*\\.yaml$/"
     ]
   },
   "flux": {
     "managerFilePatterns": [
-      "/(^|/)k3s/.*\\.ya?ml$/"
+      "/(^|/)k3s/.*\\.ya?ml$/",
+      "/(^|/)k3s/.*\\.yaml$/"
     ]
-  },
-  "helm-values": {
-    "managerFilePatterns": [
-      "/(^|/)k3s/.*\\.ya?ml$/"
-    ]
-  },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/(^|/)k3s/.*\\.ya?ml$/"
-      ],
-      "matchStrings": [
-        "image:\\s*(?<depName>[a-z0-9\\-_.:/]+)\\:(?<currentValue>[a-zA-Z0-9._\\-+]+)\\b"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "loose"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "groupName": "container image patches",
-      "matchUpdateTypes": [
-        "patch"
-      ],
-      "automerge": true,
-      "automergeType": "branch",
-      "platformAutomerge": true,
-      "minimumReleaseAge": "1 day"
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "groupName": "container image minor/major updates",
-      "matchUpdateTypes": [
-        "minor",
-        "major"
-      ],
-      "automerge": false,
-      "prCreation": "immediate"
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "registryUrls": [
-        "https://ghcr.io",
-        "https://index.docker.io/v1/"
-      ]
-    }
-  ],
-  "rangeStrategy": "replace",
-  "separateMultipleMajor": true,
-  "dependencyDashboard": true,
-  "labels": [
-    "dependencies",
-    "renovate",
-    "containers"
-  ]
+  }
 }
