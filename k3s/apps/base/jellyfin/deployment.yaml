@@ -26,7 +26,7 @@ spec:
                     values: ["true"]
       containers:
         - name: jellyfin
-          image: ghcr.io/jellyfin/jellyfin:10.10.7
+          image: ghcr.io/jellyfin/jellyfin:2024031105
           imagePullPolicy: IfNotPresent
           # pass through iGPU to allow hardware transcoding
           # resources:
