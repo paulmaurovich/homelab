@@ -6,7 +6,8 @@ metadata:
   namespace: cnpg-system
 spec:
   interval: 5m
-  url: https://ghcr.io/cloudnative-pg/charts
+  type: oci
+  url: oci://ghcr.io/cloudnative-pg/charts
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
