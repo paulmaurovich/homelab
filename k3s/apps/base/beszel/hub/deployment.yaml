@@ -5,6 +5,8 @@ metadata:
   name: beszel-hub
   namespace: beszel
 spec:
+  strategy:
+  type: RollingUpdate
   selector:
     matchLabels:
       app: beszel-hub
