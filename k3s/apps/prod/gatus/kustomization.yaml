@@ -3,3 +3,4 @@ resources:
   - ./db-auth.k8s.enc.yaml
   - ./database.yaml
   - ./db-secrets.k8s.enc.yaml
+  - ./telegram-secrets.k8s.enc.yaml

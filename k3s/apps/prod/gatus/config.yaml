@@ -11,6 +11,11 @@ data:
       type: postgres
       path: "${POSTGRES_CONNECTION_STRING}"
 
+    alerting:
+      telegram:
+        token: "${TELEGRAM_BOT_TOKEN}"
+        id: "${TELEGRAM_USER_ID}"
+
     endpoints:
       - name: speedtest-prod
         url: "http://openspeedtest.openspeedtest.svc.cluster.local/"
