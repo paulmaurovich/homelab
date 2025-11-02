@@ -25,6 +25,8 @@ spec:
                 name: db-secrets
             - secretRef:
                 name: telegram-secrets
+            - secretRef:
+                name: basic-auth
           ports:
             - containerPort: 8080
               name: http

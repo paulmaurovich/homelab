@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: basic-auth
+    namespace: gatus
+type: Opaque
+stringData:
+    USERNAME: ENC[AES256_GCM,data:ifTIH6RYa+z7gVVLfg==,iv:N60f8poOgXZ1aWzR9EjDHKjvrL3BjJBm8YCoWu6M2dk=,tag:C94QaC+cKDJBnm0wD2vs+Q==,type:str]
+    PASSWORD_BCRYPT_BASE64: ENC[AES256_GCM,data:2Q6RWS0el82VCpuz8MRqE8igx03gNf+ja99D/DwaJjS0RNENgmWlwzqRuJ6e0osoyjM68Re2v+FlwuWjIw8R7t1O0opaJhpKdKTS1W8d2Bk=,iv:JgGcQTB/ajmUYOXqAGnM2Xwvq/u3l2Fh8KhZYX5L6Pc=,tag:YuE4njvrqvdjUYjz9ZCm9g==,type:str]
+sops:
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvWmhJZFlvc2FGZXR5NE1H
+            RjJDK25Da0M0WGVoL0VFZENUN1UvUTlEVlUwCm1KQWRBdlZXelo2SEIxSjUrOW8x
+            K0U0bWYrSjgvTGZhaVNVTkdlMnF0RncKLS0tIHI5SmFPTk5Vdnl0TXpOd2R2OUc0
+            VVZKVkx0NHRhZy9DdVcvUFBDaElkdlUK6+gU0WGULBCXmBLTTuJD7yqYScJpsw9N
+            KJAGePbuQ5h6xboyJZQI33vz/EpW6/0XezMaIEQtBYEOCxGxIuObgA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-11-02T19:47:21Z"
+    mac: ENC[AES256_GCM,data:PjXsbVKhQqvmZ0Yo2hgfv0DeV3HnFMukJs3hsaffsaMaoGda9vvqc8wu2AD01ERwXtWdd8stYnjHRa9vLPNzo0HyoLIfl9pGV3IXThfG4xIXnVwKg+MQYQfbrRpO/AlzD5JBj99DF9HbQs3UFluksW0EPepiH9nTx9CfIlGYums=,iv:61civ9+qz2I4PdLsT6clgVeq5cxAOtnUo++0bIP7OeU=,tag:JxnsiB2fDbt485JN5wCMhg==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.11.0
