@@ -18,8 +18,8 @@ data:
 
     security:
       basic:
-        username: ${USERNAME}
-        password-bcrypt-base64: ${PASSWORD_BCRYPT_BASE64}
+        username: "${USERNAME}"
+        password-bcrypt-base64: "${PASSWORD_BCRYPT_BASE64}"
 
     endpoints:
       - name: speedtest-prod
