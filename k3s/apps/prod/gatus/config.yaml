@@ -7,6 +7,9 @@ metadata:
 data:
   config.yaml: |
     metrics: true
+    storage:
+      type: postgres
+      path: "${POSTGRES_CONNECTION_STRING}
 
     endpoints:
       - name: speedtest-prod

@@ -20,6 +20,9 @@ spec:
         - image: ghcr.io/twin/gatus:v5.30.0
           imagePullPolicy: IfNotPresent
           name: gatus
+          envFrom:
+            - secretRef:
+                name: db-secrets
           ports:
             - containerPort: 8080
               name: http
