@@ -23,6 +23,8 @@ spec:
           envFrom:
             - secretRef:
                 name: db-secrets
+            - secretRef:
+                name: telegram-secrets
           ports:
             - containerPort: 8080
               name: http
