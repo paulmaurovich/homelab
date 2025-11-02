@@ -9,7 +9,7 @@ data:
     metrics: true
     storage:
       type: postgres
-      path: "${POSTGRES_CONNECTION_STRING}
+      path: "${POSTGRES_CONNECTION_STRING}"
 
     endpoints:
       - name: speedtest-prod
