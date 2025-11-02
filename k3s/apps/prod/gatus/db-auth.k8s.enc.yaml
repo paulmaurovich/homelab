@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+    name: gatus-db-auth
+    namespace: cnpg-system
+    labels:
+        cnpg.io/reload: "true"
+stringData:
+    username: ENC[AES256_GCM,data:qnpWGhs=,iv:mA7AVq/onnma1fQGNXPh/PB3JoFKnawiF02Cnz1zFSI=,tag:a9LouHxAxvYJCDSxnZ3CTA==,type:str]
+    password: ENC[AES256_GCM,data:CV9ySDXwV9MJlWc4hXmWo7MEqRE=,iv:tOD7C/VouEZ9v3JbXSHtZ9a59EftnpX20+pNZtQQb54=,tag:MDl8+bSeih/6xlt4AgGUjg==,type:str]
+sops:
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmb2lsdE90cUI3dzNqTWV1
+            VWczb3RpUnlmNjIrWU1FLzRPeFNRS3V1MG1JCjFhZEFMWmJGc3VjdXdsR2xvOG1I
+            TDRrU0w1eFdPWktWT1F4aG5ZSkJUdlEKLS0tIHQrTG0rZmJFQW5sa29obW5Zd0lw
+            VmJ2NDZYakJJM0FWZXhaZnVMNDZwVkkKAVaKLFJZGIKNcbmaExecpSMW6j8yb9nV
+            kDex9etB3yfChqv67QubPnLeHrX3wd7sXOpV3n8SAcDS5K1zlnJ+cw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-11-02T16:44:16Z"
+    mac: ENC[AES256_GCM,data:bRCNGuGDJ+EgBYKfHN4gs6TEqMkFefl/ZgnZv/l6EQlLwdncWgrfF3XS2E6D7PGXCXTVNJ6Uz3NbzPyRZHRyOrlc/Zg40QduPqMkVHfhck8ulUDlxWizLkjKWpB/hBnevhB8bgTg7idIG7dFTvO/qGOVfVHTvVUpUsocMWn5EBk=,iv:haxe8566f1XAghxGu1S8ubF7YmCKlNp7okmbGhrEuHA=,tag:zg+VQHZ8X7pm+nsbxYkk6Q==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.11.0

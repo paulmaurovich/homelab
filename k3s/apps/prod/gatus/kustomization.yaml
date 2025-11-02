@@ -1,2 +1,4 @@
 resources:
   - ./config.yaml
+  - ./db-auth.k8s.enc.yaml
+  - ./database.yaml

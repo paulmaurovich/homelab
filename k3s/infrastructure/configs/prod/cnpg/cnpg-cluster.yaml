@@ -86,3 +86,8 @@ spec:
         login: true
         passwordSecret:
           name: gotify-db-auth
+      - name: gatus
+        createdb: true
+        login: true
+        passwordSecret:
+          name: gatus-db-auth

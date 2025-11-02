@@ -1,0 +1,11 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: gatus
+  namespace: cnpg-system
+spec:
+  name: gatus
+  owner: gatus
+  cluster:
+    name: cn-postgresql-cluster
