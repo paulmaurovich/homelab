@@ -1,0 +1,124 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus
+  namespace: gatus
+data:
+  config.yaml: |
+    metrics: true
+
+    endpoints:
+    - name: speedtest-prod
+      url: "https://speedtest-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: ittools-prod
+      url: "https://ittools-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: miniflux-prod
+      url: "https://miniflux-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: paperlessngx-prod
+      url: "https://paperlessngx-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: recipes-prod
+      url: "https://recipes-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: vaultwarden-prod
+      url: "https://vaultwarden-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: jellyfin-prod
+      url: "https://jellyfin-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: jellyseerr-prod
+      url: "https://jellyseerr-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: radarr-prod
+      url: "https://radarr-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: sonarr-prod
+      url: "https://sonarr-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: prowlarr-prod
+      url: "https://prowlarr-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: sabnzbd-prod
+      url: "https://sabnzbd-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: gotify-prod
+      url: "https://gotify-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: portainer-prod
+      url: "https://portainer-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: homarr-prod
+      url: "https://homarr-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: pgadmin-prod
+      url: "https://pgadmin-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: apprise-prod
+      url: "https://apprise-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: beszel-prod
+      url: "https://beszel-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"
+
+    - name: croc-prod
+      url: "https://croc-prod.maurovi.ch/"
+      interval: 60s
+      conditions:
+        - "[STATUS] == 200"

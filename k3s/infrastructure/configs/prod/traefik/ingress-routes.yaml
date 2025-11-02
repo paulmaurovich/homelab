@@ -283,3 +283,18 @@ spec:
       services:
         - name: croc
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: gatus
+  namespace: gatus
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`gatus-prod.maurovi.ch`)
+      services:
+        - name: gatus
+          port: http

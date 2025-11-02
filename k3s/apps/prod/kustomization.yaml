@@ -14,3 +14,4 @@ resources:
   - ./apprise
   - ./beszel
   - ./croc
+  - ./gatus
