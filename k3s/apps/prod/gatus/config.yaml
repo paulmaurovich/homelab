@@ -16,11 +16,6 @@ data:
         token: "${TELEGRAM_BOT_TOKEN}"
         id: "${TELEGRAM_USER_ID}"
 
-    security:
-      basic:
-        username: "${USERNAME}"
-        password-bcrypt-base64: "${PASSWORD_BCRYPT_BASE64}"
-
     endpoints:
       - name: speedtest-prod
         url: "http://openspeedtest.openspeedtest.svc.cluster.local/"
