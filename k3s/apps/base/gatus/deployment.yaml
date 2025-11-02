@@ -17,7 +17,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 5
       containers:
-        - image: ghcr.io/twin/gatus:5.30.0
+        - image: ghcr.io/twin/gatus:v5.30.0
           imagePullPolicy: IfNotPresent
           name: gatus
           ports:
