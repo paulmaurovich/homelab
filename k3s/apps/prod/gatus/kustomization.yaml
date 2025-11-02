@@ -4,3 +4,4 @@ resources:
   - ./database.yaml
   - ./db-secrets.k8s.enc.yaml
   - ./telegram-secrets.k8s.enc.yaml
+  - ./basic-auth.k8s.enc.yaml
