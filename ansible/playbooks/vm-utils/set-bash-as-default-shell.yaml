@@ -1,0 +1,27 @@
+---
+-    name: Install bash and set as default for current user
+     hosts: all
+     become: true
+     gather_facts: true
+
+     vars:
+         current_user: "{{ ansible_env.SUDO_USER | default(ansible_user_id) }}"
+
+     tasks:
+         -   name: Ensure bash is installed
+             ansible.builtin.apt:
+                 name: bash
+                 state: present
+                 update_cache: true
+             when: ansible_os_family == "Debian"
+
+         -   name: Ensure /bin/bash is in /etc/shells
+             ansible.builtin.lineinfile:
+                 path: /etc/shells
+                 line: /bin/bash
+                 state: present
+
+         -   name: Set default shell via chsh for current user
+             ansible.builtin.command: "chsh -s /bin/bash {{ current_user }}"
+             changed_when: true
+             failed_when: false
