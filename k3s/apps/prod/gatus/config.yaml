@@ -48,7 +48,7 @@ data:
           - "[STATUS] == 200"
 
       - name: vaultwarden-prod
-        url: "https://vaultwarden-prod.maurovi.ch/"
+        url: "https://vw-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
