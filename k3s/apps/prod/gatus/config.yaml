@@ -22,105 +22,159 @@ data:
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: speedtest-prod"
 
       - name: ittools-prod
         url: "https://ittools-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: ittools-prod"
 
       - name: miniflux-prod
         url: "https://miniflux-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: miniflux-prod"
 
       - name: paperlessngx-prod
         url: "https://paperlessngx-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: paperlessngx-prod"
 
       - name: recipes-prod
         url: "https://recipes-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: recipes-prod"
 
       - name: vaultwarden-prod
         url: "https://vw-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: vaultwarden-prod"
 
       - name: jellyfin-prod
         url: "https://jellyfin-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: jellyfin-prod"
 
       - name: jellyseerr-prod
         url: "https://jellyseerr-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: jellyseerr-prod"
 
       - name: radarr-prod
         url: "https://radarr-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: radarr-prod"
 
       - name: sonarr-prod
         url: "https://sonarr-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: sonarr-prod"
 
       - name: prowlarr-prod
         url: "https://prowlarr-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: prowlarr-prod"
 
       - name: sabnzbd-prod
         url: "https://sabnzbd-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: sabnzbd-prod"
 
       - name: gotify-prod
         url: "https://gotify-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: gotify-prod"
 
       - name: portainer-prod
         url: "https://portainer-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: portainer-prod"
 
       - name: homarr-prod
         url: "https://homarr-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: homarr-prod"
 
       - name: pgadmin-prod
         url: "https://pgadmin-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: pgadmin-prod"
 
       - name: apprise-prod
         url: "https://apprise-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: apprise-prod"
 
       - name: beszel-prod
         url: "https://beszel-prod.maurovi.ch/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            description: "[Gatus Monitoring] Service unavailable: beszel-prod"
