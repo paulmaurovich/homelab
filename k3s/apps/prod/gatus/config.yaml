@@ -18,163 +18,302 @@ data:
 
     endpoints:
       - name: speedtest-prod
-        url: "https://speedtest-prod.maurovi.ch/"
+        url: "http://speedtest.speedtest.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: speedtest-prod"
 
       - name: ittools-prod
-        url: "https://ittools-prod.maurovi.ch/"
+        url: "http://ittools.ittools.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: ittools-prod"
 
       - name: miniflux-prod
-        url: "https://miniflux-prod.maurovi.ch/"
+        url: "http://miniflux.miniflux.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: miniflux-prod"
 
       - name: paperlessngx-prod
-        url: "https://paperlessngx-prod.maurovi.ch/"
+        url: "http://paperlessngx.paperlessngx.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: paperlessngx-prod"
 
       - name: recipes-prod
-        url: "https://recipes-prod.maurovi.ch/"
+        url: "http://recipes.recipes.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: recipes-prod"
 
       - name: vaultwarden-prod
-        url: "https://vw-prod.maurovi.ch/"
+        url: "http://vaultwarden.vaultwarden.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: vaultwarden-prod"
 
       - name: jellyfin-prod
-        url: "https://jellyfin-prod.maurovi.ch/"
+        url: "http://jellyfin.jellyfin.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: jellyfin-prod"
 
       - name: jellyseerr-prod
-        url: "https://jellyseerr-prod.maurovi.ch/"
+        url: "http://jellyseerr.jellyseerr.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: jellyseerr-prod"
 
       - name: radarr-prod
-        url: "https://radarr-prod.maurovi.ch/"
+        url: "http://radarr.radarr.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: radarr-prod"
 
       - name: sonarr-prod
-        url: "https://sonarr-prod.maurovi.ch/"
+        url: "http://sonarr.sonarr.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: sonarr-prod"
 
       - name: prowlarr-prod
-        url: "https://prowlarr-prod.maurovi.ch/"
+        url: "http://prowlarr.prowlarr.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: prowlarr-prod"
 
       - name: sabnzbd-prod
-        url: "https://sabnzbd-prod.maurovi.ch/"
+        url: "http://sabnzbd.sabnzbd.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: sabnzbd-prod"
 
       - name: gotify-prod
-        url: "https://gotify-prod.maurovi.ch/"
+        url: "http://gotify.gotify.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: gotify-prod"
 
       - name: portainer-prod
-        url: "https://portainer-prod.maurovi.ch/"
+        url: "http://portainer.portainer.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: portainer-prod"
 
       - name: homarr-prod
-        url: "https://homarr-prod.maurovi.ch/"
+        url: "http://homarr.homarr.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: homarr-prod"
 
       - name: pgadmin-prod
-        url: "https://pgadmin-prod.maurovi.ch/"
+        url: "http://pgadmin.pgadmin.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: pgadmin-prod"
 
       - name: apprise-prod
-        url: "https://apprise-prod.maurovi.ch/"
+        url: "http://apprise.apprise.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: apprise-prod"
 
       - name: beszel-prod
-        url: "https://beszel-prod.maurovi.ch/"
+        url: "http://beszel.beszel.svc.cluster.local/"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-            description: "[Gatus Monitoring] Service unavailable: beszel-prod"
+
+      - name: redis
+        url: "http://redis-master.redis.cluster.local/"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: cert-manager
+        url: "http://cert-manager.cert-manager.cluster.local/"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: cert-manager
+        url: "http://cert-manager.cert-manager.cluster.local/"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: cnpg-rw-prod
+        url: "tcp://cn-postgresql-cluster-rw.cnpg-system.svc.cluster.local:5432"
+        interval: 60s
+        conditions:
+          - "[CONNECTED] == true"
+          - "[RESPONSE_TIME] < 2000"
+        alerts:
+          - type: telegram
+
+      - name: barman-cloud-prod
+        url: "http://barman-cloud.cnpg-system.svc.cluster.local:9090/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: cnpg-webhook-service-prod
+        url: "https://cnpg-webhook-service.cnpg-system.svc.cluster.local/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: k3s-server-1
+        url: "https://k3s-server-1:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-server-1"
+        tls:
+          insecure: true
+
+      - name: k3s-server-2
+        url: "https://k3s-server-2:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-server-2"
+        tls:
+          insecure: true
+
+      - name: k3s-server-3
+        url: "https://k3s-server-3:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-server-3"
+        tls:
+          insecure: true
+
+      - name: k3s-agent-1
+        url: "https://k3s-agent-1:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-agent-1"
+        tls:
+          insecure: true
+
+      - name: k3s-agent-2
+        url: "https://k3s-agent-2:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-agent-2"
+        tls:
+          insecure: true
+
+      - name: k3s-agent-3
+        url: "https://k3s-agent-3:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-agent-3"
+        tls:
+          insecure: true
+
+      - name: k3s-postgres-agent-1
+        url: "https://k3s-postgres-agent-1:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-postgres-agent-1"
+        tls:
+          insecure: true
+
+      - name: k3s-postgres-agent-2
+        url: "https://k3s-postgres-agent-2:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-postgres-agent-2"
+        tls:
+          insecure: true
+
+      - name: k3s-postgres-agent-3
+        url: "https://k3s-postgres-agent-3:10250/healthz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+        headers:
+          - "Host: k3s-postgres-agent-3"
+        tls:
+          insecure: true
