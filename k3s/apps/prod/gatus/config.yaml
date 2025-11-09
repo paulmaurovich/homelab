@@ -177,14 +177,6 @@ data:
         alerts:
           - type: telegram
 
-      - name: cert-manager
-        url: "http://cert-manager.cert-manager.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
       - name: cnpg-rw-prod
         url: "tcp://cn-postgresql-cluster-rw.cnpg-system.svc.cluster.local:5432"
         interval: 60s
