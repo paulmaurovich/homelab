@@ -1,2 +1,3 @@
 resources:
   - ./zeus.yaml
+  - ./truenas.yaml
