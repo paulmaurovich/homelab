@@ -41,4 +41,3 @@ spec:
       services:
         - name: external-truenas
           port: 80
-          serversTransport: proxmox-insecure
