@@ -17,167 +17,159 @@ data:
         id: "${TELEGRAM_USER_ID}"
 
     endpoints:
-      - name: speedtest-prod
-        url: "http://speedtest.speedtest.svc.cluster.local/"
+      - name: IT - Tools
+        url: "http://it-tools.it-tools.svc.cluster.local"
+        interval: 300s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Miniflux
+        url: "http://miniflux.miniflux.svc.cluster.local"
+        interval: 300s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Paperless-ngx
+        url: "http://paperless-ngx.paperless-ngx.svc.cluster.local"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: ittools-prod
-        url: "http://ittools.ittools.svc.cluster.local/"
+      - name: Recipes
+        url: "http://recipes.recipes.svc.cluster.local"
+        interval: 300s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Vaultwarden
+        url: "http://vaultwarden.vaultwarden.svc.cluster.local"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: miniflux-prod
-        url: "http://miniflux.miniflux.svc.cluster.local/"
+      - name: Jellyfin
+        url: "http://jellyfin.jellyfin.svc.cluster.local"
+        interval: 120s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Jellyseerr
+        url: "http://jellyseerr.jellyseerr.svc.cluster.local"
+        interval: 120s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Radarr
+        url: "http://radarr.radarr.svc.cluster.local"
+        interval: 120s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Sonarr
+        url: "http://sonarr.sonarr.svc.cluster.local"
+        interval: 120s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Prowlarr
+        url: "http://prowlarr.prowlarr.svc.cluster.local"
+        interval: 120s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Sabnzbd
+        url: "http://sabnzbd.sabnzbd.svc.cluster.local"
+        interval: 120s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Gotify
+        url: "http://gotify.gotify.svc.cluster.local"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: paperlessngx-prod
-        url: "http://paperlessngx.paperlessngx.svc.cluster.local/"
+      - name: Portainer
+        url: "http://portainer.portainer.svc.cluster.local"
+        interval: 300s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Homarr
+        url: "http://homarr.homarr.svc.cluster.local"
+        interval: 300s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: pgAdmin
+        url: "http://pgadmin.pgadmin.svc.cluster.local"
+        interval: 300s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Apprise
+        url: "http://apprise.apprise.svc.cluster.local"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: recipes-prod
-        url: "http://recipes.recipes.svc.cluster.local/"
+      - name: Beszel
+        url: "http://beszel.beszel.svc.cluster.local"
+        interval: 30s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+
+      - name: Redis
+        url: "http://redis-master.redis.cluster.local"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: vaultwarden-prod
-        url: "http://vaultwarden.vaultwarden.svc.cluster.local/"
+      - name: Cert Manager
+        url: "http://cert-manager.cert-manager.cluster.local"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: jellyfin-prod
-        url: "http://jellyfin.jellyfin.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: jellyseerr-prod
-        url: "http://jellyseerr.jellyseerr.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: radarr-prod
-        url: "http://radarr.radarr.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: sonarr-prod
-        url: "http://sonarr.sonarr.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: prowlarr-prod
-        url: "http://prowlarr.prowlarr.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: sabnzbd-prod
-        url: "http://sabnzbd.sabnzbd.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: gotify-prod
-        url: "http://gotify.gotify.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: portainer-prod
-        url: "http://portainer.portainer.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: homarr-prod
-        url: "http://homarr.homarr.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: pgadmin-prod
-        url: "http://pgadmin.pgadmin.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: apprise-prod
-        url: "http://apprise.apprise.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: beszel-prod
-        url: "http://beszel.beszel.svc.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: redis
-        url: "http://redis-master.redis.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: cert-manager
-        url: "http://cert-manager.cert-manager.cluster.local/"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: cnpg-rw-prod
+      - name: Postgres (cnpg-rw)
         url: "tcp://cn-postgresql-cluster-rw.cnpg-system.svc.cluster.local:5432"
         interval: 60s
         conditions:
@@ -186,7 +178,7 @@ data:
         alerts:
           - type: telegram
 
-      - name: barman-cloud-prod
+      - name: Postgres Backup (barman-cloud)
         url: "http://barman-cloud.cnpg-system.svc.cluster.local:9090/healthz"
         interval: 60s
         conditions:
@@ -194,80 +186,72 @@ data:
         alerts:
           - type: telegram
 
-      - name: cnpg-webhook-service-prod
-        url: "https://cnpg-webhook-service.cnpg-system.svc.cluster.local/healthz"
+      - name: Node k3s-server-1
+        url: "https://192.168.0.60:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-server-1
-        url: "https://k3s-server-1:10250/healthz"
+      - name: Node k3s-server-2
+        url: "https://192.168.0.61:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-server-2
-        url: "https://k3s-server-2:10250/healthz"
+      - name: Node k3s-server-3
+        url: "https://192.168.0.62:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-server-3
-        url: "https://k3s-server-3:10250/healthz"
+      - name: Node k3s-agent-1
+        url: "https://192.168.0.80:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-agent-1
-        url: "https://k3s-agent-1:10250/healthz"
+      - name: Node k3s-agent-2
+        url: "https://192.168.0.81:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-agent-2
-        url: "https://k3s-agent-2:10250/healthz"
+      - name: Node k3s-agent-3
+        url: "https://192.168.0.82:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-agent-3
-        url: "https://k3s-agent-3:10250/healthz"
+      - name: Node k3s-postgres-agent-1
+        url: "https://192.168.0.90:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-postgres-agent-1
-        url: "https://k3s-postgres-agent-1:10250/healthz"
+      - name: Node k3s-postgres-agent-2
+        url: "https://192.168.0.91:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
 
-      - name: k3s-postgres-agent-2
-        url: "https://k3s-postgres-agent-2:10250/healthz"
-        interval: 60s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-
-      - name: k3s-postgres-agent-3
-        url: "https://k3s-postgres-agent-3:10250/healthz"
+      - name: Node k3s-postgres-agent-3
+        url: "https://192.168.0.92:10250/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
