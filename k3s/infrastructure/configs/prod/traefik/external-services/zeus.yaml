@@ -1,19 +1,44 @@
 ---
 apiVersion: traefik.io/v1alpha1
-kind: TraefikService
+kind: ServersTransport
 metadata:
-  name: zeus
+  name: proxmox-insecure
   namespace: kube-system
 spec:
-  loadBalancer:
-    serversTransport: insecure-transport
-    servers:
-      - url: "https://192.168.0.73:8006"
+  insecureSkipVerify: true
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: external-zeus-endpoint
+  namespace: kube-system
+  labels:
+    kubernetes.io/service-name: external-zeus
+addressType: IPv4
+ports:
+  - name: https
+    protocol: TCP
+    port: 8006
+endpoints:
+  - addresses:
+      - "192.168.0.73"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-zeus
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+    - name: https
+      port: 8006
+      targetPort: 8006
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: zeus
+  name: external-zeus
   namespace: kube-system
 spec:
   entryPoints:
@@ -21,9 +46,8 @@ spec:
   routes:
     - kind: Rule
       match: Host(`zeus.maurovi.ch`)
-      middlewares:
-        - name: gzip
       services:
-        - name: zeus
-          kind: TraefikService
-  tls: {}
+        - name: external-zeus
+          port: 8006
+          scheme: https
+          serversTransport: proxmox-insecure
