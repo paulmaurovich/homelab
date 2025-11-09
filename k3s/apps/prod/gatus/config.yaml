@@ -217,10 +217,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-server-1"
-        tls:
-          insecure: true
 
       - name: k3s-server-2
         url: "https://k3s-server-2:10250/healthz"
@@ -229,10 +225,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-server-2"
-        tls:
-          insecure: true
 
       - name: k3s-server-3
         url: "https://k3s-server-3:10250/healthz"
@@ -241,10 +233,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-server-3"
-        tls:
-          insecure: true
 
       - name: k3s-agent-1
         url: "https://k3s-agent-1:10250/healthz"
@@ -253,10 +241,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-agent-1"
-        tls:
-          insecure: true
 
       - name: k3s-agent-2
         url: "https://k3s-agent-2:10250/healthz"
@@ -265,10 +249,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-agent-2"
-        tls:
-          insecure: true
 
       - name: k3s-agent-3
         url: "https://k3s-agent-3:10250/healthz"
@@ -277,10 +257,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-agent-3"
-        tls:
-          insecure: true
 
       - name: k3s-postgres-agent-1
         url: "https://k3s-postgres-agent-1:10250/healthz"
@@ -289,10 +265,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-postgres-agent-1"
-        tls:
-          insecure: true
 
       - name: k3s-postgres-agent-2
         url: "https://k3s-postgres-agent-2:10250/healthz"
@@ -301,10 +273,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-postgres-agent-2"
-        tls:
-          insecure: true
 
       - name: k3s-postgres-agent-3
         url: "https://k3s-postgres-agent-3:10250/healthz"
@@ -313,7 +281,3 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
-        headers:
-          - "Host: k3s-postgres-agent-3"
-        tls:
-          insecure: true
