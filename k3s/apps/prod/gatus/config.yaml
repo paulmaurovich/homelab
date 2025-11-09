@@ -122,7 +122,7 @@ data:
           - type: telegram
 
       - name: Homarr
-        url: "http://homarr.homarr.svc.cluster.local"
+        url: "http://homarr.homarr.svc.cluster.local:7575"
         interval: 300s
         conditions:
           - "[STATUS] == 200"
@@ -146,7 +146,7 @@ data:
           - type: telegram
 
       - name: Beszel
-        url: "http://beszel.beszel.svc.cluster.local"
+        url: "http://beszel-hub.beszel.svc.cluster.local"
         interval: 30s
         conditions:
           - "[STATUS] == 200"
@@ -162,7 +162,7 @@ data:
           - type: telegram
 
       - name: Cert Manager
-        url: "http://cert-manager.cert-manager.cluster.local"
+        url: "http://cert-manager.cert-manager.cluster.local:9432"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
