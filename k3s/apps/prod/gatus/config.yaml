@@ -154,7 +154,7 @@ data:
           - type: telegram
 
       - name: Redis
-          url: "tcp://redis-master.redis.svc.cluster.local:6379"
+        url: "tcp://redis-master.redis.svc.cluster.local:6379"
         interval: 60s
         conditions:
           - "[CONNECTED] == true"
