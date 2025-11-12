@@ -154,10 +154,10 @@ data:
           - type: telegram
 
       - name: Redis
-        url: "http://redis-master.redis.cluster.local"
+          url: "tcp://redis-master.redis.svc.cluster.local:6379"
         interval: 60s
         conditions:
-          - "[STATUS] == 200"
+          - "[CONNECTED] == true"
         alerts:
           - type: telegram
 
@@ -179,9 +179,9 @@ data:
           - type: telegram
 
       - name: PG Backup (barman-cloud)
-        url: "http://barman-cloud.cnpg-system.svc.cluster.local:9090"
+        url: "tcp://barman-cloud.cnpg-system.svc.cluster.local:9090"
         interval: 60s
         conditions:
-          - "[STATUS] == 200"
+          - "[CONNECTED] == true"
         alerts:
           - type: telegram
