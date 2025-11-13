@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: beszel-hub
-          image: ghcr.io/henrygd/beszel/beszel:0.15.4
+          image: ghcr.io/henrygd/beszel/beszel:0.16.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
