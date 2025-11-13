@@ -162,10 +162,10 @@ data:
           - type: telegram
 
       - name: Cert Manager
-        url: "http://cert-manager.cert-manager.cluster.local:9432"
+        url: "http://cert-manager-webhook.cert-manager.svc.cluster.local:9402"
         interval: 60s
         conditions:
-          - "[STATUS] == 200"
+          - "[CONNECTED] == true"
         alerts:
           - type: telegram
 
