@@ -35,7 +35,7 @@ resource "proxmox_vm_qemu" "k3s_agents" {
     # cpu
     cpu {
       sockets = 1
-      cores = 4
+      cores = 6
       type = "x86-64-v2-AES"
     }
     # memory
