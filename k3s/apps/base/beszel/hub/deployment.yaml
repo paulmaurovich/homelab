@@ -6,7 +6,7 @@ metadata:
   namespace: beszel
 spec:
   strategy:
-  type: RollingUpdate
+    type: Recreate
   selector:
     matchLabels:
       app: beszel-hub
