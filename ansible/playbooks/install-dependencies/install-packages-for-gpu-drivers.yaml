@@ -1,0 +1,27 @@
+---
+- name: Install packages for GPU drivers and reboot machine
+  hosts:
+    - k3s_agents
+  become: yes
+  gather_facts: false
+  serial: 1
+
+  tasks:
+    - name: Install linux-generic-hwe-24.04 package
+      apt:
+        name: linux-generic-hwe-24.04
+        state: present
+        update_cache: yes
+
+    - name: Ensure qemu-guest-agent is enabled and started
+      systemd:
+        name: qemu-guest-agent
+        enabled: yes
+        state: started
+
+    - name: Reboot the host and wait
+      ansible.builtin.reboot:
+          reboot_timeout: 600
+          connect_timeout: 30
+          pre_reboot_delay: 0
+          post_reboot_delay: 10
