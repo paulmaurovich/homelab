@@ -16,6 +16,11 @@ spec:
       containers:
         - name: apprise
           image: caronc/apprise:1.2
+          resources:
+            requests:
+              memory: "200Mi"
+            limits:
+              memory: "200Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
