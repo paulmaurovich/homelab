@@ -1,7 +1,7 @@
 ---
 - name: Install packages for GPU drivers and reboot machine
   hosts:
-    - k3s_agents
+    - k3s-agent-2
   become: yes
   gather_facts: false
   serial: 1
