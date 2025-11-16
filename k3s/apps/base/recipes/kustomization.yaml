@@ -1,5 +1,6 @@
 resources:
-  - ./recipes-ns.yaml
-  - ./recipes.yaml
-  - ./recipes-staticfiles.yaml
-  - ./recipes-mediafiles.yaml
+  - ./namespace.yaml
+  - ./deployment.yaml
+  - ./mediafiles-storage.yaml
+  - ./staticfiles-storage.yaml
+  - ./service.yaml

@@ -35,19 +35,3 @@ spec:
         - name: recipes-mediafiles
           persistentVolumeClaim:
             claimName: recipes-mediafiles
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: recipes
-  namespace: recipes
-  labels:
-    app: recipes
-spec:
-  type: ClusterIP
-  selector:
-    app: recipes
-  ports:
-    - port: 80
-      targetPort: 80
-      name: http
