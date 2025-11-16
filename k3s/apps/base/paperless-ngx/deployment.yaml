@@ -5,6 +5,7 @@ metadata:
   name: paperless-ngx
   namespace: paperless-ngx
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: paperless-ngx
@@ -20,6 +21,11 @@ spec:
           ports:
             - name: http
               containerPort: 8000
+          resources:
+            requests:
+              memory: 512Mi
+            limits:
+              memory: 1024Mi
           envFrom:
             - configMapRef:
                 name: paperless-ngx-config
