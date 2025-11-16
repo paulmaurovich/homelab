@@ -3,4 +3,4 @@ resources:
   - ./database.yaml
   - ./database-auth.k8s.enc.yaml
   - ./db-secrets.k8s.enc.yaml
-  - ./vaultwarden-yubikey-secrets.k8s.enc.yaml
+  - ./yubikey-secrets.k8s.enc.yaml
