@@ -31,8 +31,10 @@ spec:
           # pass through iGPU to allow hardware transcoding
           resources:
             requests:
+              memory: 320Mi
               gpu.intel.com/i915: "1"
             limits:
+              memory: 1024Mi
               gpu.intel.com/i915: "1"
           ports:
             - name: http
