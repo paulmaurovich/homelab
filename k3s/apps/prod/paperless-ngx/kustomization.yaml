@@ -1,5 +1,5 @@
 resources:
-  - ./paperless-ngx-config.yaml
-  - ./paperless-ngx-secrets.k8s.enc.yaml
-  - ./paperless-ngx-db-auth.k8s.enc.yaml
-  - ./paperless-ngx-database.yaml
+  - ./config.yaml
+  - ./secrets.k8s.enc.yaml
+  - ./db-auth.k8s.enc.yaml
+  - ./database.yaml
