@@ -1,2 +1,4 @@
 resources:
-  - it-tools.yaml
+  - ./namespace.yaml
+  - ./deployment.yaml
+  - ./service.yaml
