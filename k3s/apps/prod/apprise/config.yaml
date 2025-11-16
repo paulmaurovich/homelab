@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config
+  name: apprise-config
   namespace: apprise
 data:
   APPRISE_WORKER_COUNT: "2"
