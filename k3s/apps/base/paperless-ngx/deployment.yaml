@@ -1,9 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: paperless-ngx
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,19 +32,3 @@ spec:
         - name: paparless-ngx-documents
           persistentVolumeClaim:
             claimName: paperless-ngx-nfs-pvc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: paperless-ngx
-  namespace: paperless-ngx
-  labels:
-    app: paperless-ngx
-spec:
-  type: ClusterIP
-  selector:
-    app: paperless-ngx
-  ports:
-    - port: 80
-      targetPort: 8000
-      name: http
