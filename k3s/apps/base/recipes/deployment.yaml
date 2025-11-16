@@ -19,6 +19,11 @@ spec:
           ports:
             - name: http
               containerPort: 80
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 700Mi
           imagePullPolicy: IfNotPresent
           envFrom:
             - secretRef:
