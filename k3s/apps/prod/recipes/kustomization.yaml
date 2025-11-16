@@ -1,4 +1,4 @@
 resources:
-  - ./recipes-database.yaml
-  - ./recipes-db-auth.k8s.enc.yaml
-  - ./recipes-secrets.k8s.enc.yaml
+  - ./database.yaml
+  - ./db-auth.k8s.enc.yaml
+  - ./secrets.k8s.enc.yaml
