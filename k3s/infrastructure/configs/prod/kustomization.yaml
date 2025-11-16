@@ -2,5 +2,5 @@ resources:
   - ../base
   - ./cert-manager
   - ./traefik
-  - ./cnpg
+  - ./cloudnativepg
   - ./redis
