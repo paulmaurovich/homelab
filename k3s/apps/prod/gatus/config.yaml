@@ -26,10 +26,11 @@ data:
           - type: telegram
 
       - name: Miniflux
-        url: "http://miniflux.miniflux.svc.cluster.local"
+        url: "http://miniflux.miniflux.svc.cluster.local/healthcheck"
         interval: 300s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY] == OK"
         alerts:
           - type: telegram
 
@@ -50,7 +51,7 @@ data:
           - type: telegram
 
       - name: Vaultwarden
-        url: "http://vaultwarden.vaultwarden.svc.cluster.local"
+        url: "http://vaultwarden.vaultwarden.svc.cluster.local/alive"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
@@ -58,15 +59,16 @@ data:
           - type: telegram
 
       - name: Jellyfin
-        url: "http://jellyfin.jellyfin.svc.cluster.local"
+        url: "http://jellyfin.jellyfin.svc.cluster.local/health"
         interval: 120s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY] == Healthy"
         alerts:
           - type: telegram
 
       - name: Jellyseerr
-        url: "http://jellyseerr.jellyseerr.svc.cluster.local"
+        url: "http://jellyseerr.jellyseerr.svc.cluster.local/api/v1/status"
         interval: 120s
         conditions:
           - "[STATUS] == 200"
@@ -74,31 +76,35 @@ data:
           - type: telegram
 
       - name: Radarr
-        url: "http://radarr.radarr.svc.cluster.local"
+        url: "http://radarr.radarr.svc.cluster.local/ping"
         interval: 120s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY].status == OK"
         alerts:
           - type: telegram
 
       - name: Sonarr
-        url: "http://sonarr.sonarr.svc.cluster.local"
+        url: "http://sonarr.sonarr.svc.cluster.local/ping"
         interval: 120s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY].status == OK"
         alerts:
           - type: telegram
 
       - name: Prowlarr
-        url: "http://prowlarr.prowlarr.svc.cluster.local"
+        url: "http://prowlarr.prowlarr.svc.cluster.local/ping"
         interval: 120s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY].status == OK"
         alerts:
           - type: telegram
 
+      # NOTE: Using version API as health; replace TODO with actual API key.
       - name: Sabnzbd
-        url: "http://sabnzbd.sabnzbd.svc.cluster.local"
+        url: "http://sabnzbd.sabnzbd.svc.cluster.local/api?mode=version&apikey=${SABNZBD_API_KEY}"
         interval: 120s
         conditions:
           - "[STATUS] == 200"
@@ -106,15 +112,17 @@ data:
           - type: telegram
 
       - name: Gotify
-        url: "http://gotify.gotify.svc.cluster.local"
+        url: "http://gotify.gotify.svc.cluster.local/health"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY].health == green"
+          - "[BODY].database == green"
         alerts:
           - type: telegram
 
       - name: Portainer
-        url: "http://portainer.portainer.svc.cluster.local"
+        url: "http://portainer.portainer.svc.cluster.local/api/status"
         interval: 300s
         conditions:
           - "[STATUS] == 200"
@@ -130,26 +138,29 @@ data:
           - type: telegram
 
       - name: pgAdmin
-        url: "http://pgadmin.pgadmin.svc.cluster.local"
+        url: "http://pgadmin.pgadmin.svc.cluster.local/misc/ping"
         interval: 300s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY] == PING"
         alerts:
           - type: telegram
 
       - name: Apprise
-        url: "http://apprise.apprise.svc.cluster.local"
+        url: "http://apprise.apprise.svc.cluster.local/status"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY] == OK"
         alerts:
           - type: telegram
 
       - name: Beszel
-        url: "http://beszel-hub.beszel.svc.cluster.local"
+        url: "http://beszel-hub.beszel.svc.cluster.local/api/health"
         interval: 30s
         conditions:
           - "[STATUS] == 200"
+          - "[BODY].code == 200"
         alerts:
           - type: telegram
 
@@ -158,6 +169,7 @@ data:
         interval: 60s
         conditions:
           - "[CONNECTED] == true"
+          - "[RESPONSE_TIME] < 800"
         alerts:
           - type: telegram
 
