@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: recipes
-          image: ghcr.io/tandoorrecipes/recipes:2.3.3
+          image: ghcr.io/tandoorrecipes/recipes:2.3.5
           ports:
             - name: http
               containerPort: 80
