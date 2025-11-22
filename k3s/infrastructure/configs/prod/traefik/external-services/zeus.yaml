@@ -50,3 +50,4 @@ spec:
         - name: external-zeus
           port: 8006
           scheme: https
+          serversTransport: proxmox-insecure
