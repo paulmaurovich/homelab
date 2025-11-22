@@ -3,3 +3,4 @@ resources:
   - ./portainer
   - ./homarr
   - ./pgadmin
+  - ./monitoring

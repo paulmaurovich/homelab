@@ -10,3 +10,4 @@ resources:
   - ./intel-gpu-device-plugin
   - ./node-feature-discovery
   - ./pgadmin
+  - ./monitoring
