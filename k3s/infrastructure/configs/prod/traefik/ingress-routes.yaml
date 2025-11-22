@@ -311,5 +311,5 @@ spec:
     - kind: Rule
       match: Host(`grafana-prod.maurovi.ch`)
       services:
-        - name: service
-          port: http
+        - name: grafana
+          port: service
