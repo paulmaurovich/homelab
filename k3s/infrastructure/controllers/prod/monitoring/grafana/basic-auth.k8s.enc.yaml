@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: basic-auth
+    namespace: monitoring
+type: Opaque
+data:
+    username: ENC[AES256_GCM,data:Z8tbYNAZDsER4oOcN84KKHSGj5jj0ZyQXw==,iv:/dYQzVXE8oR7zXgeexr1NcejXr2LkjCwzi27gEHZvYk=,tag:GqSH+Ew6eNM+NPWU/tlQtw==,type:str]
+    password: ENC[AES256_GCM,data:HrWhtoWpgI9LK/ap9sFwIoJuzsC6uu9s1uK/IDiz,iv:u/I0pwptIpqSlkptLER2zFiHzBzLEpR3d3uTKk/n+2I=,tag:Y+OdRgLztxKEaRkOvDMHbg==,type:str]
+sops:
+    age:
+        - recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlQkJxZkFaRHdDQ1YvRVlw
+            NFFzeWhuazRXOThaS1MzN1ZnbnRrMjRudm1VClg1SnNWOWdxaGpjM3Zja0RLRDZP
+            NGZ4QlVxVStid3B2RlFNVldIZ0x0ZjQKLS0tIHJhZkpCc0UxTzZ1bjlCdmY4Y1hq
+            Mm1neVJ4bXYvQ05yc1hMWlZKWGVUd1kK7YTqAm325ehgHNHQ6ilJWDEPkIk+qgrv
+            9tCELS7ECR8vZ9FfKyk6ztdQE9wYRpU8bZg+SYQLWyggDpxGbwaSKg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-11-23T18:16:22Z"
+    mac: ENC[AES256_GCM,data:uCm+fNw5lmHBTpxpO2/PfHv/to8MlmHDFh+EQ8wV7fo5r4jcqiVXsHYqIywjUn68slFUabdjE6byHqF5v2POXRIXvyVhb+VHX2s0o3c9sTYw2WbXqyeVv+kyJL8g1hPNAyA16vFRU9Jvkcy6onQOD1efllGh0IJBSxMICilxAfk=,iv:bBrxlgchTvIggPaJoe83xiVDCcAelL4NJU99L86b+7A=,tag:/ycPvFM1MW0Do7Oy1/R5BA==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.11.0

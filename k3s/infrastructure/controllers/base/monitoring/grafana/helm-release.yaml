@@ -16,8 +16,10 @@ spec:
         name: grafana
         namespace: monitoring
   values:
-    adminUser: admin
-    adminPassword: "change-me" # TODO: move to Secret later via SOPS
+    admin:
+      existingSecret: basic-auth
+      userKey: username
+      passwordKey: password
     persistence:
       enabled: true
       storageClassName: ""
