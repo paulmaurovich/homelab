@@ -11,3 +11,4 @@ resources:
   - ./node-feature-discovery
   - ./pgadmin
   - ./monitoring
+  - ./grafana
