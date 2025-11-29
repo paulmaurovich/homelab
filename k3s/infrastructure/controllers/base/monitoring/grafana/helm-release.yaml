@@ -22,5 +22,4 @@ spec:
       passwordKey: password
     persistence:
       enabled: true
-      storageClassName: ""
-      volumeName: grafana
+      existingClaim: grafana

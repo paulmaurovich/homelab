@@ -14,3 +14,17 @@ spec:
   nfs:
     server: 192.168.0.30
     path: /mnt/pool1/containers/persistent/grafana
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  volumeName: grafana
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10G
+  storageClassName: ""
