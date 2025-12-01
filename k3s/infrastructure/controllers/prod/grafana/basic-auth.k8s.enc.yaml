@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: basic-auth
-    namespace: monitoring
+    namespace: grafana
 type: Opaque
 stringData:
     username: ENC[AES256_GCM,data:DOrTyKiy85DgLIicsIybzoUK6cc5BjmYEg==,iv:WNyfqJjaEmMPwvrchLS0GEX4B3XUnBCY34VQFmyqfz0=,tag:ndO7I6tR4FWGbHOGnfNKMg==,type:str]
@@ -18,7 +18,7 @@ sops:
             Mm1neVJ4bXYvQ05yc1hMWlZKWGVUd1kK7YTqAm325ehgHNHQ6ilJWDEPkIk+qgrv
             9tCELS7ECR8vZ9FfKyk6ztdQE9wYRpU8bZg+SYQLWyggDpxGbwaSKg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-11-23T18:23:17Z"
-    mac: ENC[AES256_GCM,data:emSmviAngitjKx5ftmbUnDv9kxGHGTjWXan5LwuNx2pI4PQDTw/VefJMHyzee5DLrSTPqRxBqQBiCVuqH5JYoS3uHW/WVZUfrwQtJPQcEBmY69Q7t92qSkyg5yJ2OgHTYlBXqYW7K6pFDYdrgFafJZYhFRn5URDLG159pYrPVJc=,iv:PaXqUlVulL5euyWeOtx6lg8E6OT2XZgAQe1RvntcwUc=,tag:ct254wruXPIOUsxi5JUoMw==,type:str]
+    lastmodified: "2025-12-01T20:10:33Z"
+    mac: ENC[AES256_GCM,data:5MW5CPbq5l3BB+nclACdfWOvwG1cmSzgBuyfvGGkwaCcgS+htQUQOCiuO3RoOFFoCwabxbHWvDc7g1K1Mwm2ttSbc8I6vXFoMMWr3222MPiIHmLY4fcUDubuExdJ7pzy5WUwqj5nhz+ErK7jrWv68yXtk3BJASRHZCWkF6NQNUk=,iv:n7RrE4WFvSVLLqwAg5gkkkgDWKVZCgkPjlyYHY9e248=,tag:NOoXE7BaBzLRIZCQZRpJ8g==,type:str]
     encrypted_regex: ^(data|stringData)$
     version: 3.11.0
