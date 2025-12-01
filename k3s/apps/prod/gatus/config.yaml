@@ -222,7 +222,8 @@ data:
         url: "http://grafana.grafana.svc.cluster.local/api/health"
         interval: 60s
         conditions:
-          - "[CONNECTED] == true"
+          - "[STATUS] == 200"
+          - "[BODY] == Ok"
         alerts:
           - type: telegram
             send-on-resolved: true
