@@ -217,3 +217,12 @@ data:
         alerts:
           - type: telegram
             send-on-resolved: true
+
+      - name: Grafana
+        url: "http://grafana.grafana.svc.cluster.local/api/health"
+        interval: 60s
+        conditions:
+          - "[CONNECTED] == true"
+        alerts:
+          - type: telegram
+            send-on-resolved: true
