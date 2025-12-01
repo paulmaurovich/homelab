@@ -24,6 +24,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Miniflux
         url: "http://miniflux.miniflux.svc.cluster.local/healthcheck"
@@ -33,6 +34,7 @@ data:
           - "[BODY] == OK"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Paperless-ngx
         url: "http://paperless-ngx.paperless-ngx.svc.cluster.local"
@@ -41,6 +43,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Recipes
         url: "http://recipes.recipes.svc.cluster.local"
@@ -49,6 +52,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Vaultwarden
         url: "http://vaultwarden.vaultwarden.svc.cluster.local/alive"
@@ -57,6 +61,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Jellyfin
         url: "http://jellyfin.jellyfin.svc.cluster.local/health"
@@ -66,6 +71,7 @@ data:
           - "[BODY] == Healthy"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Jellyseerr
         url: "http://jellyseerr.jellyseerr.svc.cluster.local/api/v1/status"
@@ -74,6 +80,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Radarr
         url: "http://radarr.radarr.svc.cluster.local/ping"
@@ -83,6 +90,7 @@ data:
           - "[BODY].status == OK"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Sonarr
         url: "http://sonarr.sonarr.svc.cluster.local/ping"
@@ -92,6 +100,7 @@ data:
           - "[BODY].status == OK"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Prowlarr
         url: "http://prowlarr.prowlarr.svc.cluster.local/ping"
@@ -101,6 +110,7 @@ data:
           - "[BODY].status == OK"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       # NOTE: Using version API as health; replace TODO with actual API key.
       - name: Sabnzbd
@@ -110,6 +120,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Gotify
         url: "http://gotify.gotify.svc.cluster.local/health"
@@ -120,6 +131,7 @@ data:
           - "[BODY].database == green"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Portainer
         url: "http://portainer.portainer.svc.cluster.local/api/status"
@@ -128,6 +140,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Homarr
         url: "http://homarr.homarr.svc.cluster.local:7575"
@@ -136,6 +149,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: pgAdmin
         url: "http://pgadmin.pgadmin.svc.cluster.local/misc/ping"
@@ -145,6 +159,7 @@ data:
           - "[BODY] == PING"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Apprise
         url: "http://apprise.apprise.svc.cluster.local/status"
@@ -154,6 +169,7 @@ data:
           - "[BODY] == OK"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Beszel
         url: "http://beszel-hub.beszel.svc.cluster.local/api/health"
@@ -163,6 +179,7 @@ data:
           - "[BODY].code == 200"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Redis
         url: "tcp://redis-master.redis.svc.cluster.local:6379"
@@ -172,6 +189,7 @@ data:
           - "[RESPONSE_TIME] < 800"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Cert Manager
         url: "http://cert-manager-webhook.cert-manager.svc.cluster.local:9402"
@@ -180,6 +198,7 @@ data:
           - "[CONNECTED] == true"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: Postgres (cnpg-rw)
         url: "tcp://cn-postgresql-cluster-rw.cnpg-system.svc.cluster.local:5432"
@@ -189,6 +208,7 @@ data:
           - "[RESPONSE_TIME] < 2000"
         alerts:
           - type: telegram
+            send-on-resolved: true
 
       - name: PG Backup (barman-cloud)
         url: "tcp://barman-cloud.cnpg-system.svc.cluster.local:9090"
@@ -197,3 +217,4 @@ data:
           - "[CONNECTED] == true"
         alerts:
           - type: telegram
+            send-on-resolved: true
