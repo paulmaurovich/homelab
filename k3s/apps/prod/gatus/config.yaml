@@ -219,7 +219,7 @@ data:
             send-on-resolved: true
 
       - name: Grafana
-        url: "http://grafana.grafana.svc.cluster.local/api/health"
+        url: "http://grafana.grafana.svc.cluster.local/healthz"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
