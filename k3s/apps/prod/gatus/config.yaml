@@ -112,7 +112,6 @@ data:
           - type: telegram
             send-on-resolved: true
 
-      # NOTE: Using version API as health; replace TODO with actual API key.
       - name: Sabnzbd
         url: "http://sabnzbd.sabnzbd.svc.cluster.local/api?mode=version&apikey=${SABNZBD_API_KEY}"
         interval: 120s
