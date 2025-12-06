@@ -12,3 +12,4 @@ resources:
   - ./pgadmin
   - ./monitoring
   - ./grafana
+  - ./promtail
