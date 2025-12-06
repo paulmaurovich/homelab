@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: loki
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: loki
+      version: 6.46.0
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: monitoring
+  values:
+    deploymentMode: SingleBinary
+    loki:
+      auth_enabled: false
+      commonConfig:
+        replication_factor: 1
+      storage:
+        type: filesystem
+
+    singleBinary:
+      replicas: 1
+      persistence:
+        # If set to 'true' the charts will create a PVC named storage
+        # (which results in storage-loki-0)
+        # and mount it to /var/loki which you do not want.
+        # So make sure to set it to false.
+        enabled: false
+        # https://github.com/grafana/loki/issues/8180
+        extraVolumeMounts:
+          - name: persistent-storage
+            mountPath: /var/loki
+        extraVolumes:
+          - name: persistent-storage
+            persistentVolumeClaim:
+              claimName: loki
