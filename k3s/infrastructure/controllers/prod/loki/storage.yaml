@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: loki
+  namespace: loki
+spec:
+  capacity:
+    storage: 50G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/loki
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: loki
+  namespace: loki
+spec:
+  volumeName: loki
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50G
+  storageClassName: ""

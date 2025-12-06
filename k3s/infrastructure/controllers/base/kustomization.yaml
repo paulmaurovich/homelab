@@ -12,4 +12,5 @@ resources:
   - ./pgadmin
   - ./monitoring
   - ./grafana
+  - ./loki
   - ./promtail

@@ -4,3 +4,4 @@ resources:
   - ./homarr
   - ./pgadmin
   - ./grafana
+  - ./loki
