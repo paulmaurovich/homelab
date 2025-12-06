@@ -40,3 +40,29 @@ spec:
           - name: persistent-storage
             persistentVolumeClaim:
               claimName: loki
+      # It is necessary to zero out replica counts of other deployment modes
+      # when using 'singleBinary', otherwise, the deployment will fail.
+      backend:
+        replicas: 0
+      read:
+        replicas: 0
+      write:
+        replicas: 0
+      ingester:
+        replicas: 0
+      querier:
+        replicas: 0
+      queryFrontend:
+        replicas: 0
+      queryScheduler:
+        replicas: 0
+      distributor:
+        replicas: 0
+      compactor:
+        replicas: 0
+      indexGateway:
+        replicas: 0
+      bloomCompactor:
+        replicas: 0
+      bloomGateway:
+        replicas: 0
