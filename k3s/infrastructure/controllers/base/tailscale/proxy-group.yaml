@@ -1,9 +1,0 @@
----
-apiVersion: tailscale.com/v1alpha1
-kind: ProxyGroup
-metadata:
-  name: proxy-group
-  namespace: tailscale
-spec:
-  type: egress
-  replicas: 9 # running on each node
