@@ -19,8 +19,7 @@ spec:
     daemonset:
       enabled: true
     clients:
-      - url: http://loki.loki.svc.cluster.local/loki/api/v1/push
-        tenant_id: 1
+      - url: http://loki.loki.svc.cluster.local:3100/loki/api/v1/push
     # allow promtail to be scheduled on all nodes (even/especially postres workers)
     tolerations:
       - effect: NoSchedule
