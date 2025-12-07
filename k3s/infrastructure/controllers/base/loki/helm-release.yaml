@@ -51,10 +51,13 @@ spec:
         # and mount it to /var/loki which you do not want.
         # So make sure to set it to false.
         enabled: false
+        accessModes:
+          - ReadWriteMany
         # https://github.com/grafana/loki/issues/8180
         extraVolumeMounts:
           - name: persistent-storage
             mountPath: /var/loki
+            readOnly: false
         extraVolumes:
           - name: persistent-storage
             persistentVolumeClaim:
