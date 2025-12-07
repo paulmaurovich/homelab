@@ -62,6 +62,10 @@ spec:
 
       # It is necessary to zero out replica counts of other deployment modes
       # when using 'singleBinary', otherwise, the deployment will fail.
+      gateway:
+        enabled: false
+      test:
+        enabled: false
       backend:
         replicas: 0
       read:
