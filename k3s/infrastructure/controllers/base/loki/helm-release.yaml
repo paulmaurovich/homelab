@@ -17,11 +17,12 @@ spec:
         namespace: monitoring
   values:
     deploymentMode: SingleBinary
+
     loki:
       commonConfig:
         replication_factor: 1
       storage:
-        type: filesystem
+        type: "filesystem"
       schemaConfig:
         configs:
           - from: "2025-01-01"
@@ -38,6 +39,10 @@ spec:
         volume_enabled: true
       ruler:
         enable_api: true
+
+    minio:
+      enabled: false
+
     singleBinary:
       replicas: 1
       persistence:
@@ -54,6 +59,7 @@ spec:
           - name: persistent-storage
             persistentVolumeClaim:
               claimName: loki
+
       # It is necessary to zero out replica counts of other deployment modes
       # when using 'singleBinary', otherwise, the deployment will fail.
       backend:
@@ -62,6 +68,7 @@ spec:
         replicas: 0
       write:
         replicas: 0
+
       ingester:
         replicas: 0
       querier:
