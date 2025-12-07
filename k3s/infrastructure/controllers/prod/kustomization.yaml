@@ -5,3 +5,4 @@ resources:
   - ./pgadmin
   - ./grafana
   - ./loki
+  - ./tailscale
