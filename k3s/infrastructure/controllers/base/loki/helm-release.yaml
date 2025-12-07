@@ -48,20 +48,7 @@ spec:
       persistence:
         # If set to 'true' the charts will create a PVC named storage
         # (which results in storage-loki-0)
-        # and mount it to /var/loki which you do not want.
-        # So make sure to set it to false.
-        enabled: false
-        accessModes:
-          - ReadWriteMany
-        # https://github.com/grafana/loki/issues/8180
-        extraVolumeMounts:
-          - name: persistent-storage
-            mountPath: /var/loki
-            readOnly: false
-        extraVolumes:
-          - name: persistent-storage
-            persistentVolumeClaim:
-              claimName: loki
+        enabled: true
 
     # It is necessary to zero out replica counts of other deployment modes
     # when using 'singleBinary', otherwise, the deployment will fail.
