@@ -3,3 +3,4 @@ resources:
   - ./helm-repository.yaml
   - ./helm-release.yaml
   - ./proxy-group.yaml
+  - ./connector-exitnode.yaml

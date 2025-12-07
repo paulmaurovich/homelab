@@ -1,0 +1,9 @@
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: tailscale-exit-ndoe
+  namespace: tailscale
+spec:
+  replicas: 1
+  exitNode: true
