@@ -41,3 +41,19 @@ spec:
               timeout: 60
               derivedFields: []
             secureJsonData: {}
+
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: homelab
+            orgId: 1
+            folder: Homelab
+            type: file
+            disableDeletion: false
+            editable: false
+            updateIntervalSeconds: 30
+            options:
+              path: /var/lib/grafana/dashboards/homelab
+    dashboardsConfigMaps:
+      homelab: homelab-dashboard

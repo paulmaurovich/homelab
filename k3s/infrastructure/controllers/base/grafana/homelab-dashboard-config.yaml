@@ -1,0 +1,191 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homelab-dashboard
+  namespace: grafana
+data:
+  loki-logs-and-nodes.json: |
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "target": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            },
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": false,
+      "fiscalYearStartMonth": 1,
+      "graphTooltip": 0,
+      "id": null,
+      "iteration": 1710000000000,
+      "liveNow": false,
+      "panels": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "loki-0"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "spanNulls": true
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "id": 1,
+          "options": {
+            "dedupStrategy": "none",
+            "enableLogDetails": true,
+            "prettifyLogMessage": true,
+            "showCommonLabels": true,
+            "showLabels": true,
+            "showTime": true,
+            "sortOrder": "Descending",
+            "wrapLogMessage": false
+          },
+          "targets": [
+            {
+              "expr": "{job=\"promtail\"}",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "Cluster logs (last 15m)",
+          "type": "logs"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "loki-0"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "drawStyle": "line",
+                "fillOpacity": 12,
+                "lineInterpolation": "smooth",
+                "lineWidth": 2
+              },
+              "unit": "logs/s"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 12
+          },
+          "id": 2,
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "expr": "sum(rate({job=\"promtail\"}[$__interval])) by (instance)",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "Log throughput per node",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "loki-0"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [],
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 12
+          },
+          "id": 3,
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "count"
+              }
+            ]
+          },
+          "pluginVersion": "10.4.0",
+          "targets": [
+            {
+              "expr": "topk(5, sum by (namespace) (count_over_time({job=\"promtail\"}[$__interval])))",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "Top 5 noisy namespaces",
+          "transformations": [
+            {
+              "id": "seriesToColumns",
+              "options": {
+                "byField": "namespace"
+              }
+            }
+          ],
+          "type": "table"
+        }
+      ],
+      "refresh": "30s",
+      "schemaVersion": 39,
+      "style": "dark",
+      "tags": [
+        "homelab",
+        "loki"
+      ],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "Loki Logs & Node Overview",
+      "uid": "homelab-loki-v1",
+      "version": 1,
+      "weekStart": ""
+    }
