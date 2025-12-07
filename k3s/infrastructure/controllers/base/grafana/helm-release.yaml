@@ -23,3 +23,21 @@ spec:
     persistence:
       enabled: true
       existingClaim: grafana
+
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        deleteDatasources: []
+        datasources:
+          - name: loki-0
+            uid: loki-0
+            type: loki
+            access: proxy
+            url: http://loki-gateway.loki.svc.cluster.local
+            isDefault: true
+            editable: false # prevents UI edits that diverge from Git
+            jsonData:
+              maxLines: 1000
+              timeout: 60
+              derivedFields: []
+            secureJsonData: {}
