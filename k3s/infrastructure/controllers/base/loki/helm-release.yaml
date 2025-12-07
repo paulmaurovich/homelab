@@ -64,6 +64,10 @@ spec:
       # when using 'singleBinary', otherwise, the deployment will fail.
       gateway:
         enabled: false
+        replicas: 0
+      lokiCanary:
+        enabled: false
+        replicas: 0
       test:
         enabled: false
       backend:
@@ -73,8 +77,6 @@ spec:
       write:
         replicas: 0
 
-      ingester:
-        replicas: 0
       querier:
         replicas: 0
       queryFrontend:
