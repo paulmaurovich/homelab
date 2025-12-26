@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: sonarr
-          image: ghcr.io/linuxserver/sonarr:4.0.15.2941-ls292
+          image: linuxserver/sonarr:4.0.16.2944
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
