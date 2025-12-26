@@ -6,6 +6,16 @@ metadata:
   namespace: cnpg-system
 spec:
   instances: 3
+  postgresql:
+    parameters:
+      # If a replica lags by 2GB of WAL, invalidate the slot.
+      max_slot_wal_keep_size: "2GB"
+      # Trigger cleanup more frequently.
+      max_wal_size: "1GB"
+      min_wal_size: "80MB"
+      # Force switch WAL file every 5 mins
+      # ensuring R2 backups stay fresh even with low traffic.
+      archive_timeout: "5min"
   monitoring:
     enablePodMonitor: true
   storage:
@@ -35,6 +45,7 @@ spec:
       isWALArchiver: true
       parameters:
         barmanObjectName: cn-barman-cloud-cloudflare-object-store
+
   managed:
     roles:
       - name: app
