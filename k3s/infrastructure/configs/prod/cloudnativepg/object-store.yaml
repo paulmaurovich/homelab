@@ -5,7 +5,7 @@ metadata:
   name: cn-barman-cloud-cloudflare-object-store
   namespace: cnpg-system
 spec:
-  retentionPolicy: 60d
+  retentionPolicy: 30d
   configuration:
     destinationPath: s3://homelab-backups-pg
     endpointURL: https://1fe252835bc6ed045f2ddfbea2933b67.r2.cloudflarestorage.com
