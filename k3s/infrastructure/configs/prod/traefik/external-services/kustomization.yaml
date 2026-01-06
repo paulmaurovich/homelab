@@ -1,3 +1,4 @@
 resources:
   - ./zeus.yaml
   - ./truenas.yaml
+  - ./pi-hole.yaml
