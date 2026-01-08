@@ -15,3 +15,4 @@ resources:
   - ./loki
   - ./promtail
   - ./tailscale
+  - ./traefik

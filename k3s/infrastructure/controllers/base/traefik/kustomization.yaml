@@ -1,0 +1,2 @@
+resources:
+  - ./helm-chart-config.yaml
