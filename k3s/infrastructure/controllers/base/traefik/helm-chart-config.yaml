@@ -9,3 +9,6 @@ spec:
     providers:
       kubernetesCRD:
         allowExternalNameServices: true
+    # Disable phone-home telemetry
+    global:
+      sendAnonymousUsage: false
