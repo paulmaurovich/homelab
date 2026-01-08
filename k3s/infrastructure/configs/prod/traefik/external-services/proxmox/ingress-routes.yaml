@@ -1,0 +1,34 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: proxmox
+  namespace: external-routes
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`zeus.maurovi.ch`)
+      kind: Rule
+      services:
+        - name: proxmox-route
+          port: 443
+          scheme: https
+          serversTransport: insecure-skip-verify
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: proxmox-https-redirect
+  namespace: external-routes
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`zeus.maurovi.ch`)
+      kind: Rule
+      middlewares:
+        - name: https-redirect
+      services:
+        - name: noop@internal
+          kind: TraefikService

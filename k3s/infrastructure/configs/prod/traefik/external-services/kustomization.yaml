@@ -1,4 +1,5 @@
 resources:
-  - ./zeus.yaml
-  - ./truenas.yaml
-  - ./pi-hole.yaml
+  - ./namespace.yaml
+  - ./https-redirect-middleware.yaml
+  - ./insecure-skip-verify-servers-transport.yaml
+  - ./proxmox
