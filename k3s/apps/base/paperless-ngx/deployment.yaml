@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: paperless-ngx
-          image: ghcr.io/paperless-ngx/paperless-ngx:2.20.3
+          image: ghcr.io/paperless-ngx/paperless-ngx:2.20.4
           imagePullPolicy: Always
           ports:
             - name: http
