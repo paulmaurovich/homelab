@@ -13,7 +13,7 @@ spec:
   storageClassName: ""
   nfs:
     server: 192.168.0.30
-    path: /mnt/pool0/media/audioboooks
+    path: /mnt/pool0/media/audiobooks
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
