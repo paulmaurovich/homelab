@@ -15,3 +15,4 @@ resources:
   - ./apprise
   - ./beszel
   - ./gatus
+  - ./audiobookshelf

@@ -227,3 +227,12 @@ data:
         alerts:
           - type: telegram
             send-on-resolved: true
+
+      - name: Audiobookshelf
+        url: "http://audiobookshelf.audiobookshelf.svc.cluster.local/healthcheck"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            send-on-resolved: true

@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: audiobookshelf-config
+  namespace: audiobookshelf
+spec:
+  capacity:
+    storage: 1G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/audiobookshelf/config
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: audiobookshelf
+  name: audiobookshelf-config
+spec:
+  volumeName: audiobookshelf-config
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: ""

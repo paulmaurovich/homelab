@@ -1,0 +1,6 @@
+resources:
+  - ./config.yaml
+  - ./storage-audiobooks.yaml
+  - ./storage-podcasts.yaml
+  - ./storage-config.yaml
+  - ./storage-metadata.yaml

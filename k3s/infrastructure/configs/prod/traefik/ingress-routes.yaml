@@ -298,3 +298,18 @@ spec:
       services:
         - name: grafana
           port: service
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: audiobookshelf
+  namespace: audiobookshelf
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`audiobookshelf-prod.maurovi.ch`)
+      services:
+        - name: audiobookshelf
+          port: http
