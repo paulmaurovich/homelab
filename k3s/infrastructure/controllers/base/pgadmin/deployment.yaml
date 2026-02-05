@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: pgadmin
-          image: dpage/pgadmin4:9.11.0
+          image: dpage/pgadmin4:9.12.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
