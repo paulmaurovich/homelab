@@ -10,8 +10,11 @@ spec:
       app: lazylibrarian
   template:
     metadata:
+      name: lazylibrarian
+      namespace: lazylibrarian
       labels:
         app: lazylibrarian
+    spec:
       containers:
         - name: lazylibrarian
           image: lscr.io/linuxserver/lazylibrarian:version-b4e71a57
