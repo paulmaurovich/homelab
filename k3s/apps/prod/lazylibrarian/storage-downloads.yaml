@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: lazylibrarian-downloads
+  namespace: lazylibrarian
+spec:
+  capacity:
+    storage: 50G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/lazylibrarian/downloads
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: lazylibrarian
+  name: lazylibrarian-data
+spec:
+  volumeName: lazylibrarian-data
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50G
+  storageClassName: ""

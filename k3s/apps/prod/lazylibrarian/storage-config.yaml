@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: lazylibrarian-config
+  namespace: lazylibrarian
+spec:
+  capacity:
+    storage: 5G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/lazylibrarian/config
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: lazylibrarian
+  name: lazylibrarian-config
+spec:
+  volumeName: lazylibrarian-config
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5G
+  storageClassName: ""

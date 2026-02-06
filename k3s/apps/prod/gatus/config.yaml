@@ -236,3 +236,12 @@ data:
         alerts:
           - type: telegram
             send-on-resolved: true
+
+      - name: LazyLibrarian
+        url: "http://lazylibrarian.lazylibrarian.svc.cluster.local"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            send-on-resolved: true

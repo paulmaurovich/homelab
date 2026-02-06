@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lazylibrarian-config
+  namespace: lazylibrarian
+data:
+  TZ: Europe/Vienna

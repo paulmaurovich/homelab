@@ -313,3 +313,18 @@ spec:
       services:
         - name: audiobookshelf
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lazylibrarian
+  namespace: lazylibrarian
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`lazylibrarian-prod.maurovi.ch`)
+      services:
+        - name: lazylibrarian
+          port: http

@@ -16,3 +16,4 @@ resources:
   - ./beszel
   - ./gatus
   - ./audiobookshelf
+  - ./lazylibrarian

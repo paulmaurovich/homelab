@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lazylibrarian
+  namespace: lazylibrarian
+spec:
+  selector:
+    matchLabels:
+      app: lazylibrarian
+  template:
+    metadata:
+      labels:
+        app: lazylibrarian
+      containers:
+        - name: lazylibrarian
+          image: lscr.io/linuxserver/lazylibrarian:version-b4e71a57
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 5299
+          envFrom:
+            - configMapRef:
+                name: lazylibrarian-config
+          volumeMounts:
+            - name: lazylibrarian-config
+              mountPath: /config
+            - name: lazylibrarian-downloads
+              mountPath: /downloads
+            - name: lazylibrarian-audiobooks
+              mountPath: /media/audiobooks
+            - name: lazylibrarian-ebooks
+              mountPath: /media/books
+      volumes:
+        - name: lazylibrarian-config
+          persistentVolumeClaim:
+            claimName: lazylibrarian-config
+        - name: lazylibrarian-downloads
+          persistentVolumeClaim:
+            claimName: lazylibrarian-downloads
+        - name: lazylibrarian-audiobooks
+          persistentVolumeClaim:
+            claimName: lazylibrarian-audiobooks
+        - name: lazylibrarian-ebooks
+          persistentVolumeClaim:
+            claimName: lazylibrarian-ebooks

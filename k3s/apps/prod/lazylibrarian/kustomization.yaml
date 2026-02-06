@@ -1,0 +1,6 @@
+resources:
+  - ./config.yaml
+  - ./storage-audiobooks.yaml
+  - ./storage-config.yaml
+  - ./storage-downloads.yaml
+  - ./storage-ebooks.yaml
