@@ -33,7 +33,7 @@ spec:
             - name: lazylibrarian-audiobooks
               mountPath: /media/audiobooks
             - name: lazylibrarian-ebooks
-              mountPath: /media/books
+              mountPath: /media/ebooks
       volumes:
         - name: lazylibrarian-config
           persistentVolumeClaim:
