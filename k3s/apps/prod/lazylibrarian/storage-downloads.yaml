@@ -19,9 +19,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: lazylibrarian
-  name: lazylibrarian-data
+  name: lazylibrarian-downloads
 spec:
-  volumeName: lazylibrarian-data
+  volumeName: lazylibrarian-downloads
   accessModes:
     - ReadWriteMany
   resources:
