@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: gotify
-          image: ghcr.io/gotify/server:2.8.0
+          image: ghcr.io/gotify/server:2.9.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
