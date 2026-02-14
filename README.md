@@ -74,7 +74,7 @@ A High-Availability K3s cluster. Network connectivity is handled via **Tailscale
 
 ---
 
-## 🔧 Engineering Highlights
+## 🔧 Systems in place
 
 ### 1. Database Reliability (CNPG)
 
@@ -93,8 +93,8 @@ Unlike standard StatefulSets, this cluster uses the **CloudNativePG** operator.
 
 Secrets are managed via **(Mozilla) SOPS**.
 
-* Encrypted YAML is committed.
-* Flux decrypts manifests in-cluster using the private key stored in a K8s Secret.
+* Encrypted YAML are stored as secrets.
+* Flux decrypts secrets in-cluster using the private key stored in a K8s Secret.
 
 ## 🚀 Bootstrapping
 
