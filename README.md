@@ -37,7 +37,7 @@ The infrastructure is built on the philosopy of the **12-Factor App** principles
 
 * **Immutable Infrastructure:** Servers are provisioned via `Terraform` and bootstrapped via `Ansible`.
 * **GitOps Source of Truth:** The cluster state is reconciled automatically from this repository using FluxCD. No `kubectl apply -f` allowed.
-* **Security First:** All secrets are encrypted via `SOPS` plus `age`). No sensitive data is committed in plain text.
+* **Security First:** All secrets are encrypted via `SOPS` and `age`. No sensitive data is committed in plain text.
 * **Business Continuity:** Critical databases (PostgreSQL and Redis) run in HA clusters with automatic failover and daily backups to offsite object storage (Cloudflare R2).
 
 ![Homelab Architecture](./resources/images/architecture.jpeg)
