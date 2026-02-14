@@ -52,7 +52,7 @@ Proxmox serves as the host for the virtual machines. Its own infrastructure is b
 
 * **3x Server nodes:** Etcd HA, Kubernetes control plane.
 * **3x Worker nodes:** Application workloads.
-* **3x Postgres Worker nodes:** Dedicated ndoes for cloudnative-pg (PostgreSQL) workloads.
+* **3x Postgres Worker nodes:** Dedicated nodes for cloudnative-pg (PostgreSQL) workloads.
 * **3x Load Balancers:** HAProxy + Keepalived (VRRP) providing a Virtual IP for the Kubernetes API.
 
 ### Orchestration (K3s)
