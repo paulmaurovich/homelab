@@ -1,22 +1,42 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":rebaseStalePrs",
+    ":PRHourlyLimitNone",
+    "docker:pinDigests"
   ],
   "enabledManagers": [
     "kubernetes",
-    "flux"
+    "flux",
+    "terraform",
+    "ansible"
   ],
   "kubernetes": {
-    "managerFilePatterns": [
-      "/(^|/)k3s/.*\\.ya?ml$/",
-      "/(^|/)k3s/.*\\.yaml$/"
+    "fileMatch": [
+      "(^|/)k3s/.*\\.ya?ml$"
     ]
   },
   "flux": {
-    "managerFilePatterns": [
-      "/(^|/)k3s/.*\\.ya?ml$/",
-      "/(^|/)k3s/.*\\.yaml$/"
+    "fileMatch": [
+      "(^|/)k3s/.*\\.ya?ml$"
     ]
-  }
+  },
+  "packageRules": [
+    {
+      "description": "Group Flux system components together",
+      "matchPackageNames": [
+        "ghcr.io/fluxcd/**"
+      ],
+      "groupName": "flux-system"
+    },
+    {
+      "description": "Group all linuxserver images (Radarr, Sonarr, etc)",
+      "matchPackageNames": [
+        "lscr.io/linuxserver/**",
+        "ghcr.io/linuxserver/**"
+      ],
+      "groupName": "linuxserver-apps"
+    }
+  ]
 }
