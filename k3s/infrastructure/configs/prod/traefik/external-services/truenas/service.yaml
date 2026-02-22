@@ -6,8 +6,8 @@ metadata:
   namespace: external-routes
 spec:
   ports:
-    - port: 80
-      name: http
+    - port: 443
+      name: https
 ---
 apiVersion: v1
 kind: Endpoints
@@ -18,5 +18,5 @@ subsets:
   - addresses:
       - ip: 192.168.0.30
     ports:
-      - port: 80
-        name: http
+      - port: 443
+        name: https

@@ -12,7 +12,9 @@ spec:
       kind: Rule
       services:
         - name: truenas
-          port: 80
+          port: 443
+          scheme: https
+          serversTransport: insecure-skip-verify
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
