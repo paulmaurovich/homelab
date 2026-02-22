@@ -12,7 +12,7 @@ spec:
       kind: Rule
       services:
         - name: proxmox-route
-          port: 443
+          port: 8006
           scheme: https
           serversTransport: insecure-skip-verify
 ---
