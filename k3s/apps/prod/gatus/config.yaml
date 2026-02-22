@@ -246,8 +246,9 @@ data:
           - type: telegram
             send-on-resolved: true
 
+      # dummy endpoint that returns 200 OK
       - name: TrueNAS
-        url: "https://truenas.maurovi.ch"
+        url: "http://192.168.0.30/ui/assets/images/logo.png"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
@@ -256,7 +257,7 @@ data:
             send-on-resolved: true
 
       - name: PiHole (VIP)
-        url: "https://pihole.maurovi.ch"
+        url: "http://192.168.0.42"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
