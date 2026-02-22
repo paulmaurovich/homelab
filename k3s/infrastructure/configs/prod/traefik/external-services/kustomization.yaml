@@ -4,3 +4,4 @@ resources:
   - ./insecure-skip-verify-servers-transport.yaml
   - ./proxmox
   - ./truenas
+  - ./pihole

@@ -1,0 +1,53 @@
+---
+# Redirects bare root to /admin/ — only fires for exactly "/" or ""
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: pihole-admin-redirect
+  namespace: external-routes
+spec:
+  redirectRegex:
+    regex: "^https://pihole\\.maurovi\\.ch/?$"
+    replacement: "https://pihole.maurovi.ch/admin/"
+    permanent: false # 302: safe to change later without browser cache pain
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pihole
+  namespace: external-routes
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    # Root path → redirect to /admin/ (higher priority due to Path matcher)
+    - match: Host(`pihole.maurovi.ch`) && Path(`/`)
+      kind: Rule
+      middlewares:
+        - name: pihole-admin-redirect
+      services:
+        - name: noop@internal
+          kind: TraefikService
+    # All other paths via catch-all rule (/admin/*) → proxy to VIP
+    - match: Host(`pihole.maurovi.ch`)
+      kind: Rule
+      services:
+        - name: pihole
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pihole-https-redirect
+  namespace: external-routes
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`pihole.maurovi.ch`)
+      kind: Rule
+      middlewares:
+        - name: https-redirect
+      services:
+        - name: noop@internal
+          kind: TraefikService
