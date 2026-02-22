@@ -63,7 +63,7 @@
       "matchPackageNames": [
         "intel/**"
       ],
-      "matchSourceUrlPrefixes": [
+      "matchSourceUrls": [
         "https://github.com/intel/intel-device-plugins-for-kubernetes"
       ],
       "groupName": "intel-device-plugins"
