@@ -36,19 +36,45 @@
       "platformAutomerge": true
     },
     {
-      "description": "Group Flux system components together",
+      "description": "Group Beszel Hub and Agent together",
+      "matchPackageNames": [
+        "ghcr.io/henrygd/beszel/**"
+      ],
+      "groupName": "beszel"
+    },
+    {
+      "description": "Group Flux system components",
       "matchPackageNames": [
         "ghcr.io/fluxcd/**"
       ],
       "groupName": "flux-system"
     },
     {
-      "description": "Group all linuxserver images (Radarr, Sonarr, etc)",
+      "description": "Group all linuxserver images (Radarr, Sonarr, Prowlarr, etc)",
       "matchPackageNames": [
         "lscr.io/linuxserver/**",
-        "ghcr.io/linuxserver/**"
+        "ghcr.io/linuxserver/**",
+        "linuxserver/**"
       ],
       "groupName": "linuxserver-apps"
+    },
+    {
+      "description": "Group Intel GPU Device Plugin and Operator",
+      "matchPackageNames": [
+        "intel/**"
+      ],
+      "matchSourceUrlPrefixes": [
+        "https://github.com/intel/intel-device-plugins-for-kubernetes"
+      ],
+      "groupName": "intel-device-plugins"
+    },
+    {
+      "description": "Group CloudNativePG components",
+      "matchPackageNames": [
+        "ghcr.io/cloudnative-pg/**",
+        "cloudnative-pg/**"
+      ],
+      "groupName": "cloudnative-pg"
     }
   ]
 }
