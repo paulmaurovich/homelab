@@ -24,6 +24,18 @@
   },
   "packageRules": [
     {
+      "description": "Automerge non-major updates",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
+    },
+    {
       "description": "Group Flux system components together",
       "matchPackageNames": [
         "ghcr.io/fluxcd/**"
