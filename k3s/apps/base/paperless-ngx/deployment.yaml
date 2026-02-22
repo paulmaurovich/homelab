@@ -25,7 +25,7 @@ spec:
             requests:
               memory: 512Mi
             limits:
-              memory: 1024Mi
+              memory: 2048Mi
           envFrom:
             - configMapRef:
                 name: paperless-ngx-config
