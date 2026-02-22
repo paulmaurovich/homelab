@@ -3,3 +3,4 @@ resources:
   - ./https-redirect-middleware.yaml
   - ./insecure-skip-verify-servers-transport.yaml
   - ./proxmox
+  - ./truenas
