@@ -13,13 +13,13 @@
     "ansible"
   ],
   "kubernetes": {
-    "fileMatch": [
-      "(^|/)k3s/.*\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)k3s/.*\\.ya?ml$/"
     ]
   },
   "flux": {
-    "fileMatch": [
-      "(^|/)k3s/.*\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)k3s/.*\\.ya?ml$/"
     ]
   },
   "packageRules": [
