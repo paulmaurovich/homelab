@@ -9,8 +9,7 @@
   "enabledManagers": [
     "kubernetes",
     "flux",
-    "terraform",
-    "ansible"
+    "terraform"
   ],
   "kubernetes": {
     "managerFilePatterns": [
