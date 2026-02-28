@@ -12,13 +12,13 @@
     "terraform"
   ],
   "kubernetes": {
-    "managerFilePatterns": [
-      "/(^|/)k3s/.*\\.ya?ml$/"
+    "fileMatch": [
+      "(^|/)k3s/.*\\.ya?ml$"
     ]
   },
   "flux": {
-    "managerFilePatterns": [
-      "/(^|/)k3s/.*\\.ya?ml$/"
+    "fileMatch": [
+      "(^|/)k3s/.*\\.ya?ml$"
     ]
   },
   "packageRules": [
