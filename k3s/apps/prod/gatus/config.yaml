@@ -257,7 +257,7 @@ data:
             send-on-resolved: true
 
       - name: PiHole (VIP)
-        url: "http://192.168.0.42"
+        url: "http://192.168.0.42:8080"
         interval: 60s
         conditions:
           - "[STATUS] == 200"
