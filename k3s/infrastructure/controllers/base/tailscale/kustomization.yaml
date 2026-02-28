@@ -3,5 +3,6 @@ resources:
   - ./helm-repository.yaml
   - ./helm-release.yaml
   - ./connector-exitnode.yaml
+  - ./proxy-class-default.yaml
   - ./connector-subnet-router.yaml
-  - ./proxy-class.yaml
+  - ./proxy-class-subnet-router.yaml

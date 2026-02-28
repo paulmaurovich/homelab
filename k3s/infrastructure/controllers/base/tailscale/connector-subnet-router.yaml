@@ -6,7 +6,10 @@ metadata:
   namespace: tailscale
 spec:
   hostname: tailscale-connector-subnet-router
+  # when a single replica gets down, others jump in
+  replicas: 6
   subnetRouter:
     advertiseRoutes:
+      # my local network CIDR
       - "192.168.0.0/24"
   proxyClass: default-proxy-class

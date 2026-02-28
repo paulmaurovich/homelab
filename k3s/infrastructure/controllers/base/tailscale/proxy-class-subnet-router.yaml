@@ -1,0 +1,28 @@
+---
+# Spreads 6 replicas across 6 distinct nodes (one per node, hard constraint)
+# to ensure subnet routing stays available if individual nodes go down.
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyClass
+metadata:
+  name: subnet-router-proxy-class
+  namespace: tailscale
+spec:
+  statefulSet:
+    pod:
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+          operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/postgres
+          operator: Exists
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: homelab-subnet-router
+              topologyKey: kubernetes.io/hostname
