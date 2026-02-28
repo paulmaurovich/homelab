@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: lazylibrarian
-          image: lscr.io/linuxserver/lazylibrarian:version-b4e71a57
+          image: lscr.io/linuxserver/lazylibrarian:version-b4e71a57@sha256:a4bc68bf8a17161fafaf5b9289917cd1ce2dda9b9f03e76c7d1091439119264f
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
