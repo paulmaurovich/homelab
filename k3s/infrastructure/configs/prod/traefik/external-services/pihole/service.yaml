@@ -6,7 +6,7 @@ metadata:
   namespace: external-routes
 spec:
   ports:
-    - port: 80
+    - port: 8080
       name: http
 ---
 apiVersion: v1
@@ -18,5 +18,5 @@ subsets:
   - addresses:
       - ip: 192.168.0.99 # Keepalived VIP IP
     ports:
-      - port: 80
+      - port: 8080
         name: http
