@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: sabnzbd
-          image: linuxserver/sabnzbd:version-4.5.5
+          image: linuxserver/sabnzbd:version-4.5.5@sha256:1a26f56dfc047b62d5ddc20bc92bdebfbe7c3cb58d2d3523958838a09182d77a
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
