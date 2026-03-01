@@ -11,6 +11,7 @@
     "flux",
     "terraform"
   ],
+  "gitAuthor": "Renovate Bot <renovate-bot@maurovi.ch>",
   "kubernetes": {
     "managerFilePatterns": [
       "/(^|/)k3s/.*\\.ya?ml$/"
@@ -35,6 +36,16 @@
       "platformAutomerge": true
     },
     {
+      "description": "Disable digest pinning for flux-managed OCI Helm chart refs (format incompatible with inline digest injection)",
+      "matchManagers": [
+        "flux"
+      ],
+      "matchUpdateTypes": [
+        "pinDigest"
+      ],
+      "enabled": false
+    },
+    {
       "description": "Group Beszel Hub and Agent together",
       "matchPackageNames": [
         "ghcr.io/henrygd/beszel/**"
@@ -49,7 +60,7 @@
       "groupName": "flux-system"
     },
     {
-      "description": "Group all linuxserver images (Radarr, Sonarr, Prowlarr, etc)",
+      "description": "Group all linuxserver images",
       "matchPackageNames": [
         "lscr.io/linuxserver/**",
         "ghcr.io/linuxserver/**",
