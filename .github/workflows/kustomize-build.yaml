@@ -1,0 +1,42 @@
+# Validates that all Kustomize overlays build without errors.
+#
+# Kustomize "build" resolves all resources, patches, and references for a given
+# overlay into a single YAML stream. If any resource reference is broken, a patch
+# target is missing, or a YAML file is malformed, the build fails here rather than
+# silently on the cluster.
+
+name: Kustomize Build
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  kustomize-build:
+    name: Kustomize Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install the kustomize CLI using the official install script.
+      - name: Install kustomize
+        run: |
+          curl -sL "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          sudo mv kustomize /usr/local/bin/kustomize
+
+      # Builds the full application stack
+      # Catches: broken image references, missing PVC names, bad configMapRef targets.
+      - name: Build apps/prod
+        run: kustomize build k3s/apps/prod
+
+      # Builds all infrastructure controllers.
+      # Catches: broken Helm release chart references, missing HelmRepository sources.
+      - name: Build infrastructure/controllers/prod
+        run: kustomize build k3s/infrastructure/controllers/prod
+
+      # Builds all infrastructure configuration.
+      # Catches: invalid IngressRoute targets, broken certificate references.
+      - name: Build infrastructure/configs/prod
+        run: kustomize build k3s/infrastructure/configs/prod

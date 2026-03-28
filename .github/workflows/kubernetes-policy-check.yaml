@@ -1,0 +1,60 @@
+# Checks Kubernetes manifests against best-practice policies using Datree.
+#
+# Datree statically analyses rendered Kubernetes YAML and flags common issues:
+#   - Containers missing resource requests/limits (risk of node starvation)
+#   - Containers missing liveness/readiness probes (invisible crash loops)
+#   - Images using mutable tags like 'latest' (non-reproducible deployments)
+#   - Missing recommended labels (operability and observability gaps)
+#   - Security context issues (containers running as root, etc.)
+#
+# We pipe the output of 'kustomize build' directly into Datree rather than
+# pointing it at source files. This ensures Datree sees the fully-resolved
+# manifest – with all patches applied and all references merged — exactly
+# as the cluster would receive it.
+#
+# OFFLINE MODE: Datree's cloud service was shut down after acquisition.
+# We use the offline binary with its built-in default policy set.
+#
+# This job is intentionally non-blocking.
+# Policy violations produce a visible warning on the PR but doesn't prevent a merge.
+
+name: Kubernetes Policy Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  datree:
+    name: Datree Policy Check
+    runs-on: ubuntu-latest
+    continue-on-error: true # warning only -> non-blocking
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install kustomize
+        run: |
+          curl -sL "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          sudo mv kustomize /usr/local/bin/kustomize
+
+      # Downloads the Datree CLI binary and switches it to offline mode.
+      # Offline mode uses the policy rules bundled into the binary itself.
+      - name: Install Datree and use offline mode
+        run: |
+          curl -sL https://github.com/datreeio/datree/releases/latest/download/datree_linux_x86_64.tar.gz \
+            -o datree.tar.gz
+          tar -xzf datree.tar.gz
+          sudo mv datree /usr/local/bin/datree
+          datree config set offline local
+
+      # Each step pipes the fully-rendered prod overlay into datree via stdin ('-').
+      - name: Check apps/prod
+        run: kustomize build k3s/apps/prod | datree test -
+
+      - name: Check infrastructure/controllers/prod
+        run: kustomize build k3s/infrastructure/controllers/prod | datree test -
+
+      - name: Check infrastructure/configs/prod
+        run: kustomize build k3s/infrastructure/configs/prod | datree test -
