@@ -5,7 +5,7 @@ metadata:
   name: renovate
   namespace: renovate
 spec:
-  schedule: "0 */4 * * *" # every 4h (i.e. 6x per day)
+  schedule: "@hourly"
   # skip scheduling of a new job when a prior one is still running
   # make sure only one renovate instance is running at a given time (race conditions)
   # avoids race conditions, duplicate PRs, corrupted cache
