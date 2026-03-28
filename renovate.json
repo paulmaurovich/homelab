@@ -12,6 +12,9 @@
     "terraform"
   ],
   "gitAuthor": "Bot <bot@maurovi.ch>",
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": true,
   "kubernetes": {
     "managerFilePatterns": [
       "/(^|/)k3s/.*\\.ya?ml$/"
@@ -24,16 +27,11 @@
   },
   "packageRules": [
     {
-      "description": "Automerge non-major updates",
+      "description": "Never automerge major updates - require review",
       "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
+        "major"
       ],
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
+      "automerge": false
     },
     {
       "description": "Disable digest pinning for flux-managed OCI Helm chart refs (format incompatible with inline digest injection)",
