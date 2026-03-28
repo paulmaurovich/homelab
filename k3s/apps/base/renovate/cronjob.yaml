@@ -32,9 +32,13 @@ spec:
                 - secretRef:
                     name: renovate-secrets
               volumeMounts:
-                - name: renovate-cache
+                - name: renovate-tmp
                   mountPath: /tmp/renovate
+                - name: renovate-cache
+                  mountPath: /tmp/renovate/cache
           volumes:
+            - name: renovate-tmp
+              emptyDir: {}
             - name: renovate-cache
               persistentVolumeClaim:
                 claimName: renovate-cache
