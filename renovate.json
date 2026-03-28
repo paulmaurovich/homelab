@@ -9,7 +9,9 @@
   "enabledManagers": [
     "kubernetes",
     "flux",
-    "terraform"
+    "terraform",
+    "github-actions",
+    "regex"
   ],
   "gitAuthor": "Bot <bot@maurovi.ch>",
   "automerge": true,
