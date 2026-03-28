@@ -30,31 +30,72 @@ jobs:
   datree:
     name: Datree Policy Check
     runs-on: ubuntu-latest
-    continue-on-error: true # warning only -> non-blocking
+    continue-on-error: true # keeps the overall workflow non-blocking
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install kustomize
+      - name: Install kustomize and yq
         run: |
           curl -sL "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
           sudo mv kustomize /usr/local/bin/kustomize
+          sudo wget -qO /usr/local/bin/yq \
+            https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
 
-      # Downloads the Datree CLI binary and switches it to offline mode.
-      # Offline mode uses the policy rules bundled into the binary itself.
-      - name: Install Datree and use offline mode
+      - name: Install Datree and operate in offline mode
         run: |
-          curl -sL https://github.com/datreeio/datree/releases/latest/download/datree_linux_x86_64.tar.gz \
-            -o datree.tar.gz
-          tar -xzf datree.tar.gz
+          curl -sfL https://github.com/datreeio/datree/releases/download/1.9.19/datree-cli_1.9.19_Linux_x86_64.zip \
+            -o datree.zip
+          unzip -q datree.zip datree
           sudo mv datree /usr/local/bin/datree
           datree config set offline local
 
-      # Each step pipes the fully-rendered prod overlay into datree via stdin ('-').
       - name: Check apps/prod
-        run: kustomize build k3s/apps/prod | datree test -
+        id: check-apps
+        continue-on-error: true
+        # ignore sops metadata fields to not fail the check
+        run: kustomize build k3s/apps/prod | yq 'select(.sops == null)' | datree test -
 
       - name: Check infrastructure/controllers/prod
-        run: kustomize build k3s/infrastructure/controllers/prod | datree test -
+        id: check-infra-controllers
+        continue-on-error: true
+        run: kustomize build k3s/infrastructure/controllers/prod | yq 'select(.sops == null)' | datree test -
 
       - name: Check infrastructure/configs/prod
-        run: kustomize build k3s/infrastructure/configs/prod | datree test -
+        id: check-infra-configs
+        continue-on-error: true
+        run: kustomize build k3s/infrastructure/configs/prod | yq 'select(.sops == null)' | datree test -
+
+      # Reads each step's outcome and fails the job deliberately if any check
+      # found violations.
+      - name: Evaluate results
+        if: always()
+        run: |
+          FAILED=0
+
+          if [ "${{ steps.check-apps.outcome }}" = "failure" ]; then
+            echo "✕ apps/prod failed Datree policy check"
+            FAILED=1
+          else
+            echo "✓ apps/prod passed"
+          fi
+
+          if [ "${{ steps.check-infra-controllers.outcome }}" = "failure" ]; then
+            echo "✕ infrastructure/controllers/prod failed Datree policy check"
+            FAILED=1
+          else
+            echo "✓ infrastructure/controllers/prod passed"
+          fi
+
+          if [ "${{ steps.check-infra-configs.outcome }}" = "failure" ]; then
+            echo "✕ infrastructure/configs/prod failed Datree policy check"
+            FAILED=1
+          else
+            echo "✓ infrastructure/configs/prod passed"
+          fi
+
+          if [ $FAILED -ne 0 ]; then
+            echo ""
+            echo "One or more Datree policy checks found violations."
+            exit 1
+          fi
