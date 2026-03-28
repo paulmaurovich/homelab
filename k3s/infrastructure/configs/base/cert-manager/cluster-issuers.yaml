@@ -5,14 +5,14 @@ metadata:
   name: letsencrypt
 spec:
   acme:
-    email: "05.linings-minke@icloud.com"
+    email: "letsencrypt@maurovi.ch"
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-cloudflare
     solvers:
       - dns01:
           cloudflare:
-            email: "05.linings-minke@icloud.com"
+            email: "letsencrypt@maurovi.ch"
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: api-token
