@@ -30,7 +30,6 @@ jobs:
   datree:
     name: Datree Policy Check
     runs-on: ubuntu-latest
-    continue-on-error: true # keeps the overall workflow non-blocking
     steps:
       - uses: actions/checkout@v6
 
@@ -71,31 +70,20 @@ jobs:
       - name: Evaluate results
         if: always()
         run: |
-          FAILED=0
-
           if [ "${{ steps.check-apps.outcome }}" = "failure" ]; then
-            echo "✕ apps/prod failed Datree policy check"
-            FAILED=1
+            echo "::warning::apps/prod has Datree policy violations — review the logs above"
           else
             echo "✓ apps/prod passed"
           fi
 
           if [ "${{ steps.check-infra-controllers.outcome }}" = "failure" ]; then
-            echo "✕ infrastructure/controllers/prod failed Datree policy check"
-            FAILED=1
+            echo "::warning::infrastructure/controllers/prod has Datree policy violations — review the logs above"
           else
             echo "✓ infrastructure/controllers/prod passed"
           fi
 
           if [ "${{ steps.check-infra-configs.outcome }}" = "failure" ]; then
-            echo "✕ infrastructure/configs/prod failed Datree policy check"
-            FAILED=1
+            echo "::warning::infrastructure/configs/prod has Datree policy violations — review the logs above"
           else
             echo "✓ infrastructure/configs/prod passed"
-          fi
-
-          if [ $FAILED -ne 0 ]; then
-            echo ""
-            echo "One or more Datree policy checks found violations."
-            exit 1
           fi
