@@ -16,3 +16,4 @@ resources:
   - ./gatus
   - ./audiobookshelf
   - ./lazylibrarian
+  - ./renovate

@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: renovate-config
+  namespace: renovate
+data:
+  # Replace with your actual GitHub username
+  RENOVATE_REPOSITORIES: '["paulmaurovich/homelab"]'
+  # Disallows the bot to automatically find and run on all repositories it has access to
+  RENOVATE_AUTODISCOVER: "false"
+  RENOVATE_CACHE_DIR: /tmp/renovate/cache
+  RENOVATE_ONBOARDING: "false"
+  LOG_LEVEL: info

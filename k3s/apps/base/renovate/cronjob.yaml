@@ -1,0 +1,40 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: renovate
+  namespace: renovate
+spec:
+  schedule: "0 */4 * * *" # every 4h (i.e. 6x per day)
+  # skip scheduling of a new job when a prior one is still running
+  # make sure only one renovate instance is running at a given time (race conditions)
+  # avoids race conditions, duplicate PRs, corrupted cache
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: renovate
+              image: ghcr.io/renovatebot/renovate:43.96.0
+              imagePullPolicy: IfNotPresent
+              resources:
+                requests:
+                  memory: "512Mi"
+                limits:
+                  memory: "1Gi"
+              envFrom:
+                - configMapRef:
+                    name: renovate-config
+                - secretRef:
+                    name: renovate-secrets
+              volumeMounts:
+                - name: renovate-cache
+                  mountPath: /tmp/renovate
+          volumes:
+            - name: renovate-cache
+              persistentVolumeClaim:
+                claimName: renovate-cache
