@@ -1,0 +1,33 @@
+name: SOPS Encryption Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  sops-encrypted:
+    name: Verify SOPS files are encrypted
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check all .enc.yaml files contain SOPS metadata
+        run: |
+          FAILED=0
+          while IFS= read -r -d '' file; do
+            if ! grep -q "^sops:" "$file"; then
+              echo "✕ NOT encrypted: $file"
+              FAILED=1
+            else
+              echo "✓ $file"
+            fi
+          done < <(find . -name "*.enc.yaml" -not -path "./.git/*" -print0)
+
+          if [ $FAILED -ne 0 ]; then
+            echo ""
+            echo "One or more .enc.yaml files are missing SOPS metadata."
+            echo "Did you accidentally commit a decrypted file?"
+            exit 1
+          fi
