@@ -16,6 +16,7 @@
   "automergeType": "pr",
   "platformAutomerge": false,
   "minimumReleaseAge": "0 days",
+  "ignoreTests": true,
   "kubernetes": {
     "managerFilePatterns": [
       "/(^|/)k3s/.*\\.ya?ml$/"
