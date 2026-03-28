@@ -15,7 +15,7 @@
   "automerge": true,
   "automergeType": "pr",
   "platformAutomerge": false,
-  "minimumReleaseAge": "0 days",
+  "minimumReleaseAge": "2 days",
   "ignoreTests": true,
   "kubernetes": {
     "managerFilePatterns": [
