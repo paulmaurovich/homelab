@@ -14,7 +14,7 @@
   "gitAuthor": "Bot <bot@maurovi.ch>",
   "automerge": true,
   "automergeType": "pr",
-  "platformAutomerge": true,
+  "platformAutomerge": false,
   "kubernetes": {
     "managerFilePatterns": [
       "/(^|/)k3s/.*\\.ya?ml$/"
