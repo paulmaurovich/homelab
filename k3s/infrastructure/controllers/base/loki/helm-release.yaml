@@ -18,6 +18,9 @@ spec:
   values:
     deploymentMode: SingleBinary
 
+    chunksCache:
+      allocatedMemory: 1024 # default is 8192 MB
+
     loki:
       auth_enabled: false
       commonConfig:
