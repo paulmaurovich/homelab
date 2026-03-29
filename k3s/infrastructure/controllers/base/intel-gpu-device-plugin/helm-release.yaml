@@ -15,6 +15,3 @@ spec:
         kind: HelmRepository
         name: intel
         namespace: intel-devices
-  values:
-    image:
-      tag: 0.34.0
