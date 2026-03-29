@@ -1,0 +1,31 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nebula-sync
+  namespace: pihole-nebula-sync
+spec:
+  schedule: "@hourly"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: nebula-sync
+              image: ghcr.io/lovelaze/nebula-sync:v0.11.1
+              imagePullPolicy: IfNotPresent
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 32Mi
+                limits:
+                  memory: 128Mi
+              envFrom:
+                - configMapRef:
+                    name: nebula-sync-config
+                - secretRef:
+                    name: nebula-sync-secrets

@@ -1,0 +1,3 @@
+resources:
+  - ./config.yaml
+  - ./secrets.k8s.enc.yaml

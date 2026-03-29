@@ -6,3 +6,4 @@ resources:
   - ./grafana
   - ./loki
   - ./tailscale
+  - ./pihole-nebula-sync

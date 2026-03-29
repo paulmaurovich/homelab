@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nebula-sync-config
+  namespace: pihole-nebula-sync
+data:
+  # https://github.com/lovelaze/nebula-sync?tab=readme-ov-file#configuration
+  FULL_SYNC: "true"
+  RUN_GRAVITY: "true"
+  TZ: "Europe/Vienna"
+  CLIENT_TIMEOUT_SECONDS: "60"

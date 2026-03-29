@@ -16,3 +16,4 @@ resources:
   - ./promtail
   - ./tailscale
   - ./traefik
+  - ./pihole-nebula-sync
