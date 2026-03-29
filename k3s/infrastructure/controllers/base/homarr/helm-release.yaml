@@ -20,8 +20,6 @@ spec:
   values:
     env:
       TZ: Europe/Vienna
-    image:
-      tag: v1.38.0
     resources:
       requests:
         memory: 128Mi
