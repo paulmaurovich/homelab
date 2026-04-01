@@ -16,8 +16,7 @@
   "gitAuthor": "Bot <bot@maurovi.ch>",
   "automerge": true,
   "automergeType": "pr",
-  "platformAutomerge": true,
-  "minimumReleaseAge": "2 days",
+  "platformAutomerge": false,
   "ignoreTests": false,
   "kubernetes": {
     "managerFilePatterns": [
