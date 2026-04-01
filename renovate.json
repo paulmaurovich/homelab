@@ -2,10 +2,10 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":rebaseStalePrs",
     ":prHourlyLimitNone",
     "docker:pinDigests"
   ],
+  "rebaseWhen": "conflicted",
   "enabledManagers": [
     "kubernetes",
     "flux",
@@ -16,7 +16,7 @@
   "gitAuthor": "Bot <bot@maurovi.ch>",
   "automerge": true,
   "automergeType": "pr",
-  "platformAutomerge": false,
+  "platformAutomerge": true,
   "ignoreTests": false,
   "kubernetes": {
     "managerFilePatterns": [
