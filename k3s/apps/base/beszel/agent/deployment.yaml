@@ -16,7 +16,7 @@ spec:
       hostNetwork: true
       containers:
         - name: beszel-agent
-          image: ghcr.io/henrygd/beszel/beszel-agent:0.18.5@sha256:2c98ad71778344d417b9b54d1d415542b28539537c6db8ac64fd6e25196e6516
+          image: ghcr.io/henrygd/beszel/beszel-agent:0.18.6@sha256:3b3584fde7b9ae0e5941a98fa44ae548b18cf833f2a3a0bea78dbc5fc909fc90
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 45876
