@@ -16,6 +16,7 @@
   "gitAuthor": "Bot <bot@maurovi.ch>",
   "automerge": true,
   "automergeType": "pr",
+  "automergeStrategy": "squash",
   "platformAutomerge": true,
   "ignoreTests": false,
   "kubernetes": {
@@ -30,6 +31,16 @@
   },
   "packageRules": [
     {
+      "description": "Batch all minor/patch/digest updates — specific groups below override this",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest",
+        "pinDigest"
+      ],
+      "groupName": "all-non-major"
+    },
+    {
       "description": "Never automerge major updates - require review",
       "matchUpdateTypes": [
         "major"
@@ -37,7 +48,7 @@
       "automerge": false
     },
     {
-      "description": "Disable digest pinning for flux-managed OCI Helm chart refs (format incompatible with inline digest injection)",
+      "description": "Disable digest pinning for flux-managed OCI Helm chart refs",
       "matchManagers": [
         "flux"
       ],
@@ -61,15 +72,6 @@
       "groupName": "flux-system"
     },
     {
-      "description": "Group all linuxserver images",
-      "matchPackageNames": [
-        "lscr.io/linuxserver/**",
-        "ghcr.io/linuxserver/**",
-        "linuxserver/**"
-      ],
-      "groupName": "linuxserver-apps"
-    },
-    {
       "description": "Group Intel GPU Device Plugin and Operator",
       "matchPackageNames": [
         "intel/**"
@@ -86,6 +88,35 @@
         "cloudnative-pg/**"
       ],
       "groupName": "cloudnative-pg"
+    },
+    {
+      "description": "Jellyfin and Jellyseerr are API-coupled — update together",
+      "matchPackageNames": [
+        "ghcr.io/jellyfin/jellyfin",
+        "ghcr.io/fallenbagel/jellyseerr"
+      ],
+      "groupName": "jellyfin-stack"
+    },
+    {
+      "description": "Media automation pipeline: Prowlarr indexes for Radarr+Sonarr, SABnzbd downloads for both",
+      "matchPackageNames": [
+        "linuxserver/sonarr",
+        "linuxserver/radarr",
+        "ghcr.io/linuxserver/prowlarr",
+        "linuxserver/sabnzbd"
+      ],
+      "groupName": "arr-stack"
+    },
+    {
+      "description": "Loki and Promtail must stay version-compatible — same push API",
+      "matchManagers": [
+        "flux"
+      ],
+      "matchPackageNames": [
+        "loki",
+        "promtail"
+      ],
+      "groupName": "loki-promtail"
     }
   ]
 }
