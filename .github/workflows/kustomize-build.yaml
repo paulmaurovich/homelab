@@ -20,10 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      # Install the kustomize CLI using the official install script.
       - name: Install kustomize
         run: |
-          curl -sL "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          curl -sL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.8.1/kustomize_v5.8.1_linux_amd64.tar.gz" | tar xz
           sudo mv kustomize /usr/local/bin/kustomize
 
       # Builds the full application stack
