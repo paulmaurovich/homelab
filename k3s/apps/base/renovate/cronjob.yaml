@@ -5,7 +5,7 @@ metadata:
   name: renovate
   namespace: renovate
 spec:
-  schedule: "0 6 * * 0" # Every Sunday at 06:00 o'clock
+  schedule: "0 4 * * *" # Every day at 04:00 o'clock
   timeZone: "Europe/Vienna"
   # skip scheduling of a new job when a prior one is still running
   # make sure only one renovate instance is running at a given time (race conditions)
