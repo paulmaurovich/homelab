@@ -38,7 +38,7 @@ No ticket prefix — this homelab has no external ticket system.
 | Type          | Purpose                                                              | Example                                |
 | ------------- | -------------------------------------------------------------------- | -------------------------------------- |
 | `main`        | Primary integration branch; Flux reconciles from here                | —                                      |
-| `feature/`    | Adding something new that did not exist before (**not** `feat/`)     | `feature/add-audiobookshelf`           |
+| `feat/`       | Adding something new that did not exist before (**not** `feature/`)  | `feat/add-audiobookshelf`              |
 | `fix/`        | Fixing something broken; normal flow                                 | `fix/traefik-middleware-order`         |
 | `hotfix/`     | Urgent production fix; cut from `main`, merged back immediately      | `hotfix/sops-age-key-rotation`         |
 | `chore/`      | No runtime behavior change: deps, CI, docs, formatting, renovate     | `chore/bump-cert-manager-1.16`         |
@@ -49,19 +49,19 @@ There is no `release/` branch — this is a GitOps homelab with a single `prod` 
 
 | Rule                                | Correct                          | Incorrect                        |
 | ----------------------------------- | -------------------------------- | -------------------------------- |
-| Lowercase only                      | `feature/add-audiobookshelf`     | `feature/Add-Audiobookshelf`     |
+| Lowercase only                      | `feat/add-audiobookshelf`        | `feat/Add-Audiobookshelf`        |
 | Hyphens as word separators          | `fix/fix-traefik-route`          | `fix/fix_traefik_route`          |
-| No spaces                           | `feature/add-lazylibrarian`      | `feature/add lazylibrarian`      |
-| No consecutive hyphens              | `feature/add-gatus`              | `feature/add--gatus`             |
-| No leading or trailing hyphens      | `feature/add-gatus`              | `feature/-add-gatus`             |
+| No spaces                           | `feat/add-lazylibrarian`         | `feat/add lazylibrarian`         |
+| No consecutive hyphens              | `feat/add-gatus`                 | `feat/add--gatus`                |
+| No leading or trailing hyphens      | `feat/add-gatus`                 | `feat/-add-gatus`                |
 | No trailing dots                    | `chore/bump-loki-6.55`           | `chore/bump-loki-6.55.`          |
 | Alphanumerics, hyphens, dots only   | `chore/update-k3s-v1.32`         | `chore/update-k3s@v1.32`         |
 
 ### Examples
 
 ```
-feature/add-audiobookshelf
-feature/add-postgres-scheduled-backups
+feat/add-audiobookshelf
+feat/add-postgres-scheduled-backups
 fix/traefik-ingress-route-for-grafana
 fix/cloudflared-tunnel-restart-loop
 hotfix/sops-age-key-rotation
@@ -97,7 +97,7 @@ Format:
 
 | Type       | Use When                                              |
 | ---------- | ----------------------------------------------------- |
-| `feature`  | Introducing new functionality — new app, new controller, new CI job (**not** `feat`) |
+| `feat`     | Introducing new functionality — new app, new controller, new CI job (**not** `feature`) |
 | `fix`      | Patching a bug or broken manifest                     |
 | `refactor` | Restructuring manifests — no behavior change (e.g. moving a resource between overlays) |
 | `docs`     | Documentation changes only (README, CLAUDE.md, skills, inline comments) |
@@ -124,7 +124,7 @@ Scope narrows the context to a subsystem. Defined per this repo:
 **CI / meta:**
 `ci`, `workflows`, `docs`, `readme`
 
-Pick the narrowest scope that still captures the change. `feature(jellyfin)` beats `feature(apps)` when only jellyfin changes.
+Pick the narrowest scope that still captures the change. `feat(jellyfin)` beats `feat(apps)` when only jellyfin changes.
 
 ### Breaking Changes
 
@@ -147,14 +147,14 @@ BREAKING CHANGE: requires manual PVC re-creation; see runbook in docs/.
 
 | Rule                        | Correct                         | Incorrect                       |
 | --------------------------- | ------------------------------- | ------------------------------- |
-| Type lowercase              | `feature:`                      | `Feature:`                      |
+| Type lowercase              | `feat:`                         | `Feat:`                         |
 | Space after colon           | `fix: resolve bug`              | `fix:resolve bug`               |
-| Description lowercase       | `feature: add gatus dashboard`  | `feature: Add Gatus dashboard`  |
+| Description lowercase       | `feat: add gatus dashboard`     | `feat: Add Gatus dashboard`     |
 | Imperative mood             | `fix: remove broken redirect`   | `fix: removed broken redirect`  |
 | No trailing period          | `docs: update architecture diagram` | `docs: update architecture diagram.` |
 | One blank line before body  | description → blank line → body | body directly after description |
 | `BREAKING CHANGE` uppercase | `BREAKING CHANGE:`              | `breaking change:`              |
-| Single responsibility       | one concern per commit          | mixing feature + refactor + fix |
+| Single responsibility       | one concern per commit          | mixing feat + refactor + fix    |
 
 Each commit must leave the repo in a state where `kustomize build` succeeds on all three overlays.
 
@@ -197,7 +197,7 @@ Good verbs by type:
 
 | Type       | Verbs                                                   |
 | ---------- | ------------------------------------------------------- |
-| `feature`  | add, introduce, expose, enable, support                 |
+| `feat`     | add, introduce, expose, enable, support                 |
 | `fix`      | fix, resolve, prevent, correct, handle                  |
 | `refactor` | extract, move, rename, simplify, restructure, split     |
 | `docs`     | document, update, correct, clarify                      |
@@ -234,15 +234,15 @@ Never add AI attribution or tool metadata.
 
 ### Anti-patterns
 
-| Anti-pattern                                 | Problem                                       |
-| -------------------------------------------- | --------------------------------------------- |
-| `fix stuff`, `update`, `changes`, `WIP`      | No information — useless history              |
-| `fix: fixed the bug` — past tense            | Fails the imperative mood test                |
-| `feat: Add login` — wrong type, capitalized  | Use `feature`; description must be lowercase  |
-| Subject contains "and"                       | Multi-concern commit — split it               |
-| Body restates the diff                       | Noise — the reader has `git show`             |
-| `Co-Authored-By: Claude …`                   | **Forbidden** — see Hard Constraints          |
-| Body longer than one sentence                | Keep it tight; one sentence only              |
+| Anti-pattern                                    | Problem                                    |
+| ----------------------------------------------- | ------------------------------------------ |
+| `fix stuff`, `update`, `changes`, `WIP`         | No information — useless history           |
+| `fix: fixed the bug` — past tense               | Fails the imperative mood test             |
+| `feature: Add login` — wrong type, capitalized  | Use `feat`; description must be lowercase  |
+| Subject contains "and"                          | Multi-concern commit — split it            |
+| Body restates the diff                          | Noise — the reader has `git show`          |
+| `Co-Authored-By: Claude …`                      | **Forbidden** — see Hard Constraints       |
+| Body longer than one sentence                   | Keep it tight; one sentence only           |
 
 ---
 
@@ -257,7 +257,7 @@ docs: correct spelling in README
 With scope:
 
 ```
-feature(apps): add audiobookshelf
+feat(apps): add audiobookshelf
 ```
 
 With body (one sentence, explains why):
