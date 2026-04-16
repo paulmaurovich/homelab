@@ -1,0 +1,34 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: goldilocks
+  namespace: goldilocks
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: goldilocks
+      version: 10.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: fairwinds-stable
+        namespace: goldilocks
+  # https://github.com/FairwindsOps/charts/blob/master/stable/goldilocks/values.yaml
+  values:
+    # Goldilocks depends on VPA recommender; install it as a sub-chart
+    # rather than managing a separate release.
+    vpa:
+      enabled: true
+      updater:
+        enabled: false
+
+    controller:
+      # Create VPAs for every namespace by default. Opt-out per namespace
+      # with the label goldilocks.fairwinds.com/enabled=false.
+      flags:
+        on-by-default: "true"
+
+    dashboard:
+      replicaCount: 1

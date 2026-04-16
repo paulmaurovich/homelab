@@ -17,3 +17,4 @@ resources:
   - ./tailscale
   - ./traefik
   - ./pihole-nebula-sync
+  - ./goldilocks
