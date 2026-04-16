@@ -328,3 +328,18 @@ spec:
       services:
         - name: lazylibrarian
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: goldilocks
+  namespace: goldilocks
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`goldilocks-prod.maurovi.ch`)
+      services:
+        - name: goldilocks-dashboard
+          port: http
