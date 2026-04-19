@@ -343,3 +343,18 @@ spec:
       services:
         - name: goldilocks-dashboard
           port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: openclaw
+  namespace: openclaw
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`openclaw-prod.maurovi.ch`)
+      services:
+        - name: openclaw
+          port: http
