@@ -3,3 +3,4 @@
 *.tfstate*
 k3s.yaml
 init-beszel.sh
+.claude/worktrees/
