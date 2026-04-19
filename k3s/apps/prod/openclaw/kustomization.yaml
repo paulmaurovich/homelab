@@ -1,5 +1,4 @@
 resources:
-  - ./config.yaml
   - ./secrets.k8s.enc.yaml
   - ./storage.yaml
   - ./network-policy.yaml
