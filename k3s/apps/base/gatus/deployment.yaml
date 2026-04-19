@@ -54,10 +54,3 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             failureThreshold: 5
-          volumeMounts:
-            - mountPath: /config
-              name: gatus-config
-      volumes:
-        - configMap:
-            name: gatus
-          name: gatus-config
