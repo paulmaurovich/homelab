@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: openclaw-data
+  namespace: openclaw
+spec:
+  capacity:
+    storage: 20G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/openclaw
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: openclaw
+  name: openclaw-data
+spec:
+  volumeName: openclaw-data
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20G
+  storageClassName: ""

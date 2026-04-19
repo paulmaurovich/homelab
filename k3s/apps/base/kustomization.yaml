@@ -18,3 +18,4 @@ resources:
   - ./audiobookshelf
   - ./lazylibrarian
   - ./renovate
+  - ./openclaw

@@ -246,6 +246,15 @@ data:
           - type: telegram
             send-on-resolved: true
 
+      - name: OpenClaw
+        url: "http://openclaw.openclaw.svc.cluster.local/readyz"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            send-on-resolved: true
+
       # dummy endpoint that returns 200 OK
       - name: TrueNAS
         url: "http://192.168.0.30/ui/assets/images/logo.png"
