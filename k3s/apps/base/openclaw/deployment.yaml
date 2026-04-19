@@ -52,7 +52,14 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /root/.openclaw
+            - name: config
+              mountPath: /root/.openclaw/openclaw.json
+              subPath: openclaw.json
+              readOnly: true
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: openclaw-data
+        - name: config
+          configMap:
+            name: openclaw-config
