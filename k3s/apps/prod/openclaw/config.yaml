@@ -10,7 +10,6 @@ data:
   openclaw.json: |
     {
       "gateway": {
-        "host": "0.0.0.0",
         "port": 18789,
         "auth": {
           "token": "${OPENCLAW_GATEWAY_TOKEN}"
