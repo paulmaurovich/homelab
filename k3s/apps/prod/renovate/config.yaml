@@ -11,4 +11,4 @@ data:
   RENOVATE_AUTODISCOVER: "false"
   RENOVATE_CACHE_DIR: /tmp/renovate/cache
   RENOVATE_ONBOARDING: "false"
-  LOG_LEVEL: info
+  LOG_LEVEL: debug
