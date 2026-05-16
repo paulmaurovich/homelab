@@ -5,7 +5,10 @@ metadata:
   name: renovate
   namespace: renovate
 spec:
-  schedule: "0 4 * * *" # Every day at 04:00 o'clock
+  # GitHub rate limits are so strict that I have to shut down the cron job
+  # for the foreseeable future and set it to run once a year.
+  schedule: "0 0 1 1 *"
+  # schedule: "0 4 * * *" # Every day at 04:00 o'clock
   timeZone: "Europe/Vienna"
   # skip scheduling of a new job when a prior one is still running
   # make sure only one renovate instance is running at a given time (race conditions)
