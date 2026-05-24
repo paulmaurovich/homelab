@@ -26,7 +26,7 @@ spec:
       serviceAccountName: portainer-sa-clusteradmin
       containers:
         - name: portainer
-          image: "portainer/portainer-ce:2.40.0-alpine@sha256:bb1730d6411adc64328825897220e7711ad97f73e3c3638f8f2d71e9d2ddb2e7"
+          image: "portainer/portainer-ce:2.42.0-alpine@sha256:b2e2535d84d42f1b0e0e8a7c74456e558e8d2c3782dc367be42fae47a992003b"
           imagePullPolicy: IfNotPresent
           args:
             - "--tunnel-port=30776"
