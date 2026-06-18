@@ -11,7 +11,7 @@ jobs:
     name: Verify SOPS files are encrypted
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check all .enc.yaml files contain SOPS metadata
         run: |
