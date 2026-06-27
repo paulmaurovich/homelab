@@ -5,6 +5,7 @@ metadata:
   name: recipes
   namespace: recipes
 spec:
+  replicas: 0 # sunset for now
   selector:
     matchLabels:
       app: recipes
