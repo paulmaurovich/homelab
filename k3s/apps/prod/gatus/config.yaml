@@ -45,15 +45,6 @@ data:
           - type: telegram
             send-on-resolved: true
 
-      - name: Recipes
-        url: "http://recipes.recipes.svc.cluster.local"
-        interval: 300s
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: telegram
-            send-on-resolved: true
-
       - name: Vaultwarden
         url: "http://vaultwarden.vaultwarden.svc.cluster.local/alive"
         interval: 60s
