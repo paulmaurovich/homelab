@@ -14,6 +14,10 @@
     "custom.regex"
   ],
   "gitAuthor": "Bot <bot@maurovi.ch>",
+  "timezone": "Europe/Vienna",
+  "schedule": [
+    "every 2 days"
+  ],
   "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "squash",
