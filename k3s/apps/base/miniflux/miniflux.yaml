@@ -3,6 +3,8 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: miniflux
+  labels:
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: apps/v1
 kind: Deployment
