@@ -1,0 +1,2 @@
+resources:
+  - ./telegram-bot-token-secret.k8s.enc.yaml
