@@ -23,7 +23,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: renovate
-              image: ghcr.io/renovatebot/renovate:44.21.0@sha256:43bbbe231a9b1059c32d17cd04cd05451e6a4de1d54af10b5991c8495945dc0c
+              image: ghcr.io/renovatebot/renovate:44.27.0@sha256:51194bb6d08a066779275045e439133d0a9aa6c528f9c2ff4d8052066a8f79c4
               imagePullPolicy: IfNotPresent
               resources:
                 requests:
