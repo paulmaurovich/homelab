@@ -1,2 +1,3 @@
 resources:
   - ./provider.yaml
+  - ./alert-on-reconciliation-error.yaml
