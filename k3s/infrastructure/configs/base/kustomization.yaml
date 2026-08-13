@@ -3,4 +3,3 @@ resources:
   - ./node-labels
   - ./cloudflared
   - ./flux-notifications
-  - ./does-not-exist
