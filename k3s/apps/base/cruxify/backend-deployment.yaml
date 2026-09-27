@@ -39,7 +39,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: backend
-          image: ghcr.io/paulmaurovich/cruxify-backend:0.24.1
+          image: ghcr.io/paulmaurovich/cruxify-backend:0.24.1@sha256:dbe07deaa6214e030fddfaed045f2109d3e66f030f03d257efb772541cfc3603
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
