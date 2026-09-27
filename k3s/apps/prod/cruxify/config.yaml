@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: cruxify
+data:
+  CRUXIFY_DATA_DIR: /data
+  CRUXIFY_ENVIRONMENT: production
+  CRUXIFY_REGISTRATION_ENABLED: "true"
+  CRUXIFY_COOKIES_SECURE: "true"
+  CRUXIFY_IMAGES_FORMAT: webp
+  CRUXIFY_PUBLIC_URL: https://cruxify-prod.maurovi.ch
+  CRUXIFY_MAIL_FROM: "cruxify <no-reply@maurovi.ch>"

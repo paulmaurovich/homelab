@@ -92,6 +92,21 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
+  name: cruxify
+  namespace: cruxify
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`cruxify-prod.maurovi.ch`)
+      services:
+        - name: frontend
+          port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
   name: jellyfin
   namespace: jellyfin
 spec:

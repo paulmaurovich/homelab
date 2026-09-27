@@ -1,0 +1,14 @@
+---
+# Cluster-internal only. The browser reaches the backend through the frontend proxy.
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: cruxify
+spec:
+  selector:
+    app.kubernetes.io/name: cruxify-backend
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http

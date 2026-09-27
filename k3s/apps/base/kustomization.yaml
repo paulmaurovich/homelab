@@ -5,6 +5,7 @@ resources:
   - ./paperless-ngx
   - ./recipes
   - ./vaultwarden
+  - ./cruxify
   - ./jellyfin
   - ./jellyseerr
   - ./radarr

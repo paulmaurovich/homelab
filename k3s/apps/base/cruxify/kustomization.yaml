@@ -1,0 +1,8 @@
+resources:
+  - ./namespace.yaml
+  - ./storage.yaml
+  - ./backend-deployment.yaml
+  - ./backend-service.yaml
+  - ./frontend-deployment.yaml
+  - ./frontend-service.yaml
+  - ./network-policy.yaml

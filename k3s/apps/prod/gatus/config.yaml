@@ -54,6 +54,15 @@ data:
           - type: telegram
             send-on-resolved: true
 
+      - name: Cruxify
+        url: "http://frontend.cruxify.svc.cluster.local:3000/api/v1/health"
+        interval: 60s
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: telegram
+            send-on-resolved: true
+
       - name: Jellyfin
         url: "http://jellyfin.jellyfin.svc.cluster.local/health"
         interval: 120s
