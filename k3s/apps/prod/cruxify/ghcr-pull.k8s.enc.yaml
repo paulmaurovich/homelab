@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+    .dockerconfigjson: ENC[AES256_GCM,data:1i2VhqsfqUIBWW2cnvgxeSqITuNRzamlVDWEN7P0roZd1CN7R8RIwGCAY8uoml65GnXmzlsmDhlH4SeCjb/mjhTyr6tWLrETa4czUHWBRf1kPfaaN1MB1PUYoAbisvEmPRdFB8JjW2m5mFAESLYa5F7h0T9JyeeHpn7JJQBqIRNVhVsk+UKJzS42EwbnqiCcoC58Myyq5MLh4UwnoTufPYYaSFbIN0zQ/TBFSIhQrSbtdJlnvFnCuWbM2yPdExZpfERErKrLdMX1EPqGXX2NtNYXPAewGFUI475FZQYQZFgGxxUm3Z3eT37uhUvfvG4u/kFuQz63QO0=,iv:piWFUk16r0lkCsQLVKyeZ8Q2+sPd8AWkPvBAlBp/6Po=,tag:fzCC5t8yvYa+2ENCVS2Xbw==,type:str]
+kind: Secret
+metadata:
+    name: ghcr-pull
+    namespace: cruxify
+type: kubernetes.io/dockerconfigjson
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOZHlKYVU0b05aUGtxQWE2
+            WmNsK1dFdnAxdEpsNWZLeHYrODh6Z0w5MlZBCnVzMWhFY3JDL1hNclQrc2U0VTRk
+            ZGNRSUU5b0I2aXJaOGRCNktLMldnUFEKLS0tIC8wejBaaFRZZlFOT3RFMEpDcHFa
+            RDlYaVhRQ2JTZ0JqOWFzSnFEWmVkMXMKkJ0s6sZMFes1hustLz19YjlNk7B4S6/k
+            LkPA7QCY2ZKCdqOPQv/GmKjaRyuCtRLf4wmg0oODUYiyN93lo/Hysg==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1ys5az3gtql0nut2ldf88waz3jkmwzuvfl7gcrn9sja2luvnaud2s6u3834
+    encrypted_regex: ^(data|stringData)$
+    lastmodified: "2026-09-27T20:41:43Z"
+    mac: ENC[AES256_GCM,data:qrXLtmK28RHppFu4JkK0Zo32LZw0H6/NKj/ErGUKdOe9vtffsw8ZYRimO8tavZ7iFiLJSawFS8WiKDXEpbHah2yr2Laho3t1OYYsSisabEya0jYZKBUyN61MotC1B2a2WtfV7I8RAMILJncKMN97G97numFsGGL/6M4HtQ+NdSo=,iv:l3SNC1xwBnHEw28Bs0HE+kJTH3iIFYZtxFD6mPrWZyQ=,tag:x0nwVTpWr0yoHVWBbVfkew==,type:str]
+    version: 3.13.3
