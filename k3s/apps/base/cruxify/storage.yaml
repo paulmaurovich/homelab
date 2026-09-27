@@ -1,0 +1,31 @@
+---
+# SQLite database and images live together under /data. The directory must be owned by 10001:10001.
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cruxify-data
+  namespace: cruxify
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  nfs:
+    server: 192.168.0.30
+    path: /mnt/pool1/containers/persistent/cruxify
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: cruxify
+  name: backend-data
+spec:
+  volumeName: cruxify-data
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ""
