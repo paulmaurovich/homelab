@@ -27,7 +27,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: frontend
-          image: ghcr.io/paulmaurovich/cruxify-frontend:0.24.1@sha256:d3466b50db04110ed12d64b25335c57ae526ecf11f7aaffe57efc3fa726154c6
+          image: ghcr.io/paulmaurovich/cruxify-frontend:0.26.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
